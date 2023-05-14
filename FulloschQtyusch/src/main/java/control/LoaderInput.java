@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface LoaderInput {
     /**
-     * A parancsot ezalapján lehet azonosítani. (a bemeneti nyelvben a parancs nevei)
+     * A parancsot ez alapján lehet azonosítani. (a bemeneti nyelvben a parancs nevei)
      * @return A megadott név.
      */
     String name();
