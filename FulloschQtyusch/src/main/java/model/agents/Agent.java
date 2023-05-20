@@ -17,7 +17,15 @@ public abstract class Agent
 	 */
 	@Override
 	public boolean equals(Object o){
-		return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+		if (o == null)
+			return false;
+
+		return this.getClass().isAssignableFrom(o.getClass());
+	}
+
+	@Override
+	public int hashCode() {
+		return this.getClass().hashCode();
 	}
 
 	/**
@@ -52,7 +60,7 @@ public abstract class Agent
 	 */
 	protected int timeToLive;
 
-	public Agent(int ttl){
+	protected Agent(int ttl) {
 		timeToLive = ttl;
 	}
 
@@ -61,12 +69,12 @@ public abstract class Agent
 	 * Ha lejárt eltávolítja magát a virológusról, és reseteli azt.
 	 * @param v a tulajdonos virológus.
 	 */
-	public void Update(Virologist v)
+	public void update(Virologist v)
 	{
 		timeToLive--;
 		if (timeToLive == 0){
-			v.RemoveAgent(this);
-			v.Reset();
+			v.removeAgent(this);
+			v.reset();
 		}
 	}
 
@@ -75,7 +83,7 @@ public abstract class Agent
 	 * és esetlegesen ennek vannak direkt/azonnali hatásai rá.
 	 * @param v a célzott virológus.
 	 */
-	public void Apply(Virologist v)
+	public void apply(Virologist v)
 	{
 	}
 
@@ -85,7 +93,7 @@ public abstract class Agent
 	 * alapértelmezetten üres, amikor nincs az ágensnek hosszútávú hatása, csak azonnali.
 	 * @param v a célzott virológus.
 	 */
-	public void ApplyStrategy(Virologist v)
+	public void applyStrategy(Virologist v)
 	{
 	}
 }

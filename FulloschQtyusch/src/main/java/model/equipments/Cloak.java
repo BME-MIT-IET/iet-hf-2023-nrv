@@ -13,10 +13,11 @@ public class Cloak extends Equipment
 	 * Alkalmazza az ágensek felől érinthetetlen stratégiát bizonyos eséllyel
 	 * @param v viselő virológus
 	 */
-	public void ApplyStrategy(Virologist v)
+	@Override
+	public void applyStrategy(Virologist v)
 	{
 		double r = Math.random() ;
 		if (r < 0.823)
-			v.SetInjectedStr(new NoInjected());
+			v.setInjectedStr(new NoInjected());
 	}
 }

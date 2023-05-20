@@ -26,17 +26,17 @@ public class StunCode extends GeneticCode
 	 * Létrehoz egy bénító (Stun) ágenst.
 	 * @param v a virológus, aki szeretne ágenst készíteni
 	 * @return a létrehozott bénító ágens
-	 * @throws Exception ha nem hozható létre az ágens, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
+	 * @throws GeneticCodeException ha nem hozható létre az ágens, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
 	 */
-	public Agent Create(Virologist v) throws Exception
+	public Agent create(Virologist v) throws GeneticCodeException
 	{
 
-		v.RemoveNucleotide(nucleotidePrice);
+		v.removeNucleotide(nucleotidePrice);
 		try{
-			v.RemoveAminoAcid(aminoAcidPrice);
+			v.removeAminoAcid(aminoAcidPrice);
 		}
 		catch(Exception e){
-			v.AddNucleotide(nucleotidePrice);
+			v.addNucleotide(nucleotidePrice);
 			throw e;
 		}
 		return new Stun(turnsLeft*playerCount);

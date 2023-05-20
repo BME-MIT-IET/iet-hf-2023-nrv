@@ -23,10 +23,11 @@ public class Chorea extends Agent
 	 * Háromszor lépteti a virológust random irányban, ha az képes a lépésekre.
 	 * @param v a célzott virológus
 	 */
-	public void Apply(Virologist v)
+	@Override
+	public void apply(Virologist v)
 	{
-		v.Move();
-		v.Move();
-		v.Move();
+		v.move();
+		v.move();
+		v.move();
 	}
 }
