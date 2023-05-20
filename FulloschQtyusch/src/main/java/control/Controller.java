@@ -236,6 +236,7 @@ public class Controller extends Subject {
 
         actionMessage =  "Trying to inject " + v.getName() + " with " + code.getName() + "...";
         currentPlayer.Inject(v, code);
+        notifyAllObservers();
     }
 
     /**

@@ -443,7 +443,6 @@ public class Virologist extends Subject
 		{
 			injectStr.Inject(this, v, code);
 		}
-		notifyAllObservers();
 	}
 
 	/**
