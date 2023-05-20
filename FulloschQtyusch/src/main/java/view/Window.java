@@ -30,6 +30,8 @@ public class Window extends Observer{
     private JLabel aminoLabel;
     private JLabel nucleoLabel;
     private JLabel turnCounter;
+
+    private JLabel currentField;
     /**
      * Az üzenetbuborék
      */
@@ -181,13 +183,15 @@ public class Window extends Observer{
     //AKCIÓSZÁMLÁLÓ FRISSÍTÉSE
         turnCounter.setText(player.getActionCount() + " / 3");
 
+        currentField.setText("Current field: "+player.getField().getName());
+
     //ÁLLAPOTSÁVOK FRISSÍTÉSE
         nucleoBar.setValue(player.GetNucleotide());
         nucleoBar.setMaximum(player.GetMaterialLimit());
-        nucleoLabel.setText( String.valueOf(player.GetNucleotide()));
+        nucleoLabel.setText("Nucleotide: " +player.GetNucleotide());
         aminoBar.setValue(player.GetAminoAcid());
         aminoBar.setMaximum(player.GetMaterialLimit());
-        aminoLabel.setText(String.valueOf(player.GetAminoAcid()));
+        aminoLabel.setText("Amino acid: "+ player.GetAminoAcid());
 
     //FELSZERELÉSEK FRISSÍTÉSE
         ArrayList<Equipment> equipment = player.GetEquipments();
@@ -307,7 +311,14 @@ public class Window extends Observer{
         turnCounter.setForeground(Color.white);
         turnCounter.setBounds(480, 25, 160, 50);
 
-    //SZÖVEGBUBORÉK BEÁKKÍTÁSA
+
+        currentField = new JLabel();
+        currentField.setFont(new Font("sans-serif", Font.BOLD, 20));
+        currentField.setForeground(Color.white);
+        currentField.setBounds(225, 425, 200, 25);
+
+
+        //SZÖVEGBUBORÉK BEÁKKÍTÁSA
         Image actionBubbleIMG;
         ImageIcon actionBubbleIcon;
         try{
@@ -434,6 +445,7 @@ public class Window extends Observer{
         layeredPane.add(actionBubbleText, Integer.valueOf(2));
         layeredPane.add(nucleoLabel, Integer.valueOf(2));
         layeredPane.add(aminoLabel, Integer.valueOf(2));
+        layeredPane.add(currentField, Integer.valueOf(2));
         frame.add(layeredPane);
     }
 
