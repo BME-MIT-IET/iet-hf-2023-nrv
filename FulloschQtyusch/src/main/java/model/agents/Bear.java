@@ -35,6 +35,7 @@ public class Bear extends Agent {
      */
     @Override
     public void ApplyStrategy(Virologist v){
+        v.setName(v.getName() + " (Bear)");
         v.SetMoveStr(new BearMove());
     }
 
