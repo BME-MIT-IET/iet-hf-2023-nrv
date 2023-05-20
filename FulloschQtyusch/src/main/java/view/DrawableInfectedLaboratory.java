@@ -19,4 +19,9 @@ public class DrawableInfectedLaboratory extends InfectedLaboratory implements Dr
     public String getTexture() {
         return "/textures/InfectedLaboratory.png";
     }
+
+    @Override
+    public String getName(){
+        return name.substring(1);
+    }
 }
