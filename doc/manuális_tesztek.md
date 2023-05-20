@@ -7,6 +7,7 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
     - Letapogatás egy laborban, aminek a hatására a virológus megtanul egy még nem ismert genetikai kódot.
   
           Laborban az Actions -> learn-nel megtanulja az adott genetikai kódot.
+          A Controller learn metódusán javítva egyértelműsítetjük, hogy sikeres volt-e a tanulás.
     - Felszerelés gyűjtése egy óvóhelyen, üres óvóhelyen nem szerez már semmit
            
           Óvóhelyen az Actions -> equip-pel tudunk felszerelést gyűjteni.
@@ -30,6 +31,7 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
           
           A medvevírus hatására a virológus megfertőződik, de a UI-ban nem tapasztaljuk a fertőzést.
           Csak onnan tudjuk, hogy lépésnél nem oda lép, ahova monjuk, hanem random megy.
+          Ezt megoldottuk -> név mellé (Bear) felirat került, ha a medvevírus hatása alatt áll.
 
 - Játékos-játékos interakció:
     - Vakcina / Vírus használatkor az ágens költsége levonódik.

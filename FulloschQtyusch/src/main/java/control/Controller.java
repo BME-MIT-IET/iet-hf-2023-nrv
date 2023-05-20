@@ -120,9 +120,16 @@ public class Controller extends Subject {
      */
     public void learn(){
         Virologist currentPlayer = game.GetCurrentPlayer();
-        actionMessage = "Trying to learn a genetic code...";
+        int before = currentPlayer.getGeneticCodes().size();
         currentPlayer.Learn();
-
+        int after = currentPlayer.getGeneticCodes().size();
+        if(before < after){
+            actionMessage = "You learned a new genetic code!";
+        }
+        else{
+            actionMessage = "You already know this genetic code!";
+        }
+        notifyAllObservers();
     }
 
     /**

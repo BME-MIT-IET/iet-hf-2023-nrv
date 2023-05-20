@@ -359,7 +359,6 @@ public class Virologist extends Subject
 		if (actionCount > 0) {
 			learnStr.Learn(this, field);
 		}
-		notifyAllObservers();
 	}
 
 	/**
