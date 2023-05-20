@@ -110,9 +110,29 @@ public class Controller extends Subject {
      */
     public void collect(){
         Virologist currentPlayer = game.GetCurrentPlayer();
-        actionMessage = "Trying to collect material...";
+        int beforeAmino = currentPlayer.GetAminoAcid();
+        int beforeNucleo = currentPlayer.GetNucleotide();
+        if(currentPlayer.getActionCount() == 0){
+            actionMessage = "You have no action left!";
+            notifyAllObservers();
+            return;
+        }
         currentPlayer.Collect();
-
+        int afterAmino = currentPlayer.GetAminoAcid();
+        int afterNucleo = currentPlayer.GetNucleotide();
+        if(beforeAmino != afterAmino && beforeNucleo != afterNucleo){
+            actionMessage = "You collected some amino and nucleotide!";
+        }
+        else if(beforeAmino != afterAmino){
+            actionMessage = "You collected some amino!";
+        }
+        else if(beforeNucleo != afterNucleo){
+            actionMessage = "You collected some nucleotide!";
+        }
+        else{
+            actionMessage = "There is no material to collect!";
+        }
+        notifyAllObservers();
     }
 
     /**
