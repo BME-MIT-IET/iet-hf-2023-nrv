@@ -17,13 +17,16 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
              
           Ha már van három felszerelésünk, nem tudunk újat felvenni.
           Ezt a UI-ban annyiból látjuk, hogy nem kerül új elem a felszerelésekhez.
+          Javítás: A Controller equip metódusán javítva egyértelműsítjük, hogy nem volt sikeres a felszerelés gyűjtése.
     - Anyaggyűjtés raktárban, +5 egységnyit kapunk.
           
           Anyaggyűjtés működik, nem üres raktárba lépve, majd Actions -> collect-tel fel tudtam venni az anyagot.
+          Javítás: A Controller collect metódusán javítva egyértelműsítjük, hogy sikeres volt-e az anyaggyűjtés.
     - Szabad területtel nincs interakció.
   
           Szabad területen hiába Actions -> collectelünk vagy Actions -> learnölünk, nem történik semmi.
           Erről azonban semmilyen visszajelzést nem kapunk.
+          Javítás: Az előző javítások miatt ez is javult.
     - Max 3 cselekvés egy körben
   
           Ha 0/3-at mutat a UI, nem hajtódik végre semmi. Játék indulásakor rossz akciószám van, nem 3-ról indulunk.
@@ -33,7 +36,7 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
           
           A medvevírus hatására a virológus megfertőződik, de a UI-ban nem tapasztaljuk a fertőzést.
           Csak onnan tudjuk, hogy lépésnél nem oda lép, ahova monjuk, hanem random megy.
-          Ezt megoldottuk -> név mellé (Bear) felirat került, ha a medvevírus hatása alatt áll.
+          Javítás: Név mellé (Bear) felirat került, ha a medvevírus hatása alatt áll.
 
 - Játékos-játékos interakció:
     - Vakcina / Vírus használatkor az ágens költsége levonódik.
