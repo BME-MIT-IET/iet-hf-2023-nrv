@@ -273,7 +273,6 @@ public class Virologist extends Subject
 		if (actionCount > 0) {
 			moveStr.Move(this, this.field, field);
 		}
-		notifyAllObservers();
 	}
 
 	/**
@@ -308,7 +307,6 @@ public class Virologist extends Subject
 		if (actionCount > 0) {
 			lootStr.LootAmino(this, v);
 		}
-		notifyAllObservers();
 	}
 
 	/**

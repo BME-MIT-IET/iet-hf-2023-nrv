@@ -71,9 +71,15 @@ public class Controller extends Subject {
     public void move(Field f){
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
-
-        actionMessage =  "Trying to move to " + f.getName() + "...";
+        Field before  = currentPlayer.getField();
         currentPlayer.Move(f);
+        if(!before.equals(f)){
+            actionMessage =  "Successfully moved to " + f.getName();
+        }
+        else {
+            actionMessage = "Cannot move to " + f.getName();
+        }
+        notifyAllObservers();
     }
 
     /**
@@ -94,9 +100,16 @@ public class Controller extends Subject {
     public void lootAminoFrom(Virologist v){
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
-
-        actionMessage = "Trying to loot amino acid form " + v.getName() + "...";
+        int before = currentPlayer.GetAminoAcid();
         currentPlayer.LootAminoAcidFrom(v);
+        int after = currentPlayer.GetAminoAcid();
+        if(before < after){
+            actionMessage = "You looted some amino acid from "+ v.getName()+"!";
+        }
+        else {
+            actionMessage = "You couldn't loot amino acid!";
+        }
+        notifyAllObservers();
     }
 
     /**
@@ -161,7 +174,7 @@ public class Controller extends Subject {
         currentPlayer.Learn();
         int after = currentPlayer.getGeneticCodes().size();
         if(before < after){
-            actionMessage = "You learned a new genetic code!";
+            actionMessage = "You learned "+ currentPlayer.getGeneticCodes().get(after-1).getName() + " genetic code!";
         }
         else{
             actionMessage = "You already know this genetic code!";
