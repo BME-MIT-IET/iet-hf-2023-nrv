@@ -141,7 +141,7 @@ IL4 IL3
 end
 Virologist
 Name Joe
-ActionCount 1
+ActionCount 3
 Equipment Axe
 Amino 8
 Nucleo 14
@@ -150,7 +150,7 @@ StartingPos S4
 end
 Virologist
 Name Ali
-ActionCount 1
+ActionCount 3
 Equipment Bag
 Amino 18
 Nucleo 1

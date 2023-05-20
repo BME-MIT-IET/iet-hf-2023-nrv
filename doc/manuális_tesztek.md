@@ -2,12 +2,18 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
 
 - Játékos-mező interakció:
     - A virológus el tud lépni szomszédos mezőbe.
-    - Letapogatás egy laborban, aminek a hatására a virológus megtanul egy még nem ismert genetikai kódot.
+            
+          A virológus sikeresen lépett egy szomszédos mezőre. Az Actions->move-val.
+    - Letapogatás egy laborban, aminek a hatására a virológus megtanul egy még nem ismert genetikai kódot. 
     - Felszerelés gyűjtése egy óvóhelyen, üres óvóhelyen nem szerez már semmit
     - Már van három felszerelése, ezért nem tud újat felvenni.
     - Anyaggyűjtés raktárban, +5 egységnyit kapunk.
+          
+          Anyaggyűjtés működik, nem üres raktárba lépve, majd Actions->collect-tel fel tudtam venni az anyagot.
     - Szabad területen nincs akció.
     - Max 3 cselekvés egy körben
+  
+          Ha 0/3-at mutat a UI, nem hajtódik végre semmi, néha a játék rossz akciószám van, nem 3-ról indulunk.
     - Fertőző laborban megfertőződik medvevírussal a virológus
 
 - Játékos-játékos interakció:
