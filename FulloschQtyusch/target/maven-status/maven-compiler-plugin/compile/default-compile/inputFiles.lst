@@ -1,71 +1,71 @@
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\map\Laboratory.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\agents\Agent.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\codes\ChoreaCode.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableAxe.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\IInjectStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefEquip.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\ILootedStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableWarehouse.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\map\Field.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableCloak.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\Virologist.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\map\InfectedLaboratory.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\map\Shelter.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefCollect.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefLearn.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\Subject.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\control\LoaderInput.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\equipments\Bag.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\control\Controller.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\Game.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\codes\StunCode.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\map\Warehouse.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\Observer.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoInject.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoLoot.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoMove.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\agents\Stun.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\Looted.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\IMoveStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefInjected.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableShelter.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\ICollectStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\IDropStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableLaboratory.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\equipments\Equipment.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\IAttackStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoCollect.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\Main.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefDrop.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\BearMove.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableInfectedLaboratory.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\ILootStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\IEquipStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoDrop.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoLearn.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableBag.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\equipments\Axe.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableGlove.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefLoot.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefMove.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\agents\Forget.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\equipments\Glove.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefLooted.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefAttack.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\agents\Bear.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoInjected.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\DrawableField.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\codes\GeneticCode.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\DefInject.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\ViewMenuListener.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\IInjectedStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\ILearnStr.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\Drawable.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\agents\Chorea.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\view\Window.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\control\Loader.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\agents\Block.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\codes\BlockCode.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\codes\ForgetCode.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\strategy\NoEquip.java
-C:\Users\annav\Documents\Bme\IET_HF\FulloschQtyusch\src\main\java\model\equipments\Cloak.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefLoot.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\agents\Forget.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\Looted.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\map\InfectedLaboratory.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\ICollectStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\equipments\Glove.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\IEquipStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoCollect.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableInfectedLaboratory.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\control\Loader.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\agents\Block.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoInject.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\Main.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoLearn.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\codes\GeneticCode.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\map\Shelter.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefMove.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\agents\Bear.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\codes\BlockCode.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoEquip.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\IAttackStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefInject.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\map\Field.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableGlove.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\Game.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableShelter.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefLearn.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\ILearnStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\codes\ForgetCode.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableBag.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\equipments\Equipment.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\control\LoaderInput.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefInjected.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefDrop.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefAttack.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefLooted.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\codes\StunCode.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\map\Warehouse.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoLoot.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\IInjectedStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\Subject.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoMove.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\Observer.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\equipments\Bag.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\equipments\Cloak.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\IInjectStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefCollect.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableField.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\Virologist.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableCloak.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\BearMove.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableAxe.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableWarehouse.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\map\Laboratory.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\Window.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\ILootStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\IDropStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\IMoveStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoDrop.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\ViewMenuListener.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\DrawableLaboratory.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\equipments\Axe.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\codes\ChoreaCode.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\view\Drawable.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\agents\Agent.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\agents\Stun.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\NoInjected.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\control\Controller.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\DefEquip.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\strategy\ILootedStr.java
+C:\Egyetem\6. Félév\Iet\NagyHumoros\iet-hf-2023-nrv\FulloschQtyusch\src\main\java\model\agents\Chorea.java
