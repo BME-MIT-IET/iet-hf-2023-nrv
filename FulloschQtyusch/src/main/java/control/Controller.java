@@ -89,8 +89,16 @@ public class Controller extends Subject {
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        actionMessage = "Trying to drop an equipmnet...";
+        int before = currentPlayer.GetEquipments().size();
         currentPlayer.Drop();
+        int after = currentPlayer.GetEquipments().size();
+        if(before > after){
+            actionMessage = "You dropped an equipment!";
+        }
+        else{
+            actionMessage = "You have no equipment to drop!";
+        }
+        notifyAllObservers();
     }
 
     /**
@@ -120,8 +128,16 @@ public class Controller extends Subject {
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        actionMessage = "Trying to nucleotide acid form " + v.getName() + "...";
+        int before = currentPlayer.GetNucleotide();
         currentPlayer.LootNucleotideFrom(v);
+        int after = currentPlayer.GetNucleotide();
+        if(before < after){
+            actionMessage = "You looted some nucleotide" + v.getName() + "!";
+        }
+        else{
+            actionMessage = "You couldn't loot nucleotide";
+        }
+        notifyAllObservers();
     }
 
     /**
@@ -132,8 +148,16 @@ public class Controller extends Subject {
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        actionMessage = "Trying to equipment acid form " + v.getName() + "...";
+        int before = currentPlayer.GetEquipments().size();
         currentPlayer.LootEquipmentFrom(v);
+        int after = currentPlayer.GetEquipments().size();
+        if(before < after){
+            actionMessage = "You looted some equipment from " + v.getName() + "!";
+        }
+        else{
+            actionMessage = "You couldn't loot equipment from " + v.getName() + "!";
+        }
+        notifyAllObservers();
     }
 
     /**
@@ -212,7 +236,6 @@ public class Controller extends Subject {
 
         actionMessage =  "Trying to inject " + v.getName() + " with " + code.getName() + "...";
         currentPlayer.Inject(v, code);
-
     }
 
     /**

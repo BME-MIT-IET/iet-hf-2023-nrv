@@ -293,7 +293,6 @@ public class Virologist extends Subject
 		if (actionCount > 0 && equipments.size() > 0) {
 			dropStr.Drop(this, field, equipments.remove(equipments.size()-1));
 		}
-		notifyAllObservers();
 	}
 
 	/**
@@ -320,7 +319,6 @@ public class Virologist extends Subject
 		if (actionCount > 0) {
 			lootStr.LootNucleotide(this, v);
 		}
-		notifyAllObservers();
 	}
 
 	/**
@@ -334,7 +332,6 @@ public class Virologist extends Subject
 		if (actionCount > 0 && equipments.size() < maxNumberOfItems) {
 			lootStr.LootEquipment(this, v);
 		}
-		notifyAllObservers();
 	}
 
 	/**
