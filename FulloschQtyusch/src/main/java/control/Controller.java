@@ -31,11 +31,28 @@ public class Controller extends Subject {
     }
 
     /**
+     * Van-e még akciója a játékosnak
+     * @param v a virológus, akinek a visszalévő akcióinak számát szeretnénk lekérdezni
+     * @return a virológus visszalévő akcióinak száma egyenlő-e 0-val
+     */
+    private boolean hasNoActions(Virologist v){
+        if(v.getActionCount() == 0){
+            actionMessage = "You have no action left!";
+            notifyAllObservers();
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
      * Virológus megtámadása
      * @param v Megtámadott virológus
      */
     public void attack(Virologist v){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage = v.getName() + " might be dead by now▄";
         currentPlayer.Attack(v);
         if(!currentPlayer.equals(game.GetCurrentPlayer())){
@@ -53,9 +70,10 @@ public class Controller extends Subject {
      */
     public void move(Field f){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage =  "Trying to move to " + f.getName() + "...";
         currentPlayer.Move(f);
-
     }
 
     /**
@@ -63,10 +81,10 @@ public class Controller extends Subject {
      */
     public void drop(){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage = "Trying to drop an equipmnet...";
         currentPlayer.Drop();
-
-
     }
 
     /**
@@ -75,10 +93,10 @@ public class Controller extends Subject {
      */
     public void lootAminoFrom(Virologist v){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage = "Trying to loot amino acid form " + v.getName() + "...";
         currentPlayer.LootAminoAcidFrom(v);
-
-
     }
 
     /**
@@ -87,10 +105,10 @@ public class Controller extends Subject {
      */
     public void lootNucleoFrom(Virologist v){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage = "Trying to nucleotide acid form " + v.getName() + "...";
         currentPlayer.LootNucleotideFrom(v);
-
-
     }
 
     /**
@@ -99,10 +117,10 @@ public class Controller extends Subject {
      */
     public void lootEquipmentFrom(Virologist v){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage = "Trying to equipment acid form " + v.getName() + "...";
         currentPlayer.LootEquipmentFrom(v);
-
-
     }
 
     /**
@@ -110,13 +128,10 @@ public class Controller extends Subject {
      */
     public void collect(){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         int beforeAmino = currentPlayer.GetAminoAcid();
         int beforeNucleo = currentPlayer.GetNucleotide();
-        if(currentPlayer.getActionCount() == 0){
-            actionMessage = "You have no action left!";
-            notifyAllObservers();
-            return;
-        }
         currentPlayer.Collect();
         int afterAmino = currentPlayer.GetAminoAcid();
         int afterNucleo = currentPlayer.GetNucleotide();
@@ -140,6 +155,8 @@ public class Controller extends Subject {
      */
     public void learn(){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         int before = currentPlayer.getGeneticCodes().size();
         currentPlayer.Learn();
         int after = currentPlayer.getGeneticCodes().size();
@@ -157,6 +174,8 @@ public class Controller extends Subject {
      */
     public void equip(){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         int before = currentPlayer.GetEquipments().size();
         currentPlayer.Equip();
         int after = currentPlayer.GetEquipments().size();
@@ -176,6 +195,8 @@ public class Controller extends Subject {
      */
     public void inject(Virologist v, GeneticCode code){
         Virologist currentPlayer = game.GetCurrentPlayer();
+        if (hasNoActions(currentPlayer)) return;
+
         actionMessage =  "Trying to inject " + v.getName() + " with " + code.getName() + "...";
         currentPlayer.Inject(v, code);
 

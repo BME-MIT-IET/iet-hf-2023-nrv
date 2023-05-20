@@ -7,11 +7,12 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
     - Letapogatás egy laborban, aminek a hatására a virológus megtanul egy még nem ismert genetikai kódot.
   
           Laborban az Actions -> learn-nel megtanulja az adott genetikai kódot.
-          Javítás: A Controller learn metódusán javítva egyértelműsítetjük, hogy sikeres volt-e a tanulás.
+          Javítás: A Controller learn metódusán javítva egyértelműsítjük, hogy sikeres volt-e a tanulás.
     - Felszerelés gyűjtése egy óvóhelyen, üres óvóhelyen nem szerez már semmit
            
           Óvóhelyen az Actions -> equip-pel tudunk felszerelést gyűjteni.
           Üres óvóhelyről tényleg nem szedünk fel semmit.
+          Javítás: A Controller equip metódusán javítva egyértelműsítjük, hogy sikeres volt-e a felszerelés gyűjtése. 
     - Már van három felszerelése, ezért nem tud újat felvenni.
              
           Ha már van három felszerelésünk, nem tudunk újat felvenni.
@@ -26,7 +27,8 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
     - Max 3 cselekvés egy körben
   
           Ha 0/3-at mutat a UI, nem hajtódik végre semmi. Játék indulásakor rossz akciószám van, nem 3-ról indulunk.
-          Ezt fixáltam, a  map fájlokban.
+          Javítás 1: Ezt fixáltam, a  map fájlokban.
+          Javítás 2: A Controllerben javítottam, hogy a UI-on is lássuk, ha már nincs akciónk.
     - Fertőző laborban megfertőződik medvevírussal a virológus
           
           A medvevírus hatására a virológus megfertőződik, de a UI-ban nem tapasztaljuk a fertőzést.
