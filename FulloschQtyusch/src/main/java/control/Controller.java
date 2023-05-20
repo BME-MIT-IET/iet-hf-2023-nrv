@@ -157,9 +157,16 @@ public class Controller extends Subject {
      */
     public void equip(){
         Virologist currentPlayer = game.GetCurrentPlayer();
-        actionMessage = "Trying to equip an equipment...";
+        int before = currentPlayer.GetEquipments().size();
         currentPlayer.Equip();
-
+        int after = currentPlayer.GetEquipments().size();
+        if(before < after){
+            actionMessage = "You equipped a new item!";
+        }
+        else{
+            actionMessage = "You couldn't equip anything!";
+        }
+        notifyAllObservers();
     }
 
     /**

@@ -7,7 +7,7 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
     - Letapogatás egy laborban, aminek a hatására a virológus megtanul egy még nem ismert genetikai kódot.
   
           Laborban az Actions -> learn-nel megtanulja az adott genetikai kódot.
-          A Controller learn metódusán javítva egyértelműsítetjük, hogy sikeres volt-e a tanulás.
+          Javítás: A Controller learn metódusán javítva egyértelműsítetjük, hogy sikeres volt-e a tanulás.
     - Felszerelés gyűjtése egy óvóhelyen, üres óvóhelyen nem szerez már semmit
            
           Óvóhelyen az Actions -> equip-pel tudunk felszerelést gyűjteni.
