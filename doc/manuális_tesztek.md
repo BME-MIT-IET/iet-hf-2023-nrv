@@ -8,7 +8,13 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
   
           Laborban az Actions->learn-nel megtanulja az adott genetikai kódot.
     - Felszerelés gyűjtése egy óvóhelyen, üres óvóhelyen nem szerez már semmit
+           
+          Óvóhelyen az Actions->equip-pel tudunk felszerelést gyűjteni.
+          Üres óvóhelyről tényleg nem szedünk fel semmit.
     - Már van három felszerelése, ezért nem tud újat felvenni.
+             
+          Ha már van három felszerelésünk, nem tudunk újat felvenni.
+          Ezt a UI-ban annyiból látjuk, hogy nem kerül új elem a felszerelésekhez.
     - Anyaggyűjtés raktárban, +5 egységnyit kapunk.
           
           Anyaggyűjtés működik, nem üres raktárba lépve, majd Actions->collect-tel fel tudtam venni az anyagot.
@@ -26,43 +32,45 @@ A következő funkciókat szeretnénk tesztelni manuálisan:
           Csak onnan tudjuk, hogy lépésnél nem oda lép, ahova monjuk, hanem random megy.
 
 - Játékos-játékos interakció:
-   - Vakcina / Vírus használatkor az ágens költsége levonódik.
+    - Vakcina / Vírus használatkor az ágens költsége levonódik.
    
-         Az actions => inject => {virológus név} => {kód} hatására a kiválasztott virológusnak levonódott az ágens költsége és végbement az akció.
-   - Vítustánc ágens hatására véletlenül kezd el lépkedni a virológus, 1 kör erejéig.
+          Az actions => inject => {virológus név} => {kód} hatására a kiválasztott virológusnak levonódott az ágens költsége és végbement az akció.
+    - Vítustánc ágens hatására véletlenül kezd el lépkedni a virológus, 1 kör erejéig.
 
-         Az actions => inject => Joe => ChoreaCode után Joe 1 körig véletlenül lépkedett.  
-  - Blokkoló ágens hatására védve van a virológus ágensektől, 2 kör erejéig.
+          Az actions => inject => Joe => ChoreaCode után Joe 1 körig véletlenül lépkedett.  
+    - Blokkoló ágens hatására védve van a virológus ágensektől, 2 kör erejéig.
   
-         Az actions => inject => Joe => BlockCode után Joe 2 körig védve volt. 
-  - Blokkoló ágens hatására elveszti a saját magára kent ágensek hatását.
+          Az actions => inject => Joe => BlockCode után Joe 2 körig védve volt. 
+    - Blokkoló ágens hatására elveszti a saját magára kent ágensek hatását.
           
-         Az actions => inject => Joe => BlockCode után Joe elvesztette a saját magára kent ágensek hatását.
-  - Bénító ágens alatt álló virológus egy kör erejéig, nem tud interakcióba lépni semmivel.
+          Az actions => inject => Joe => BlockCode után Joe elvesztette a saját magára kent ágensek hatását.
+    - Bénító ágens alatt álló virológus egy kör erejéig, nem tud interakcióba lépni semmivel.
 
-        Az actions => inject => Joe => StunCode után Joe egy körig nem tudott interakcióba lépni semmivel.
-  - A játékos kifoszt egy bénított virológust.
+          Az actions => inject => Joe => StunCode után Joe egy körig nem tudott interakcióba lépni semmivel.
+    - A játékos kifoszt egy bénított virológust.
     
-        Az actions => inject => Joe => StunCode után Joe egy körig nem tudott interakcióba lépni semmivel.
-        Ezután megpróbáltam kifosztani Joe-t az actions => lootEquipmentFrom => Joe akcióval, de nem sikerült.
-  - Felejtő ágens hatására a virológus elveszti a megtanult genetikai kódokat.
+          Az actions => inject => Joe => StunCode után Joe egy körig nem tudott interakcióba lépni semmivel.
+          Ezután megpróbáltam kifosztani Joe-t az actions => lootEquipmentFrom => Joe akcióval, de nem sikerült.
+    - Felejtő ágens hatására a virológus elveszti a megtanult genetikai kódokat.
 
-         Az actions gomb => inject => Joe => ForgetCode hatására a virológus elvesztette a megtanult genetikai
-         kódokat.
-         A nukleotid és aminosav értékek korrekten le lettek vonva.
-  - Medve megfertőzi a védtelen virológust
+          Az actions gomb => inject => Joe => ForgetCode hatására a virológus elvesztette a megtanult genetikai
+          kódokat.
+          A nukleotid és aminosav értékek korrekten le lettek vonva.
+    - Medve megfertőzi a védtelen virológust
            
-         Az actions gomb => move => F7 hatására megfertőzödött a virológus.
-         A másik virológus a medvevírus hatása alatt állt, így ez helyesen működik.
+          Az actions gomb => move => F7 hatására megfertőzödött a virológus.
+          A másik virológus a medvevírus hatása alatt állt, így ez helyesen működik.
 - Játékos-felszerelés interakció:
-   - Védőköpeny az esetek többségében véd az ágensfelkenéstől
+    - Védőköpeny az esetek többségében véd az ágensfelkenéstől
 
-         Az actions gomb => inject => Joe => ForgetCode hatásától sikeresen megvédte a virológust.
-  - Zsák növeli 5-tel a maximális nukleotid és aminosav mennyiséget, de a az aktuális mennyiséget nem
+          Az actions gomb => inject => Joe => ForgetCode hatásától sikeresen megvédte a virológust.
+    - Zsák növeli 5-tel a maximális nukleotid és aminosav mennyiséget, de a az aktuális mennyiséget nem
 
-         A zsák ténylegesen növeli 5-tel a maximális értékeket.
-  - Kesztyű visszadobja az ágenst
+          A zsák ténylegesen növeli 5-tel a maximális értékeket.
+    - Kesztyű visszadobja az ágenst
 
-         Az actions gomb => inject => V1 => ChoreaCode hatására a V1 kesztyűje miatt visszadobódott az ágens.
+          Az actions gomb => inject => V1 => ChoreaCode hatására a V1 kesztyűje miatt visszadobódott az ágens.
 
-  - Fejszével megölik a medvét
+    - Fejszével megölik a medvét
+
+          A medvével egy mezőre érkező virulógus, akinek van fejszéje, sikeresen megölte a medvét.
