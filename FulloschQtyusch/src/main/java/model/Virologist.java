@@ -368,7 +368,6 @@ public class Virologist extends Subject
 		if (actionCount > 0) {
 			equipStr.Equip(this, field);
 		}
-		notifyAllObservers();
 	}
 
 	/**
