@@ -9,7 +9,9 @@ import java.util.Random;
  * Olyan mező, amelyen anyag gyüjthető
  */
 public class Warehouse extends Field
-{
+{	
+	private static final Random random = new Random();
+
 	/**
 	 * Ennyivel növeli a virológusok anyagát
 	 */
@@ -21,14 +23,14 @@ public class Warehouse extends Field
 	 * Determinisztikus esetben a paraméterül kapott virológus anyagkészletét deltával növeli meg, a kiválasztott anyag közül
 	 * @param v gyüjtő virológus
 	 */
-	public void CollectMaterial(Virologist v) {
-		Random random = new Random();
+	@Override
+	public void collectMaterial(Virologist v) {
 		int r = random.nextInt(2) ;
 		if (r == 0) {
-			v.AddAminoAcid(delta);
+			v.addAminoAcid(delta);
 		}
 		else {
-			v.AddNucleotide(delta);
+			v.addNucleotide(delta);
 		}
 	}
 
@@ -36,7 +38,7 @@ public class Warehouse extends Field
 	 * A mezőn az anyagok tönkretételét szimbolizálja, nem vehető fel anyag ezután a mezőről
 	 */
 	@Override
-	public void DestroyMaterial(){
+	public void destroyMaterial(){
 		delta = 0;
 	}
 }

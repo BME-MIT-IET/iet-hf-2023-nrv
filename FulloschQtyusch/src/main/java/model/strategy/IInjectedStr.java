@@ -14,7 +14,7 @@ public interface IInjectedStr
 	 * @param v A virológus, akire felkenték az ágenst.
 	 * @param a A felkent ágens.
 	 */
-	void Injected(Virologist v, Agent a);
+	void injected(Virologist v, Agent a);
 
 	/**
 	 * A stratégia alakalmazásakor hívott metódus, olyan esetben, ha a felkenő ismert virológus.
@@ -22,5 +22,5 @@ public interface IInjectedStr
 	 * @param injected A felkent virológus.
 	 * @param a A felkent ágens.
 	 */
-	void Injected(Virologist by, Virologist injected, Agent a);
+	void injected(Virologist by, Virologist injected, Agent a);
 }

@@ -23,16 +23,16 @@ public class MoveStepDefinitions {
   @And("virologist stays on field")
   public void virologist_stys_on_field(){
     field = new Field();
-    field.AddVirologist(virologist);
+    field.addVirologist(virologist);
   }
   @And("field has neighbour laboratory")
   public void field_has_neighbour_laboratory(){
     laboratory = new Laboratory(new BlockCode());
-    field.AddNeighbour(laboratory);
+    field.addNeighbour(laboratory);
   }
   @When("virologist moves to laboratory")
   public void virologist_moves_to_laboratory(){
-    virologist.Move(laboratory);
+    virologist.move(laboratory);
   }
   @Then("virologist should stay on laboratory")
   public void virologist_should_stay_on_laboratory(){
