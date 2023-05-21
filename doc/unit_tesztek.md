@@ -1,6 +1,20 @@
 Megvalósítani tervezett tesztek:
 
-- Virologist osztály tesztelése
-- Bear osztály tesztelése
+- Virologist osztály tesztelése 
+  - Az összes tesztelhető függvénytt leteszteljük.
 
-      Egy függvényt tudunk, az applyStrategy-t.
+- Bear osztály tesztelése
+  - applyStrategy
+
+- Block osztály tesztelése
+  - applyStrategy
+  - apply
+  
+- Chorea osztály tesztelése
+  - apply
+
+- Forget osztály tesztelése
+  - apply
+  
+- Stun osztály tesztelése
+  - apply
