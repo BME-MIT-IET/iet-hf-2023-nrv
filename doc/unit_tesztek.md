@@ -1,5 +1,8 @@
-Megvalósítani tervezett tesztek:
+## Megvalósítani tervezett tesztek:
 
+### Model package
+
+- #### Agents package
 - Virologist osztály tesztelése 
   - Az összes tesztelhető függvénytt leteszteljük.
 
@@ -18,3 +21,7 @@ Megvalósítani tervezett tesztek:
   
 - Stun osztály tesztelése
   - applyStrategy
+
+- #### Codes package
+- BlockCode osztály tesztelése
+  - create
