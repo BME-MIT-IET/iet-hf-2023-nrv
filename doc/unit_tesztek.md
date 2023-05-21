@@ -17,4 +17,4 @@ Megvalósítani tervezett tesztek:
   - apply
   
 - Stun osztály tesztelése
-  - apply
+  - applyStrategy
