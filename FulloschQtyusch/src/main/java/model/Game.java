@@ -55,7 +55,11 @@ public class Game extends Subject
 	/**
 	 * A Game osztály singleton -sága miatt private konstruktor.
 	 */
-	private Game(){}
+	private Game(){
+		fields = new ArrayList<>();
+		codes = new ArrayList<>();
+		virologists = new ArrayList<>();
+	}
 	/**
 	 * A játékállapotot megvalósító példány.
 	 */
