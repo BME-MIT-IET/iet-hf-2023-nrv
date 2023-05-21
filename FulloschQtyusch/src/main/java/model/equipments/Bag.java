@@ -22,6 +22,13 @@ public class Bag extends Equipment
 	}
 
 	/**
+	 * Visszaadja a növelő mennyiséget
+	 */
+	public int getDelta() {
+		return delta;
+	}
+
+	/**
 	 * Növelia a maximális nukleotid és aminosav tárhelyet
 	 * @param v viselő virológus
 	 */

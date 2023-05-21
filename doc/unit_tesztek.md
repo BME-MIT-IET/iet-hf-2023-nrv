@@ -38,3 +38,16 @@
 - #### Equipments package
 - Axe osztály tesztelése
   - attack
+  - applyStrategy
+
+- Bag osztály tesztelése
+  - apply
+  - disable
+
+- Cloak osztály tesztelése
+  - applyStrategy-t a randomsága miatt nem igazán lehet biztosra tesztelni
+
+- Gloves osztály tesztelése
+  - applyStrategy
+  - injected
+  - injectedBy: másik virológus által injected
