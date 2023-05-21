@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -21,6 +22,9 @@ public class VirologistTest {
     @Mock
     private Game game;
 
+    @InjectMocks
+    private Virologist virologist = new Virologist();
+
     @Before
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -28,11 +32,9 @@ public class VirologistTest {
 
     @Test
     public void test_kill_success(){
-        Virologist virologist = new Virologist();
         Field field = new Field();
         field.AddVirologist(virologist);
         virologist.SetField(field);
-        virologist.SetGame(game);
 
         when(game.GetCurrentPlayer()).thenReturn(virologist);
         doNothing().when(game).RemoveVirologist(virologist);
