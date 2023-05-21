@@ -169,13 +169,13 @@ public class Controller extends Subject {
     /**
      * Virológus anyag gyűjtése
      */
-    public void collect(){
+    public void collect(Material materialtype){
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
         int beforeAmino = currentPlayer.GetAminoAcid();
         int beforeNucleo = currentPlayer.GetNucleotide();
-        currentPlayer.Collect();
+        currentPlayer.Collect(materialtype);
         int afterAmino = currentPlayer.GetAminoAcid();
         int afterNucleo = currentPlayer.GetNucleotide();
         if(beforeAmino != afterAmino && beforeNucleo != afterNucleo){

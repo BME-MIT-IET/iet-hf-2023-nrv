@@ -123,7 +123,7 @@ public class Field
 	 * Anyag gyüjtésért felelős
 	 * @param v gyüjtő virológus
 	 */
-	public void CollectMaterial(Virologist v) {
+	public void CollectMaterial(Virologist v, Material materialType) {
 	}
 
 	/**
