@@ -20,3 +20,6 @@ WareHouse mezőn lehet anyagot gyűjteni, a dokumentáció szerint:
   Determinisztikus esetben a paraméterül kapott virológus anyagkészletét deltával növeli meg, a kiválasztott anyag közül"
 
 - A metódus csak nem determinisztikus működést biztosít.
+- Javítás: lehessen befolyásolni, hogy random játék-e
+- Új menüpont: random on/off
+- Collect-nél megadható, hogy mit gyűjt

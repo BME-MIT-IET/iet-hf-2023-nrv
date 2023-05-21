@@ -10,6 +10,7 @@ import model.equipments.Bag;
 import model.equipments.Cloak;
 import model.equipments.Equipment;
 import model.equipments.Glove;
+import model.map.Material;
 import model.map.Shelter;
 import model.map.Warehouse;
 import org.junit.jupiter.api.Assertions;
@@ -28,9 +29,9 @@ public class CollectStepDefinitions{
   public void virologistEquips(){
     virologistCreator.getVirologist().Equip();
   }
-  @When("virologist collects")
-  public void virologistCollects(){
-    virologistCreator.getVirologist().Collect();
+  @When("virologist collects {word}")
+  public void virologistCollects(String materialType){
+    virologistCreator.getVirologist().Collect(Material.AMINO_ACID);
   }
   @Then("virologist should have more material than {int}")
   public void virologistShouldHaveMaterial(int num){
