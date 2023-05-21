@@ -12,10 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VirologistTest {
@@ -31,17 +28,15 @@ public class VirologistTest {
     }
 
     @Test
-    public void test_kill_success(){
+    public void test_kill() {
         Field field = new Field();
         field.AddVirologist(virologist);
-        virologist.SetField(field);
 
         when(game.GetCurrentPlayer()).thenReturn(virologist);
-        doNothing().when(game).RemoveVirologist(virologist);
 
         virologist.Kill();
 
         Assertions.assertEquals(0, field.GetVirologists().size());
-        verify(game,times(1)).GetCurrentPlayer();
+        verify(game, times(1)).GetCurrentPlayer();
     }
 }
