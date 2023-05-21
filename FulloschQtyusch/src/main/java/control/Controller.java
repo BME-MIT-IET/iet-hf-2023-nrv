@@ -37,7 +37,7 @@ public class Controller extends Subject {
      */
     private boolean hasNoActions(Virologist v){
         if(v.getActionCount() == 0){
-            actionMessage = "You have no action left!";
+            actionMessage = "I have no action left!";
             notifyAllObservers();
             return true;
         }
@@ -52,16 +52,22 @@ public class Controller extends Subject {
     public void attack(Virologist v){
         Virologist currentPlayer = game.GetCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
-
-        actionMessage = v.getName() + " might be dead by now▄";
+        int before = game.getVirologists().size();
         currentPlayer.Attack(v);
+        int after = game.getVirologists().size();
+        if(after < before){
+            actionMessage = "I killed " + v.getName() + "!";
+        }
+        else{
+            actionMessage = "I couldn't kill " + v.getName() + "!";
+        }
         if(!currentPlayer.equals(game.GetCurrentPlayer())){
             currentPlayer.detach(window);
             currentPlayer = game.GetCurrentPlayer();
             currentPlayer.attach(window);
             actionMessage = "My turn...";
-            notifyAllObservers();
         }
+        notifyAllObservers();
     }
 
     /**
@@ -93,10 +99,10 @@ public class Controller extends Subject {
         currentPlayer.Drop();
         int after = currentPlayer.GetEquipments().size();
         if(before > after){
-            actionMessage = "You dropped an equipment!";
+            actionMessage = "I dropped an equipment!";
         }
         else{
-            actionMessage = "You have no equipment to drop!";
+            actionMessage = "I have no equipment to drop!";
         }
         notifyAllObservers();
     }
@@ -112,10 +118,10 @@ public class Controller extends Subject {
         currentPlayer.LootAminoAcidFrom(v);
         int after = currentPlayer.GetAminoAcid();
         if(before < after){
-            actionMessage = "You looted some amino acid from "+ v.getName()+"!";
+            actionMessage = "I looted some amino acid from "+ v.getName()+"!";
         }
         else {
-            actionMessage = "You couldn't loot amino acid!";
+            actionMessage = "I couldn't loot amino acid!";
         }
         notifyAllObservers();
     }
@@ -132,10 +138,10 @@ public class Controller extends Subject {
         currentPlayer.LootNucleotideFrom(v);
         int after = currentPlayer.GetNucleotide();
         if(before < after){
-            actionMessage = "You looted some nucleotide" + v.getName() + "!";
+            actionMessage = "I looted some nucleotide" + v.getName() + "!";
         }
         else{
-            actionMessage = "You couldn't loot nucleotide";
+            actionMessage = "I couldn't loot nucleotide";
         }
         notifyAllObservers();
     }
@@ -152,10 +158,10 @@ public class Controller extends Subject {
         currentPlayer.LootEquipmentFrom(v);
         int after = currentPlayer.GetEquipments().size();
         if(before < after){
-            actionMessage = "You looted some equipment from " + v.getName() + "!";
+            actionMessage = "I looted some equipment from " + v.getName() + "!";
         }
         else{
-            actionMessage = "You couldn't loot equipment from " + v.getName() + "!";
+            actionMessage = "I couldn't loot equipment from " + v.getName() + "!";
         }
         notifyAllObservers();
     }
@@ -173,13 +179,13 @@ public class Controller extends Subject {
         int afterAmino = currentPlayer.GetAminoAcid();
         int afterNucleo = currentPlayer.GetNucleotide();
         if(beforeAmino != afterAmino && beforeNucleo != afterNucleo){
-            actionMessage = "You collected some amino and nucleotide!";
+            actionMessage = "I collected some amino and nucleotide!";
         }
         else if(beforeAmino != afterAmino){
-            actionMessage = "You collected some amino!";
+            actionMessage = "I collected some amino!";
         }
         else if(beforeNucleo != afterNucleo){
-            actionMessage = "You collected some nucleotide!";
+            actionMessage = "I collected some nucleotide!";
         }
         else{
             actionMessage = "There is no material to collect!";
@@ -198,10 +204,10 @@ public class Controller extends Subject {
         currentPlayer.Learn();
         int after = currentPlayer.getGeneticCodes().size();
         if(before < after){
-            actionMessage = "You learned "+ currentPlayer.getGeneticCodes().get(after-1).getName() + " genetic code!";
+            actionMessage = "I learned "+ currentPlayer.getGeneticCodes().get(after-1).getName() + " genetic code!";
         }
         else{
-            actionMessage = "You already know this genetic code!";
+            actionMessage = "I already know this genetic code!";
         }
         notifyAllObservers();
     }
@@ -217,10 +223,10 @@ public class Controller extends Subject {
         currentPlayer.Equip();
         int after = currentPlayer.GetEquipments().size();
         if(before < after){
-            actionMessage = "You equipped a new item!";
+            actionMessage = "I equipped a new item!";
         }
         else{
-            actionMessage = "You couldn't equip anything!";
+            actionMessage = "I couldn't equip anything!";
         }
         notifyAllObservers();
     }
