@@ -25,3 +25,12 @@
 - #### Codes package
 - BlockCode osztály tesztelése
   - create
+
+- ChoreaCode osztály tesztelése
+  - create
+  
+- ForgetCode osztály tesztelése
+  - create
+
+- StunCode osztály tesztelése
+  - create
