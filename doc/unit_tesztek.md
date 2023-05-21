@@ -34,3 +34,7 @@
 
 - StunCode osztály tesztelése
   - create
+
+- #### Equipments package
+- Axe osztály tesztelése
+  - attack

@@ -3,7 +3,7 @@ package com.nrv.unit.model.agents;
 import model.Virologist;
 import model.agents.Stun;
 import model.strategy.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -13,13 +13,13 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @RunWith(MockitoJUnitRunner.class)
-public class StunTest {
+class StunTest {
     @Mock
     private Virologist virologist;
     private Stun stun = new Stun(1);
 
     @Test
-    public void test_applyStrategy() {
+    void test_applyStrategy() {
         stun.ApplyStrategy(virologist);
 
         verify(virologist, times(1)).SetInjectedStr(any(NoInjected.class));
