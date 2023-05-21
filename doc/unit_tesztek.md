@@ -1,10 +1,10 @@
 ## Megvalósítani tervezett tesztek:
 
 ### Model package
-
-- #### Agents package
-- Virologist osztály tesztelése 
+- Virologist osztály tesztelése
   - Az összes tesztelhető függvénytt leteszteljük.
+
+- #### *Agents package*
 
 - Bear osztály tesztelése
   - applyStrategy
@@ -22,7 +22,7 @@
 - Stun osztály tesztelése
   - applyStrategy
 
-- #### Codes package
+- #### *Codes package*
 - BlockCode osztály tesztelése
   - create
 
@@ -35,7 +35,7 @@
 - StunCode osztály tesztelése
   - create
 
-- #### Equipments package
+- #### *Equipments package*
 - Axe osztály tesztelése
   - attack
   - applyStrategy
