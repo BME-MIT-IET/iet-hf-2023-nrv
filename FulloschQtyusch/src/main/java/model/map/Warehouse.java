@@ -21,10 +21,10 @@ public class Warehouse extends Field
 	 * Determinisztikus esetben a paraméterül kapott virológus anyagkészletét deltával növeli meg, a kiválasztott anyag közül
 	 * @param v gyüjtő virológus
 	 */
-	public void CollectMaterial(Virologist v) {
+	public void CollectMaterial(Virologist v, Material materialType) {
 		Random random = new Random();
 		int r = random.nextInt(2) ;
-		if (r == 0) {
+		if (r == 0 || materialType.equals(Material.AMINO_ACID)) {
 			v.AddAminoAcid(delta);
 		}
 		else {

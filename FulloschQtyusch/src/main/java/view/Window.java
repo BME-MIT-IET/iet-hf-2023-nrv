@@ -1,21 +1,32 @@
 package view;
 
 import control.Controller;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JProgressBar;
+import javax.swing.JTextArea;
 import model.Game;
 import model.Virologist;
 import model.codes.GeneticCode;
 import model.equipments.Equipment;
 import model.map.Field;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
+import model.map.Material;
 
 
-//TODO comment
 public class Window extends Observer{
 
 
@@ -158,295 +169,343 @@ public class Window extends Observer{
                 }));
                 inject.add(virMenu);
             }
+
         }));
+        inject.add(virMenu);
+      }
+    }));
 
-        JMenuItem endTurn=new JMenuItem("endTurn");
-        actions.add(endTurn);
-        endTurn.addActionListener((e) -> controller.endTurn());
+    JMenuItem endTurn = new JMenuItem("endTurn");
+    actions.add(endTurn);
+    endTurn.addActionListener((e) -> controller.endTurn());
 
-        drawInterface();
+    JMenuItem randSwitch = game.randOn ? new JMenuItem("randomization factor: on")
+        : new JMenuItem("randomization factor: off");
+    actions.add(randSwitch);
+    randSwitch.addActionListener((e) -> {
+      game.randOn = !game.randOn;
+      String title = game.randOn ? "randomization factor: on" : "randomization factor: off";
+      randSwitch.setText(title);
+      actions.remove(6);
+      actions.add(initCollectMenuItem(controller, game), 6);
+    });
 
-        frame.setSize(600,600);
-        frame.setResizable(false);
-        frame.setLayout(null);
-        frame.setVisible(true);
+    drawInterface();
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(600, 600);
+    frame.setResizable(false);
+    frame.setLayout(null);
+    frame.setVisible(true);
 
-        update();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    update();
+  }
+
+  private static JMenuItem initCollectMenuItem(Controller controller, Game game) {
+    JMenuItem collect;
+    if (!game.randOn) {
+      JMenu collectMaterial = new JMenu("collect");
+      JMenuItem amino = new JMenuItem("Amino acid");
+      JMenuItem nucleo = new JMenuItem("Nucleotide");
+      amino.addActionListener(e -> controller.collect(Material.AMINO_ACID));
+      nucleo.addActionListener(e -> controller.collect(Material.NUCLEOTIDE));
+      collectMaterial.add(amino);
+      collectMaterial.add(nucleo);
+      return collectMaterial;
+    } else {
+      collect = new JMenuItem("collect");
+      collect.addActionListener((e) -> controller.collect(Material.GENERIC));
     }
+    return collect;
+  }
 
-    @Override
-    public void update(){
-        Virologist player = game.GetCurrentPlayer();
+  @Override
+  public void update() {
+    Virologist player = game.GetCurrentPlayer();
 
     //AKCIÓSZÁMLÁLÓ FRISSÍTÉSE
-        turnCounter.setText(player.getActionCount() + " / 3");
+    turnCounter.setText(player.getActionCount() + " / 3");
+
+    currentField.setText("Current field: " + player.getField().getName());
 
         currentField.setText("Current field: "+player.getField().getName());
 
     //ÁLLAPOTSÁVOK FRISSÍTÉSE
-        nucleoBar.setValue(player.GetNucleotide());
-        nucleoBar.setMaximum(player.GetMaterialLimit());
-        nucleoLabel.setText("Nucleotide: " +player.GetNucleotide());
-        aminoBar.setValue(player.GetAminoAcid());
-        aminoBar.setMaximum(player.GetMaterialLimit());
-        aminoLabel.setText("Amino acid: "+ player.GetAminoAcid());
+
+    nucleoBar.setValue(player.GetNucleotide());
+    nucleoBar.setMaximum(player.GetMaterialLimit());
+    nucleoLabel.setText("Nucleotide: " + player.GetNucleotide());
+    aminoBar.setValue(player.GetAminoAcid());
+    aminoBar.setMaximum(player.GetMaterialLimit());
+    aminoLabel.setText("Amino acid: " + player.GetAminoAcid());
 
     //FELSZERELÉSEK FRISSÍTÉSE
-        ArrayList<Equipment> equipment = player.GetEquipments();
-        Image equipmentSlotIcon = null;
-        for (int i = 0; i < 3; i++){
-            if (equipment.size() > i) {
-                Drawable drawableEquipment = (Drawable) equipment.get(i);
-                try {
-                    equipmentSlotIcon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(drawableEquipment.getTexture())));
-                    equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-                } catch (IOException ignored) { }
-            } else {
-                try {
-                    equipmentSlotIcon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/textures/itemSlot.png")));
-                    equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-                } catch (IOException ignored) {}
-            }
-            assert equipmentSlotIcon != null;
-            equipmentButtons.get(i).setIcon( new ImageIcon(equipmentSlotIcon));
+    ArrayList<Equipment> equipment = player.GetEquipments();
+    Image equipmentSlotIcon = null;
+    for (int i = 0; i < 3; i++) {
+      if (equipment.size() > i) {
+        Drawable drawableEquipment = (Drawable) equipment.get(i);
+        try {
+          equipmentSlotIcon = ImageIO.read(Objects.requireNonNull(
+              getClass().getResourceAsStream(drawableEquipment.getTexture())));
+          equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        } catch (IOException ignored) {
         }
+      } else {
+        try {
+          equipmentSlotIcon = ImageIO.read(
+              Objects.requireNonNull(getClass().getResourceAsStream("/textures/itemSlot.png")));
+          equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        } catch (IOException ignored) {
+        }
+      }
+      assert equipmentSlotIcon != null;
+      equipmentButtons.get(i).setIcon(new ImageIcon(equipmentSlotIcon));
+    }
 
     //SZÖVEGBUBORÉK FRISSÍTÉSE
-        if(!controller.getActionMessage().equals(""))
-            msgText = player.getName()+": "+ controller.getActionMessage();
+    if (!controller.getActionMessage().equals("")) {
+      msgText = player.getName() + ": " + controller.getActionMessage();
+    }
 
-        if(msgText.equals("")){
-            actionBubble.setVisible(false);
-            actionBubbleText.setVisible(false);
-        }
-        else {
+    if (msgText.equals("")) {
+      actionBubble.setVisible(false);
+      actionBubbleText.setVisible(false);
+    } else {
 
-            actionBubbleText.setText(msgText);
-            actionBubble.setVisible(true);
-            actionBubbleText.setVisible(true);
-        }
+      actionBubbleText.setText(msgText);
+      actionBubble.setVisible(true);
+      actionBubbleText.setVisible(true);
+    }
 
     //HÁTTÉR FRISSÍTÉSE
-        Drawable drawableField = (Drawable) player.getField();
-        Image backGroundIMG;
-        try {
-            backGroundIMG = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(drawableField.getTexture())));
-            backGroundIMG = backGroundIMG.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
-            backGround.setIcon(new ImageIcon(backGroundIMG));
-            backGround.setBounds(0, 0, 600, 600);
-        } catch (IOException ignored) { }
+    Drawable drawableField = (Drawable) player.getField();
+    Image backGroundIMG;
+    try {
+      backGroundIMG = ImageIO.read(
+          Objects.requireNonNull(getClass().getResourceAsStream(drawableField.getTexture())));
+      backGroundIMG = backGroundIMG.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
+      backGround.setIcon(new ImageIcon(backGroundIMG));
+      backGround.setBounds(0, 0, 600, 600);
+    } catch (IOException ignored) {
     }
 
-    public void drawInterface() {
+  }
 
-        JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setBounds(0, 0, 600, 600);
+  public void drawInterface() {
+
+    JLayeredPane layeredPane = new JLayeredPane();
+    layeredPane.setBounds(0, 0, 600, 600);
 
     //KÖRVÉGE GOMB BEÁLLÍTÁSA
-        Image endButtonIcon = null;
-        try {
-            endButtonIcon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/textures/endButton.png")));
-            endButtonIcon = endButtonIcon.getScaledInstance(70, 70, Image.SCALE_SMOOTH);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    Image endButtonIcon = null;
+    try {
+      endButtonIcon = ImageIO.read(
+          Objects.requireNonNull(getClass().getResourceAsStream("/textures/endButton.png")));
+      endButtonIcon = endButtonIcon.getScaledInstance(70, 70, Image.SCALE_SMOOTH);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
-        assert endButtonIcon != null;
-        JButton endButton = new JButton(new ImageIcon(endButtonIcon));
-        endButton.addActionListener((e)-> controller.endTurn());
-        endButton.setBorder(null);
-        endButton.setContentAreaFilled(false);
-        endButton.setBorderPainted(false);
-        endButton.setBackground(Color.BLACK);
-        endButton.setOpaque(false);
-        endButton.setBounds(480, 450, 70, 70);
+    assert endButtonIcon != null;
+    JButton endButton = new JButton(new ImageIcon(endButtonIcon));
+    endButton.addActionListener((e) -> controller.endTurn());
+    endButton.setBorder(null);
+    endButton.setContentAreaFilled(false);
+    endButton.setBorderPainted(false);
+    endButton.setBackground(Color.BLACK);
+    endButton.setOpaque(false);
+    endButton.setBounds(480, 450, 70, 70);
 
     //ANYAGSÁVOK BEÁLLÍTÁSA
-        nucleoBar = new JProgressBar();
-        nucleoBar.setBounds(215, 460, 170, 25);
-        nucleoBar.setMaximum(20);
-        nucleoBar.setMinimum(0);
-        nucleoLabel = new JLabel("min");
-        nucleoLabel.setBounds(215, 465, 170, 15);
-        nucleoLabel.setHorizontalAlignment(JLabel.CENTER);
-        nucleoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+    nucleoBar = new JProgressBar();
+    nucleoBar.setBounds(215, 460, 170, 25);
+    nucleoBar.setMaximum(20);
+    nucleoBar.setMinimum(0);
+    nucleoLabel = new JLabel("min");
+    nucleoLabel.setBounds(215, 465, 170, 15);
+    nucleoLabel.setHorizontalAlignment(JLabel.CENTER);
+    nucleoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
 
-        aminoBar = new JProgressBar();
-        aminoBar.setBounds(215, 495, 170, 25);
-        aminoBar.setMaximum(20);
-        aminoBar.setMinimum(0);
-        aminoLabel = new JLabel("min");
-        aminoLabel.setBounds(215, 500, 170, 15);
-        aminoLabel.setHorizontalAlignment(JLabel.CENTER);
-        aminoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+    aminoBar = new JProgressBar();
+    aminoBar.setBounds(215, 495, 170, 25);
+    aminoBar.setMaximum(20);
+    aminoBar.setMinimum(0);
+    aminoLabel = new JLabel("min");
+    aminoLabel.setBounds(215, 500, 170, 15);
+    aminoLabel.setHorizontalAlignment(JLabel.CENTER);
+    aminoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
 
     //FELSZERELÉSEK BEÁLLÍTÁSA
-        Image equipmentSlotIcon = null;
-        try {
-            equipmentSlotIcon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/textures/itemSlot.png")));
-            equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        equipmentButtons = new ArrayList<>(3);
-        int y = 340;
-        for (int i = 0; i < 3; i++){
-            JButton eq;
-            assert equipmentSlotIcon != null;
-            eq = new JButton(new ImageIcon(equipmentSlotIcon));
-            eq.setBounds(15, y, 50, 50);
-            eq.setFocusPainted(false);
-            eq.setBorderPainted(false);
-            eq.setContentAreaFilled(false);
-            eq.setBorder(null);
-            equipmentButtons.add(eq);
-            y += 60;
-        }
+    Image equipmentSlotIcon = null;
+    try {
+      equipmentSlotIcon = ImageIO.read(
+          Objects.requireNonNull(getClass().getResourceAsStream("/textures/itemSlot.png")));
+      equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    equipmentButtons = new ArrayList<>(3);
+    int y = 340;
+    for (int i = 0; i < 3; i++) {
+      JButton eq;
+      assert equipmentSlotIcon != null;
+      eq = new JButton(new ImageIcon(equipmentSlotIcon));
+      eq.setBounds(15, y, 50, 50);
+      eq.setFocusPainted(false);
+      eq.setBorderPainted(false);
+      eq.setContentAreaFilled(false);
+      eq.setBorder(null);
+      equipmentButtons.add(eq);
+      y += 60;
+    }
 
     //KAKCIÓSZÁMLÁLÓ BEÁLLÍTÁSA
-        turnCounter = new JLabel("3 / 3");
-        turnCounter.setFont(new Font("sans-serif", Font.BOLD, 48));
-        turnCounter.setForeground(Color.white);
-        turnCounter.setBounds(480, 25, 160, 50);
+    turnCounter = new JLabel("3 / 3");
+    turnCounter.setFont(new Font("sans-serif", Font.BOLD, 48));
+    turnCounter.setForeground(Color.white);
+    turnCounter.setBounds(480, 25, 160, 50);
+
+    currentField = new JLabel();
+    currentField.setFont(new Font("sans-serif", Font.BOLD, 20));
+    currentField.setForeground(Color.white);
+    currentField.setBounds(225, 425, 200, 25);
 
 
-        currentField = new JLabel();
-        currentField.setFont(new Font("sans-serif", Font.BOLD, 20));
-        currentField.setForeground(Color.white);
-        currentField.setBounds(225, 425, 200, 25);
+    //SZÖVEGBUBORÉK BEÁKKÍTÁSA
+    Image actionBubbleIMG;
+    ImageIcon actionBubbleIcon;
+    try {
+      actionBubbleIMG = ImageIO.read(
+          Objects.requireNonNull(getClass().getResourceAsStream("/textures/bubble.png")));
+      actionBubbleIMG = actionBubbleIMG.getScaledInstance(190, 88, Image.SCALE_SMOOTH);
+      actionBubbleIcon = new ImageIcon(actionBubbleIMG);
+      actionBubble = new JLabel(actionBubbleIcon);
+      actionBubble.setBounds(280, 225, 190, 88);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
 
-        //SZÖVEGBUBORÉK BEÁKKÍTÁSA
-        Image actionBubbleIMG;
-        ImageIcon actionBubbleIcon;
-        try{
-            actionBubbleIMG = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/textures/bubble.png")));
-            actionBubbleIMG = actionBubbleIMG.getScaledInstance(190, 88, Image.SCALE_SMOOTH);
-            actionBubbleIcon = new ImageIcon(actionBubbleIMG);
-            actionBubble = new JLabel(actionBubbleIcon);
-            actionBubble.setBounds(280,225,190,88);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    msgText = "kiskúgya kunya gúgyuszka kiskufya\n" +
+        "kiskugya kútya sulya lislyuta\n" +
+        "kizskugka kutja kútja kiskuhya\n" +
+        "gizsgugya    kuta    kutyna    kiskuxya\n" +
+        "gizskutya    kislyutya    kutnya    kiskuya\n" +
+        "kiskutius    gidzsigegizsgutya    kitsikugya    kitsigugya\n" +
+        "hutya        kúgyugya    lizya      kűgyja\n" +
+        "kutsus         kogya    gidzsgudja    nyuta\n" +
+        "gizsgúgya    kutttya    qgya        pimbull \n" +
+        "gűtya     kizsgutya    kutgya       kugyja\n" +
+        "kugyuzs    qúhggyah    qkútgyikah    gútjya\n" +
+        "guggya    gizsgyugya    kúdtja    gizskugya\n" +
 
-        msgText = "kiskúgya kunya gúgyuszka kiskufya\n" +
-                "kiskugya kútya sulya lislyuta\n" +
-                "kizskugka kutja kútja kiskuhya\n" +
-                "gizsgugya    kuta    kutyna    kiskuxya\n" +
-                "gizskutya    kislyutya    kutnya    kiskuya\n" +
-                "kiskutius    gidzsigegizsgutya    kitsikugya    kitsigugya\n" +
-                "hutya        kúgyugya    lizya      kűgyja\n" +
-                "kutsus         kogya    gidzsgudja    nyuta\n" +
-                "gizsgúgya    kutttya    qgya        pimbull \n" +
-                "gűtya     kizsgutya    kutgya       kugyja\n" +
-                "kugyuzs    qúhggyah    qkútgyikah    gútjya\n" +
-                "guggya    gizsgyugya    kúdtja    gizskugya\n" +
+        "kuhya    kúja    kudgya     tutya\n" +
+        "gúgyah    kugyha    qutja    kislutya\n" +
+        "kutsa    outya    kuyua    lizya\n" +
+        "lutyw    litya    kitya    lutxa\n" +
+        "kuxta    gidzsigegugyus    kuzxa    kikúgyka\n" +
 
-                "kuhya    kúja    kudgya     tutya\n"+
-                "gúgyah    kugyha    qutja    kislutya\n" +
-                "kutsa    outya    kuyua    lizya\n" +
-                "lutyw    litya    kitya    lutxa\n" +
-                "kuxta    gidzsigegugyus    kuzxa    kikúgyka\n" +
+        "gútyja    kutxa    kigya    gugyuska\n" +
+        "gisguya      kuxgy    kurya    gogya\n" +
+        "kisgugytkya    jutya    kufya    gugklya\n" +
+        "kiskulya       gizsgugyuzsga     kucsa    kiskytya\n" +
+        "kismulya    guty    gizsgutyi    kiskhtya\n" +
+        "kuva         vau    kizskugya    kiskjtya\n" +
+        "qutya     kúgyka    kiskutja    kugyus\n" +
+        "qugya      kuty    kulyuska    gutus \n" +
+        "gisgúgya    lugya    kuxa    tugya\n" +
+        "qúgya      gűgya    gúgyika    kutga\n" +
 
-                "gútyja    kutxa    kigya    gugyuska\n" +
-                "gisguya      kuxgy    kurya    gogya\n" +
-                "kisgugytkya    jutya    kufya    gugklya\n" +
-                "kiskulya       gizsgugyuzsga     kucsa    kiskytya\n" +
-                "kismulya    guty    gizsgutyi    kiskhtya\n" +
-                "kuva         vau    kizskugya    kiskjtya\n" +
-                "qutya     kúgyka    kiskutja    kugyus\n" +
-                "qugya      kuty    kulyuska    gutus \n" +
-                "gisgúgya    lugya    kuxa    tugya\n" +
-                "qúgya      gűgya    gúgyika    kutga\n" +
+        "kuja    rót valter (rottweiler)    gi gutga    kisgutya\n" +
 
-                "kuja    rót valter (rottweiler)    gi gutga    kisgutya\n" +
+        "kulya    kugta    kiekutya    kutuska\n" +
+        "kucus    mutya    kiwkutya    nyutya\n" +
+        "gizsigutygyja      gizs gugya    kiqkutya    kis kuta\n" +
+        "kukia     gízsgúgya    kikugya    kiskutyu\n" +
+        "gyutya        qtya    kikutya    kutyuli\n" +
+        "gutya     gigygugya    kiskurya     mutyuli\n" +
+        "zuka       qkutya    kizskutga    kizskuja\n" +
+        "guta    qtyja     gisgutgya    kúgyús\n" +
+        "zutyi      guka    gizsgutya    kúgya\n" +
+        "könya      kuttya    tutus    kumgya\n" +
+        "kölya        putya    tuta    lutya\n" +
+        "bidbulgugya    giszkutya    tyutyu    kúlya\n" +
 
-                "kulya    kugta    kiekutya    kutuska\n" +
-                "kucus    mutya    kiwkutya    nyutya\n" +
-                "gizsigutygyja      gizs gugya    kiqkutya    kis kuta\n" +
-                "kukia     gízsgúgya    kikugya    kiskutyu\n" +
-                "gyutya        qtya    kikutya    kutyuli\n" +
-                "gutya     gigygugya    kiskurya     mutyuli\n" +
-                "zuka       qkutya    kizskutga    kizskuja\n" +
-                "guta    qtyja     gisgutgya    kúgyús\n" +
-                "zutyi      guka    gizsgutya    kúgya\n" +
-                "könya      kuttya    tutus    kumgya\n" +
-                "kölya        putya    tuta    lutya\n" +
-                "bidbulgugya    giszkutya    tyutyu    kúlya\n" +
+        "qtja     kizsgútya    tyutyus    gugyuzsga\n" +
+        "köjök    kis kugya    kizsgugya    kuthya    gútyja\n" +
+        "gugyus    gugyusga    kutyhus    gudgya\n" +
+        "gizsgutga    kuya    gizsgutya    gizsgutya\n" +
+        "bidbugugya    kisgugya    gutyna    gizsgutyus\n" +
+        "kizskutja    kucuka    kismutya    ulya\n" +
+        "gudja      kuszus    kutyulimutyuli    qty\n" +
+        "kuzya     kutyha     kugdlya           gútyja\n" +
+        "kissqutya    kűgyka    kudglya    gútygya\n" +
+        "kissqtya    qügya    dutya    kunyus \n" +
+        "kiss kutya    kis kutyuss    kuyga    kúnya\n" +
+        "kiskógya          kuggya     gi guya    ksigugyq\n" +
+        "kitzsikutynyuzska    kucs    kuryz    gizsgyutya\n" +
+        "kislutyuy         giskunya    gizs kugyúgya    kisgucsa\n" +
+        "kisgógya      giskugyulimugyuli    gyutyulimugyuli    kurgya\n" +
+        "gizs gudja    gisgugya    gisguya    kurtya\n" +
+        "guttya         qutgya     quttya     kis lutyuj \n" +
+        "glutya       gulytjya    kisluytuj     discsucsa\n" +
+        "kiskzóuyta     kutjda    katya        lutyiluty\n" +
+        "kutyika     kis kutsus    kútxa     kutxuzs\n" +
+        "kuyly    kuyla    kiskunyus        gugyja\n" +
+        "kúfka    kúdka    kissgugyuska    kisskugyus\n" +
+        "kütya    gidzsigutya    gunyus     kisgunyus\n" +
+        "qs qtya    gugyuli-mugyuli          kizskzgya    kútdja\n" +
+        "krudja       krugyja    gizsguggya    kiskukia\n" +
+        "kutyulu         kislutuy    kisgugyja    gutyja\n" +
+        "kizs zsutyila    gúgyulka-mugyulka        kizsgudzsuka     kisgudzsus\n" +
+        "kigy gyuka      kúqggyuzska    kusugyulj    qizs qtya\n" +
+        "kufa        gúdzsus-mudzsus    kizs zslutya    qúdzsa\n" +
+        "qugyka     gudzsuska    qkútgya    kutguzska\n" +
+        "kiskugy a     dicsakbuksi    qugyulimugyuli    tyutya\n" +
+        "kisgutju         kisgyúgya    kigyugya         kisgugy";
 
-                "qtja     kizsgútya    tyutyus    gugyuzsga\n" +
-                "köjök    kis kugya    kizsgugya    kuthya    gútyja\n" +
-                "gugyus    gugyusga    kutyhus    gudgya\n" +
-                "gizsgutga    kuya    gizsgutya    gizsgutya\n" +
-                "bidbugugya    kisgugya    gutyna    gizsgutyus\n" +
-                "kizskutja    kucuka    kismutya    ulya\n" +
-                "gudja      kuszus    kutyulimutyuli    qty\n" +
-                "kuzya     kutyha     kugdlya           gútyja\n" +
-                "kissqutya    kűgyka    kudglya    gútygya\n" +
-                "kissqtya    qügya    dutya    kunyus \n" +
-                "kiss kutya    kis kutyuss    kuyga    kúnya\n" +
-                "kiskógya          kuggya     gi guya    ksigugyq\n" +
-                "kitzsikutynyuzska    kucs    kuryz    gizsgyutya\n" +
-                "kislutyuy         giskunya    gizs kugyúgya    kisgucsa\n" +
-                "kisgógya      giskugyulimugyuli    gyutyulimugyuli    kurgya\n" +
-                "gizs gudja    gisgugya    gisguya    kurtya\n" +
-                "guttya         qutgya     quttya     kis lutyuj \n" +
-                "glutya       gulytjya    kisluytuj     discsucsa\n" +
-                "kiskzóuyta     kutjda    katya        lutyiluty\n" +
-                "kutyika     kis kutsus    kútxa     kutxuzs\n" +
-                "kuyly    kuyla    kiskunyus        gugyja\n" +
-                "kúfka    kúdka    kissgugyuska    kisskugyus\n" +
-                "kütya    gidzsigutya    gunyus     kisgunyus\n" +
-                "qs qtya    gugyuli-mugyuli          kizskzgya    kútdja\n" +
-                "krudja       krugyja    gizsguggya    kiskukia\n" +
-                "kutyulu         kislutuy    kisgugyja    gutyja\n" +
-                "kizs zsutyila    gúgyulka-mugyulka        kizsgudzsuka     kisgudzsus\n" +
-                "kigy gyuka      kúqggyuzska    kusugyulj    qizs qtya\n" +
-                "kufa        gúdzsus-mudzsus    kizs zslutya    qúdzsa\n" +
-                "qugyka     gudzsuska    qkútgya    kutguzska\n" +
-                "kiskugy a     dicsakbuksi    qugyulimugyuli    tyutya\n" +
-                "kisgutju         kisgyúgya    kigyugya         kisgugy";
-
-        actionBubbleText = new JTextArea("Hello vak virologus!\n"+msgText);
-        actionBubbleText.setBackground(Color.white);
-        actionBubbleText.setBorder(BorderFactory.createEmptyBorder());
-        actionBubbleText.setBounds(290,235, 170,50);
-        actionBubbleText.setEditable(false);
-        actionBubbleText.setFont(new Font("sans-serif", Font.BOLD, 12));
-        actionBubbleText.setColumns(28);
-        actionBubbleText.setLineWrap(true);
+    actionBubbleText = new JTextArea("Hello vak virologus!\n" + msgText);
+    actionBubbleText.setBackground(Color.white);
+    actionBubbleText.setBorder(BorderFactory.createEmptyBorder());
+    actionBubbleText.setBounds(290, 235, 170, 50);
+    actionBubbleText.setEditable(false);
+    actionBubbleText.setFont(new Font("sans-serif", Font.BOLD, 12));
+    actionBubbleText.setColumns(28);
+    actionBubbleText.setLineWrap(true);
 
     //HÁTTÉRKÉP BEÁLLÍTÁSA
-        Image backGroundIMG;
-        ImageIcon backGroundIcon;
-        backGround = new JLabel();
-        try {
-            backGroundIMG = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/textures/Field.png")));
-            backGroundIMG = backGroundIMG.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
-            backGroundIcon = new ImageIcon(backGroundIMG);
-            backGround = new JLabel(backGroundIcon);
-            backGround.setBounds(0, 0, 600, 600);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    Image backGroundIMG;
+    ImageIcon backGroundIcon;
+    backGround = new JLabel();
+    try {
+      backGroundIMG = ImageIO.read(
+          Objects.requireNonNull(getClass().getResourceAsStream("/textures/Field.png")));
+      backGroundIMG = backGroundIMG.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
+      backGroundIcon = new ImageIcon(backGroundIMG);
+      backGround = new JLabel(backGroundIcon);
+      backGround.setBounds(0, 0, 600, 600);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
     //ELRENDEZÉS BEÁLLÍTÁSA
-        layeredPane.add(backGround, Integer.valueOf(0));
-        layeredPane.add(actionBubble, Integer.valueOf(1));
-        layeredPane.add(endButton, Integer.valueOf(1));
-        layeredPane.add(aminoBar, Integer.valueOf(1));
-        layeredPane.add(nucleoBar, Integer.valueOf(1));
-        layeredPane.add(equipmentButtons.get(0), Integer.valueOf(1));
-        layeredPane.add(equipmentButtons.get(1), Integer.valueOf(1));
-        layeredPane.add(equipmentButtons.get(2), Integer.valueOf(1));
-        layeredPane.add(turnCounter, Integer.valueOf(1));
-        layeredPane.add(actionBubbleText, Integer.valueOf(2));
-        layeredPane.add(nucleoLabel, Integer.valueOf(2));
-        layeredPane.add(aminoLabel, Integer.valueOf(2));
-        layeredPane.add(currentField, Integer.valueOf(2));
-        frame.add(layeredPane);
-    }
+
+    layeredPane.add(backGround, Integer.valueOf(0));
+    layeredPane.add(actionBubble, Integer.valueOf(1));
+    layeredPane.add(endButton, Integer.valueOf(1));
+    layeredPane.add(aminoBar, Integer.valueOf(1));
+    layeredPane.add(nucleoBar, Integer.valueOf(1));
+    layeredPane.add(equipmentButtons.get(0), Integer.valueOf(1));
+    layeredPane.add(equipmentButtons.get(1), Integer.valueOf(1));
+    layeredPane.add(equipmentButtons.get(2), Integer.valueOf(1));
+    layeredPane.add(turnCounter, Integer.valueOf(1));
+    layeredPane.add(actionBubbleText, Integer.valueOf(2));
+    layeredPane.add(nucleoLabel, Integer.valueOf(2));
+    layeredPane.add(aminoLabel, Integer.valueOf(2));
+    layeredPane.add(currentField, Integer.valueOf(2));
+    frame.add(layeredPane);
+  }
 
 }

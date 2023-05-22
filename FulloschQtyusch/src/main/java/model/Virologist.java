@@ -337,10 +337,10 @@ public class Virologist extends Subject
 	/**
 	 * Anyag felvetelt kezdemenyez az adott mezon, a strategia kezeli a megfelelo fuggveny hivasokat
 	 */
-	public void Collect()
+	public void Collect(Material material)
 	{
 		if (actionCount > 0) {
-			collectStr.Collect(this, field);
+			collectStr.Collect(this, field, material);
 		}
 	}
 
