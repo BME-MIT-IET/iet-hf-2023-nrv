@@ -111,6 +111,9 @@ public class Game extends Subject
 	public void EndGame()
 	{
 		JFrame parent = new JFrame();
+		if(virologists.isEmpty()){
+			JOptionPane.showMessageDialog(parent, "Every virologist died, the agents won this game.");
+		}
 		JOptionPane.showMessageDialog(parent, virologists.get(currentPlayer).getName() + " won the game!");
 		System.exit(0);
 	}
@@ -157,6 +160,9 @@ public class Game extends Subject
 	 * @param virologist az eltávolítandó virológus.
 	 */
 	public void RemoveVirologist(Virologist virologist) {
+		if(virologists.isEmpty()){
+			EndGame();
+		}
 		int i = virologists.indexOf(virologist);
 		if (i < currentPlayer)
 			currentPlayer--;

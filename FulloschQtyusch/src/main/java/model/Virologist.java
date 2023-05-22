@@ -438,7 +438,6 @@ public class Virologist extends Subject
 	 */
 	public void Inject(Virologist v, GeneticCode code)
 	{
-
 		if (actionCount > 0)
 		{
 			injectStr.Inject(this, v, code);
