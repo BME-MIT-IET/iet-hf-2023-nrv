@@ -28,14 +28,15 @@ public class ForgetCode extends GeneticCode
 	 * @return a létrehozott ágens.
 	 * @throws Exception ha nem hozható létre az Agent, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
 	 */
-	public Agent create(Virologist v) throws GeneticCodeException
+	public Agent Create(Virologist v) throws Exception
 	{
-		v.removeNucleotide(nucleotidePrice);
+
+		v.RemoveNucleotide(nucleotidePrice);
 		try{
-			v.removeAminoAcid(aminoAcidPrice);
+			v.RemoveAminoAcid(aminoAcidPrice);
 		}
 		catch(Exception e){
-			v.addNucleotide(nucleotidePrice);
+			v.AddNucleotide(nucleotidePrice);
 			throw e;
 		}
 		return new Forget(turnsLeft*playerCount);

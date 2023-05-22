@@ -12,14 +12,6 @@ import model.agents.Agent;
  */
 public abstract class GeneticCode
 {
-	public static class GeneticCodeException extends RuntimeException {
-
-		public GeneticCodeException(String message) {
-			super(message);
-		}
-
-	}
-
 	/**
 	 * Object equals függvényének felülírása 2 genetikai kód összehasonlítására.
 	 * @param o az összehasonlítandó objektum.
@@ -27,15 +19,7 @@ public abstract class GeneticCode
 	 */
 	@Override
 	public boolean equals(Object o){
-		if (o == null)
-			return false;
-
-		return this.getClass().isAssignableFrom(o.getClass());
-	}
-
-	@Override
-	public int hashCode() {
-		return this.getClass().hashCode();
+		return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
 	}
 
 	/**
@@ -78,7 +62,7 @@ public abstract class GeneticCode
 	 * Létrehoz egy, a kódhoz tartozó ágenst a megfelelő költség behajtásával a virológustól.
 	 * @param v a virológus, aki szeretne ágenst készíteni
 	 * @return az elkészített ágens
-	 * @throws GeneticCodeException ha a virológusnak nem volt elég anyaga az ágenskészítéshez
+	 * @throws Exception ha a virológusnak nem volt elég anyaga az ágenskészítéshez
 	 */
-	public abstract Agent create(Virologist v) throws GeneticCodeException;
+	public abstract Agent Create(Virologist v) throws Exception;
 }

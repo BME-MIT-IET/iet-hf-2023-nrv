@@ -15,5 +15,5 @@ public interface IInjectStr
 	 * @param target A célpont akit fel akar kenni.
 	 * @param gc A genetikai kód, ami a felkenendő ágenst gyártja.
 	 */
-	void inject(Virologist v, Virologist target, GeneticCode gc);
+	void Inject(Virologist v, Virologist target, GeneticCode gc);
 }

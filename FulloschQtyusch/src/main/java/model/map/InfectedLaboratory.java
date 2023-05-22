@@ -22,8 +22,8 @@ public class InfectedLaboratory extends Laboratory{
      * @param v elehelyezendő virológus
      */
     @Override
-    public void addVirologist(Virologist v){
-        v.targetedWith(new Bear());
-        super.addVirologist(v);
+    public void AddVirologist(Virologist v){
+        v.TargetedWith(new Bear());
+        super.AddVirologist(v);
     }
 }

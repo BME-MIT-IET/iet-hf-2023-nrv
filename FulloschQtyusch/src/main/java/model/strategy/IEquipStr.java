@@ -14,5 +14,5 @@ public interface IEquipStr
 	 * @param v A felvételt végző virológus.
 	 * @param f Erről a mezőről próbálkozik védőfelszerelés felvételével v.
 	 */
-	void equip(Virologist v, Field f);
+	void Equip(Virologist v, Field f);
 }

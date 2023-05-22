@@ -16,10 +16,10 @@ public class DefMove implements IMoveStr {
 	 * @param to Új mező, amelyre lépni szeretne a virológus
 	 */
 	@Override
-	public void move(Virologist v, Field from, Field to) {
-		from.removeVirologist(v);
-		to.addVirologist(v);
-		v.decreaseActions();
+	public void Move(Virologist v, Field from, Field to) {
+		from.RemoveVirologist(v);
+		to.AddVirologist(v);
+		v.DecreaseActions();
 	}
 
 }

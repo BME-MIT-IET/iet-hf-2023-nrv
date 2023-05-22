@@ -32,7 +32,7 @@ public class Game extends Subject
 	/**
 	 * @return a tárolt virológusok listája
 	 */
-	public List<Virologist> getVirologists() {
+	public ArrayList<Virologist> getVirologists() {
 		return virologists;
 	}
 
@@ -65,7 +65,7 @@ public class Game extends Subject
 	 * Új játék létrehozása.
 	 * @return az új játékot megvalósító Game példány.
 	 */
-	public static Game create(){
+	public static Game Create(){
 		if (instance == null){
 			instance = new Game();
 		}
@@ -75,7 +75,7 @@ public class Game extends Subject
 	/**
 	 * Elindít egy új játékot, inicializálja a tagváltozók listáit.
 	 */
-	public void newGame() {
+	public void NewGame() {
 		fields = new ArrayList<>();
 		codes = new ArrayList<>();
 		virologists = new ArrayList<>();
@@ -86,12 +86,12 @@ public class Game extends Subject
 	 * Átadja az irányítást a sorrendben a következő játékosnak, az aktuálisnak lezárja a körét.
 	 * @param codes a megismert genetikai kódok száma
 	 */
-	public void nextPlayer(int codes){
+	public void NextPlayer(int codes){
 		if(codes == this.codes.size())
-			endGame();
+			EndGame();
 		else {
 			for (Virologist v: virologists) {
-				v.update();
+				v.Update();
 			}
 			currentPlayer++;
 			if (currentPlayer == virologists.size()) currentPlayer = 0;
@@ -101,14 +101,14 @@ public class Game extends Subject
 	/**
 	 * @return az aktív játékos objektuma.
 	 */
-	public Virologist getCurrentPlayer(){
+	public Virologist GetCurrentPlayer(){
 		return virologists.get(currentPlayer);
 	}
 
 	/**
 	 * Befejezi a játékot és kihírdeti a nyertest
 	 */
-	public void endGame()
+	public void EndGame()
 	{
 		JFrame parent = new JFrame();
 		JOptionPane.showMessageDialog(parent, virologists.get(currentPlayer).getName() + " won the game!");
@@ -119,10 +119,10 @@ public class Game extends Subject
 	 * Hozzáad egy virológust a játékhoz
 	 * @param v a hozzáadandó virológus
 	 */
-	public void addVirologist(Virologist v)
+	public void AddVirologist(Virologist v)
 	{
 		virologists.add(v);
-		v.setGame(this);
+		v.SetGame(this);
 		playerCount++;
 	}
 
@@ -130,7 +130,7 @@ public class Game extends Subject
 	 * Hozzáad egy új genetikai kódot a játékhoz
 	 * @param gc hozzáadandó genetikai kód
 	 */
-	public GeneticCode addGeneticCode(GeneticCode gc){
+	public GeneticCode AddGeneticCode(GeneticCode gc){
 		if (!codes.contains(gc)){
 			codes.add(gc);
 			return gc;
@@ -143,20 +143,20 @@ public class Game extends Subject
 	 * Hozzáad egy mezőt a játékhoz
 	 * @param f hozzáadandó mező
 	 */
-	public void addField(Field f){
+	public void AddField(Field f){
 		fields.add(f);
 	}
 
 	/**
 	 * @return a mezők listája.
 	 */
-	public List<Field> getFields(){return fields;}
+	public List<Field> GetFields(){return fields;}
 
 	/**
 	 * Egy virológus eltávolítása a játékból.
 	 * @param virologist az eltávolítandó virológus.
 	 */
-	public void removeVirologist(Virologist virologist) {
+	public void RemoveVirologist(Virologist virologist) {
 		int i = virologists.indexOf(virologist);
 		if (i < currentPlayer)
 			currentPlayer--;

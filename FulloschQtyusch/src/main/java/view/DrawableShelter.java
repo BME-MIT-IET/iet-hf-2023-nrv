@@ -3,6 +3,8 @@ package view;
 import model.equipments.Equipment;
 import model.map.Shelter;
 
+//TODO comment
+
 public class DrawableShelter extends Shelter  implements Drawable {
     /**
      * Védőfelszerelés hozzáadása

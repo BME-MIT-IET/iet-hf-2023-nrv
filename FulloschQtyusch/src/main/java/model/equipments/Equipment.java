@@ -20,20 +20,20 @@ public abstract class Equipment
 	 * Megszakítja a hatását a viselőjén
 	 * @param v viselő virológus
 	 */
-	public void disable(Virologist v) {
+	public void Disable(Virologist v) {
 	}
 
 	/**
 	 * Alkalmazza hatását viselőjén
 	 * @param v viselő virológus
 	 */
-	public void apply(Virologist v) {
+	public void Apply(Virologist v) {
 	}
 
 	/**
 	 * Alkalmazza stratégiáját viselőjén
 	 * @param v viselő virológus
 	 */
-	public void applyStrategy(Virologist v) {
+	public void ApplyStrategy(Virologist v) {
 	}
 }

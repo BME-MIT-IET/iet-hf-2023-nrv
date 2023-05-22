@@ -21,9 +21,8 @@ public class Glove extends Equipment implements IInjectedStr
 	 * Alkalmazza az ágensek felől érinthetetlen stratégiát
 	 * @param v viselő virológus
 	 */
-	@Override
-	public void applyStrategy(Virologist v) {
-		v.setInjectedStr(this);
+	public void ApplyStrategy(Virologist v) {
+		v.SetInjectedStr(this);
 	}
 
 	/**
@@ -35,13 +34,13 @@ public class Glove extends Equipment implements IInjectedStr
 	 * @param a A felkent ágens
 	 */
 	@Override
-	public void injected(Virologist v, Agent a) {
+	public void Injected(Virologist v, Agent a) {
 		if (useCount > 0){
 			useCount--;
 		} else{
-			v.removeEquipment(this);
-			v.reset();
-			v.targetedWith(a);
+			v.RemoveEquipment(this);
+			v.Reset();
+			v.TargetedWith(a);
 		}
 	}
 
@@ -55,14 +54,14 @@ public class Glove extends Equipment implements IInjectedStr
 	 * @param a A felkent ágens
 	 */
 	@Override
-	public void injected(Virologist by, Virologist injected, Agent a) {
+	public void Injected(Virologist by, Virologist injected, Agent a) {
 		if (useCount > 0){
 			useCount--;
-			by.targetedWith(injected, a);
+			by.TargetedWith(injected, a);
 		} else{
-			injected.removeEquipment(this);
-			injected.reset();
-			injected.targetedWith(by, a);
+			injected.RemoveEquipment(this);
+			injected.Reset();
+			injected.TargetedWith(by, a);
 		}
 	}
 }

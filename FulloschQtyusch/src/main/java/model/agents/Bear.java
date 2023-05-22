@@ -34,8 +34,11 @@ public class Bear extends Agent {
      * @param v a célzott virológus.
      */
     @Override
-    public void applyStrategy(Virologist v){
-        v.setMoveStr(new BearMove());
+    public void ApplyStrategy(Virologist v){
+        if(!v.getName().contains("(Bear)")){
+            v.setName(v.getName() + " (Bear)");
+        }
+        v.SetMoveStr(new BearMove());
     }
 
     /**
@@ -43,6 +46,6 @@ public class Bear extends Agent {
      * @param v a tulajdonos virológus.
      */
     @Override
-    public void update(Virologist v){ //Sosem évül el
+    public void Update(Virologist v){ //Sosem évül el
     }
 }

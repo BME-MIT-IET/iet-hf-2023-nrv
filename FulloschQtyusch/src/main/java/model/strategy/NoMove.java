@@ -15,8 +15,8 @@ public class NoMove implements IMoveStr {
 	 * @param to Új mező, amelyre lépni szeretne
 	 */
 	@Override
-	public void move(Virologist v, Field from, Field to) {
-		v.decreaseActions();
+	public void Move(Virologist v, Field from, Field to) {
+		v.DecreaseActions();
 	}
 
 }

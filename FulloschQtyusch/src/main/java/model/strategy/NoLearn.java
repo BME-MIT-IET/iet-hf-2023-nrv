@@ -14,8 +14,8 @@ public class NoLearn implements ILearnStr {
 	 * @param f Virológus mezője
 	 */
 	@Override
-	public void learn(Virologist v, Field f) {
-		v.decreaseActions();
+	public void Learn(Virologist v, Field f) {
+		v.DecreaseActions();
 	}
 
 }

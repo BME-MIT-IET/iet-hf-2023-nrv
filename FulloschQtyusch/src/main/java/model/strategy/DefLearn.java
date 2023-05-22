@@ -15,9 +15,9 @@ public class DefLearn implements ILearnStr {
 	 * @param f Virológus mezője
 	 */
 	@Override
-	public void learn(Virologist v, Field f) {
-		f.learnGeneticCode(v);
-		v.decreaseActions();
+	public void Learn(Virologist v, Field f) {
+		f.LearnGeneticCode(v);
+		v.DecreaseActions();
 	}
 
 }

@@ -24,8 +24,7 @@ public class Stun extends Agent
 	 * Azt, hogy semmit se tudjon tenni, őt se lehessen megkenni, de ki tudják fosztani más játékosok.
 	 * @param v a célzott virológus
 	 */
-	@Override
-	public void applyStrategy(Virologist v)
+	public void ApplyStrategy(Virologist v)
 	{
 		Looted lt = new Looted();
 		NoCollect nc = new NoCollect();
@@ -37,14 +36,14 @@ public class Stun extends Agent
 		NoLoot nl = new NoLoot();
 		NoMove nm = new NoMove();
 
-		v.setInjectedStr(nitd);
-		v.setCollectStr(nc);
-		v.setDropStr(nd);
-		v.setEquipStr(ne);
-		v.setInjectStr(ni);
-		v.setLearnStr(nlrn);
-		v.setLootedStr(lt);
-		v.setLootStr(nl);
-		v.setMoveStr(nm);
+		v.SetInjectedStr(nitd);
+		v.SetCollectStr(nc);
+		v.SetDropStr(nd);
+		v.SetEquipStr(ne);
+		v.SetInjectStr(ni);
+		v.SetLearnStr(nlrn);
+		v.SetLootedStr(lt);
+		v.SetLootStr(nl);
+		v.SetMoveStr(nm);
 	}
 }

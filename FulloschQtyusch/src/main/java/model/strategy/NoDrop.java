@@ -16,9 +16,9 @@ public class NoDrop implements IDropStr {
 	 * @param e Eldobandó felszerelés
 	 */
 	@Override
-	public void drop(Virologist v, Field f, Equipment e) {
-		v.addEquipment(e);
-		v.decreaseActions();
+	public void Drop(Virologist v, Field f, Equipment e) {
+		v.AddEquipment(e);
+		v.DecreaseActions();
 	}
 
 }

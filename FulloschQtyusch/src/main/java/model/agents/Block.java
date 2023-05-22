@@ -22,20 +22,18 @@ public class Block extends Agent
 	 * Törli az összes jelenleg hatással bíró ágenst és hatásait a virológusból.
 	 * @param v a célzott virológus
 	 */
-	@Override
-	public void apply(Virologist v)
+	public void Apply(Virologist v)
 	{
-		v.removeAgents();
+		v.RemoveAgents();
 	}
 
 	/**
 	 * Beállítja a virológuson, hogy blokkolja majd az eljövendő felkenéseket
 	 * @param v a célzott virológus
 	 */
-	@Override
-	public void applyStrategy(Virologist v)
+	public void ApplyStrategy(Virologist v)
 	{
 		NoInjected ni = new NoInjected();
-		v.setInjectedStr(ni);
+		v.SetInjectedStr(ni);
 	}
 }

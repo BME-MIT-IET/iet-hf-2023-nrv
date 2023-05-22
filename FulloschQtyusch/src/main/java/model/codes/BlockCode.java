@@ -29,16 +29,17 @@ public class BlockCode extends GeneticCode
 	 * akkor kivételt dob.
 	 * @param v a virológus, aki szeretne ágenst készíteni
 	 * @return az elkészített ágens
-	 * @throws GeneticCodeException ha a virológusnak nem volt elég anyaga az ágenskészítéshez
+	 * @throws Exception ha a virológusnak nem volt elég anyaga az ágenskészítéshez
 	 */
-	public Agent create(Virologist v) throws GeneticCodeException
+	public Agent Create(Virologist v) throws Exception
 	{
-		v.removeNucleotide(nucleotidePrice);
+
+		v.RemoveNucleotide(nucleotidePrice);
 		try{
-			v.removeAminoAcid(aminoAcidPrice);
+			v.RemoveAminoAcid(aminoAcidPrice);
 		}
 		catch(Exception e){
-			v.addNucleotide(nucleotidePrice);
+			v.AddNucleotide(nucleotidePrice);
 			throw e;
 		}
 		return new Block(turnsLeft*playerCount);

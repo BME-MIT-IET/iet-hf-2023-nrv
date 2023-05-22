@@ -9,6 +9,13 @@ import model.equipments.Equipment;
  */
 public class Looted implements ILootedStr
 {
+
+	/**
+	 * Sikeres kifosztásért felelős stratégia létrehozása
+	 */
+	public Looted(){
+	}
+
 	/**
 	 * Felszerelésre irányuló kifosztás
 	 * @param v kifosztó virológus
@@ -16,11 +23,11 @@ public class Looted implements ILootedStr
 	 * @param e kifosztandó felszerelés
 	 */
 	@Override
-	public void lootedForEquipment(Virologist v, Virologist from, Equipment e)
+	public void LootedForEquipment(Virologist v, Virologist from, Equipment e)
 	{
-		e.disable(from);
-		from.removeEquipment(e);
-		v.addEquipment(e);
+		e.Disable(from);
+		from.RemoveEquipment(e);
+		v.AddEquipment(e);
 	}
 
 	/**
@@ -29,11 +36,11 @@ public class Looted implements ILootedStr
 	 * @param from kifosztandó virológus
 	 */
 	@Override
-	public void lootedForAminoAcid(Virologist v, Virologist from)
+	public void LootedForAminoAcid(Virologist v, Virologist from)
 	{
 		try {
-			from.removeAminoAcid(1);
-			v.addAminoAcid(1);
+			from.RemoveAminoAcid(1);
+			v.AddAminoAcid(1);
 		} catch (Exception e) {
 			//Nem volt mit elvenni
 		}
@@ -45,11 +52,11 @@ public class Looted implements ILootedStr
 	 * @param from kifosztandó virológus
 	 */
 	@Override
-	public void lootedForNukleotide(Virologist v, Virologist from)
+	public void LootedForNukleotide(Virologist v, Virologist from)
 	{
 		try{
-			from.removeNucleotide(1);
-			v.addNucleotide(1);
+			from.RemoveNucleotide(1);
+			v.AddNucleotide(1);
 		}catch (Exception e){
 			//Nem volt mit elvenni
 		}

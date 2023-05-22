@@ -12,5 +12,5 @@ public interface IAttackStr {
      * @param attacker A támadó virológus.
      * @param target A megtámadott virológus.
      */
-    void attack(Virologist attacker, Virologist target);
+    void Attack(Virologist attacker, Virologist target);
 }

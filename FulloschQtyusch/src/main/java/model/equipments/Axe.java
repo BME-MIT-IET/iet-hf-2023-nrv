@@ -19,9 +19,9 @@ public class Axe extends Equipment implements IAttackStr {
      * @param v viselő virológus
      */
     @Override
-    public void applyStrategy(Virologist v) {
+    public void ApplyStrategy(Virologist v) {
         if (!used){
-            v.setAttackStr(this);
+            v.SetAttackStr(this);
         }
     }
 
@@ -31,10 +31,10 @@ public class Axe extends Equipment implements IAttackStr {
      * @param target megtámadott virológus
      */
     @Override
-    public void attack(Virologist attacker, Virologist target) {
-        attacker.decreaseActions();
-        target.kill();
+    public void Attack(Virologist attacker, Virologist target) {
+        attacker.DecreaseActions();
+        target.Kill();
         used = true;
-        attacker.reset();
+        attacker.Reset();
     }
 }

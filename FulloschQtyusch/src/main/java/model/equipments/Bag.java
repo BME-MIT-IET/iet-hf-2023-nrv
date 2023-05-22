@@ -25,18 +25,16 @@ public class Bag extends Equipment
 	 * Növelia a maximális nukleotid és aminosav tárhelyet
 	 * @param v viselő virológus
 	 */
-	@Override
-	public void apply(Virologist v) {
-		v.increaseLimit(delta);
+	public void Apply(Virologist v) {
+		v.IncreaseLimit(delta);
 	}
 
 	/**
 	 * Megszünteti a növelő hatását
 	 * @param v viselő virológus
 	 */
-	@Override
-	public void disable(Virologist v) {
-		v.decreaseLimit(delta);
+	public void Disable(Virologist v) {
+		v.DecreaseLimit(delta);
 	}
 
 }

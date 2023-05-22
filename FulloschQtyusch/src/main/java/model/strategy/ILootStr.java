@@ -12,19 +12,19 @@ public interface ILootStr
 	 * @param v A zsákmányoló virológus.
 	 * @param target A kizsákmányolandó virológus.
 	 */
-	void lootAmino(Virologist v, Virologist target);
+	void LootAmino(Virologist v, Virologist target);
 
 	/**
 	 * Nukleotid zsákmányolás metódusa.
 	 * @param v A zsákmányoló virológus.
 	 * @param target A kizsákmányolandó virológus.
 	 */
-	void lootNucleotide(Virologist v, Virologist target);
+	void LootNucleotide(Virologist v, Virologist target);
 
 	/**
 	 * Védőfelszerelés zsákmányolás metódusa.
 	 * @param v A zsákmányoló virológus.
 	 * @param target A kizsákmányolandó virológus.
 	 */
-	void lootEquipment(Virologist v, Virologist target);
+	void LootEquipment(Virologist v, Virologist target);
 }

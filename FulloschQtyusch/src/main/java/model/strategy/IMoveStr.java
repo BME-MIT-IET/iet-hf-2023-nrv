@@ -14,6 +14,6 @@ public interface IMoveStr {
 	 * @param from Virológus aktuális mezője
 	 * @param to Új mező, amelyre lépni szeretne
 	 */
-	void move(Virologist v, Field from, Field to);
+	void Move(Virologist v, Field from, Field to);
 
 }

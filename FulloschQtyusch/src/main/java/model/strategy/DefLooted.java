@@ -16,7 +16,7 @@ public class DefLooted implements ILootedStr
 	 * @param e kifosztandó felszerelés
 	 */
 	@Override
-	public void lootedForEquipment(Virologist v, Virologist from, Equipment e) {
+	public void LootedForEquipment(Virologist v, Virologist from, Equipment e) {
 	}
 
 	/**
@@ -25,7 +25,7 @@ public class DefLooted implements ILootedStr
 	 * @param from kifosztandó virológus
 	 */
 	@Override
-	public void lootedForAminoAcid(Virologist v, Virologist from) {
+	public void LootedForAminoAcid(Virologist v, Virologist from) {
 	}
 
 	/**
@@ -34,6 +34,6 @@ public class DefLooted implements ILootedStr
 	 * @param from kifosztandó virológus
 	 */
 	@Override
-	public void lootedForNukleotide(Virologist v, Virologist from) {
+	public void LootedForNukleotide(Virologist v, Virologist from) {
 	}
 }

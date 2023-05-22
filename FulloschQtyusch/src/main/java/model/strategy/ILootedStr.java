@@ -15,19 +15,19 @@ public interface ILootedStr
 	 * @param from kifosztandó virológus
 	 * @param e kifosztandó felszerelés
 	 */
-	void lootedForEquipment(Virologist v, Virologist from, Equipment e);
+	void LootedForEquipment(Virologist v, Virologist from, Equipment e);
 
 	/**
 	 * Aminosavra irányuló kifosztás
 	 * @param v kifosztó virológus
 	 * @param from kifosztandó virológus
 	 */
-	void lootedForAminoAcid(Virologist v, Virologist from);
+	void LootedForAminoAcid(Virologist v, Virologist from);
 
 	/**
 	 * Nukleotidra irányuló kifosztás
 	 * @param v kifosztó virológus
 	 * @param from kifosztandó virológus
 	 */
-	void lootedForNukleotide(Virologist v, Virologist from);
+	void LootedForNukleotide(Virologist v, Virologist from);
 }
