@@ -1,4 +1,6 @@
 Feature: Virologist can attack another virologist with an axe
+
+  @Attack
   Example: Virologist can attack themselves if has axe
     Given virologist is created
     And there is a game
@@ -7,8 +9,9 @@ Feature: Virologist can attack another virologist with an axe
     When virologist attacks themselves
     Then virologist 1 is killed
 
+  @Attack
   Example: Virologist can attack another virologist
-    This will die as default
+  This will die as default
     Given virologist is created
     And victim virologist is created
     And there is a game
