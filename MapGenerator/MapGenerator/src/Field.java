@@ -1,32 +1,32 @@
 import java.io.IOException;
 
 /**
- * A pályaleíró nyelvben egy mezõt jelképezõ osztály és paraméterei
+ * A pï¿½lyaleï¿½rï¿½ nyelvben egy mezï¿½t jelkï¿½pezï¿½ osztï¿½ly ï¿½s paramï¿½terei
  */
 public class Field {
     /**
-     * Azonos típusú mezõ számlálója az automatikus elnevezéshez
+     * Azonos tï¿½pusï¿½ mezï¿½ szï¿½mlï¿½lï¿½ja az automatikus elnevezï¿½shez
      */
     private static int counter = 1;
     /**
-     * Mezõ típusa
+     * Mezï¿½ tï¿½pusa
      */
     protected String type;
     /**
-     * Mezõ neve
+     * Mezï¿½ neve
      */
     private String name;
     /**
-     * Mezõn található felszerelés
+     * Mezï¿½n talï¿½lhatï¿½ felszerelï¿½s
      */
     protected String equipment;
     /**
-     * Mezõ paramétere (pl. genetikai kód, vagy felszerelés)
+     * Mezï¿½ paramï¿½tere (pl. genetikai kï¿½d, vagy felszerelï¿½s)
      */
     protected String param;
 
     /**
-     * Mezõ konstruktora
+     * Mezï¿½ konstruktora
      */
     public Field(){
         setName("F"+ counter);
@@ -35,40 +35,40 @@ public class Field {
         type = "Field";
 
 
-        int choice = Main.rnd.nextInt(Main.equipments.length+1);
+        int choice = Main.RND.nextInt(Main.EQUIPMENTS.length+1);
         if(choice == 0)
             equipment = null;
         else
-            equipment = Main.equipments[choice-1];
+            equipment = Main.EQUIPMENTS[choice-1];
 
         param = null;
     }
 
     /**
-     * Mezõt kiíró függvény
-     * @throws IOException ha nem sikerült a file-ba írás
+     * Mezï¿½t kiï¿½rï¿½ fï¿½ggvï¿½ny
+     * @throws IOException ha nem sikerï¿½lt a file-ba ï¿½rï¿½s
      */
     public void print() throws IOException {
 
-        Main.fw.append("Field\nType ").append(type).append("\n");
+        Main.FW.append("Field\nType ").append(type).append("\n");
         if(param != null)
-            Main.fw.append("Param ").append(param).append("\n");
-        Main.fw.append("Name ").append(getName()).append("\n");
+            Main.FW.append("Param ").append(param).append("\n");
+        Main.FW.append("Name ").append(getName()).append("\n");
         if(equipment != null)
-            Main.fw.append("Equipment ").append(equipment).append("\n");
-        Main.fw.append("end\n");
+            Main.FW.append("Equipment ").append(equipment).append("\n");
+        Main.FW.append("end\n");
     }
 
     /**
-     * @return mezõ neve
+     * @return mezï¿½ neve
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Mezõ nevének beállítása
-     * @param name a beállítandó név
+     * Mezï¿½ nevï¿½nek beï¿½llï¿½tï¿½sa
+     * @param name a beï¿½llï¿½tandï¿½ nï¿½v
      */
     public void setName(String name) {
         this.name = name;

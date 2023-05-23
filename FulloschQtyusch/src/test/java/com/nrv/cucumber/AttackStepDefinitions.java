@@ -18,24 +18,24 @@ public class AttackStepDefinitions {
   @And("virologist {int} has axe")
   public void virologistHasAxe(int viroNum) {
     if(viroNum == 1 ){
-      virologistProvider.getVirologist().AddEquipment(new Axe());
+      virologistProvider.getVirologist().addEquipment(new Axe());
     }else{
-      virologist.AddEquipment(new Axe());
+      virologist.addEquipment(new Axe());
     }
   }
 
   @When("virologist {int} attacks")
   public void virologistAttacks(int viroNum) {
     if(viroNum == 1 ){
-      virologistProvider.getVirologist().Attack(virologist);
+      virologistProvider.getVirologist().attack(virologist);
     }else{
-      virologist.Attack(virologistProvider.getVirologist());
+      virologist.attack(virologistProvider.getVirologist());
     }
   }
 
   @When("virologist attacks themselves")
   public void virologistAttacksThemselves() {
-    virologistProvider.getVirologist().Attack(virologistProvider.getVirologist());
+    virologistProvider.getVirologist().attack(virologistProvider.getVirologist());
   }
 
   @Then("virologist {int} is killed")
@@ -46,30 +46,30 @@ public class AttackStepDefinitions {
     }else{
       v= virologist;
     }
-    Assertions.assertFalse(v.getField().GetVirologists().contains(v));
+    Assertions.assertFalse(v.getField().getVirologists().contains(v));
   }
 
   @And("virologist {int} is in the game")
   public void virologistIsInAGame(int viroNum) {
     if(viroNum == 1){
-      game.AddVirologist(virologistProvider.getVirologist());
-      virologistProvider.getVirologist().SetGame(game);
+      game.addVirologist(virologistProvider.getVirologist());
+      virologistProvider.getVirologist().setGame(game);
     }
     else{
-      game.AddVirologist(virologist);
-      virologist.SetGame(game);
+      game.addVirologist(virologist);
+      virologist.setGame(game);
     }
   }
 
   @And("there is a game")
   public void thereIsAGame() {
-    game = Game.Create();
-    game.AddGeneticCode(new BlockCode());
+    game = Game.create();
+    game.addGeneticCode(new BlockCode());
   }
 
   @And("victim virologist is created")
   public void victimVirologistIsCreated() {
     virologist = new Virologist();
-    virologist.SetField(new Field());
+    virologist.setField(new Field());
   }
 }

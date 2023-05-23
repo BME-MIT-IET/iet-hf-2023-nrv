@@ -1,9 +1,9 @@
 /**
- * A pályaleírónyelvben laboratóriumot jelképezõ osztály
+ * A pï¿½lyaleï¿½rï¿½nyelvben laboratï¿½riumot jelkï¿½pezï¿½ osztï¿½ly
  */
 public class Laboratory extends Field{
     /**
-     * Azonos típusú mezõ számlálója az automatikus elnevezéshez
+     * Azonos tï¿½pusï¿½ mezï¿½ szï¿½mlï¿½lï¿½ja az automatikus elnevezï¿½shez
      */
     private static int counter = 1;
     /**
@@ -17,7 +17,7 @@ public class Laboratory extends Field{
 
         equipment = null;
 
-        int choice = Main.rnd.nextInt(Main.codes.length);
-        param = Main.codes[choice];
+        int choice = Main.RND.nextInt(Main.CODES.length);
+        param = Main.CODES[choice];
     }
 }

@@ -16,9 +16,9 @@ public class DefEquip implements IEquipStr
 	 * @param f Erről a mezőről próbálkozik védőfelszerelés felvételével v.
 	 */
 	@Override
-	public void Equip(Virologist v, Field f)
+	public void equip(Virologist v, Field f)
 	{
-		f.PickUpEquipment(v);
-		v.DecreaseActions();
+		f.pickUpEquipment(v);
+		v.decreaseActions();
 	}
 }
