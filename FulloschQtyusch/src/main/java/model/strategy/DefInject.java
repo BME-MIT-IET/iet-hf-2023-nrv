@@ -21,7 +21,9 @@ public class DefInject implements IInjectStr
 			v.decreaseActions(); //mindenképpen csökken az action-ök száma!
 			target.targetedWith(v, gc.create(v));
 		} catch (Exception e) {
-			//Nincs elég anyag a készítéshez
+			throw new RuntimeException("I had not enough material to create agent. Required material: "+
+					"\nAmino-acid: "+gc.getAminoAcidPrice()+
+					"\nNucleotide: "+gc.getNucleotidePrice());
 		}
 	}
 }

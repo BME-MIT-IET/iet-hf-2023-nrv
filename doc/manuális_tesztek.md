@@ -1,4 +1,4 @@
-A következő funkciókat szeretnénk tesztelni manuálisan:
+## A következő funkciókat szeretnénk tesztelni manuálisan:
 
 - Játékos-mező interakció:
     - A virológus el tud lépni szomszédos mezőbe.

@@ -28,6 +28,7 @@ public class ForgetCode extends GeneticCode
 	 * @return a létrehozott ágens.
 	 * @throws GeneticCodeException ha nem hozható létre az Agent, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
 	 */
+	@Override
 	public Agent create(Virologist v) throws GeneticCodeException
 	{
 		try {

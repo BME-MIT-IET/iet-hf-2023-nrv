@@ -31,6 +31,7 @@ public class BlockCode extends GeneticCode
 	 * @return az elkészített ágens
 	 * @throws GeneticCodeException ha a virológusnak nem volt elég anyaga az ágenskészítéshez
 	 */
+	@Override
 	public Agent create(Virologist v) throws GeneticCodeException
 	{
 		try {
@@ -38,7 +39,6 @@ public class BlockCode extends GeneticCode
 		} catch (Exception e) {
 			throw new GeneticCodeException("Failed to remove nucleotide.");
 		}
-
 		try{
 			v.removeAminoAcid(aminoAcidPrice);
 		}
