@@ -27,9 +27,9 @@ public class InjectStepDefinitions {
     Virologist v = virologistProvider.getVirologist();
     Field before = new Field();
     Field after = new Field();
-    before.AddNeighbour(after);
-    v.SetField(before);
-    v.Move(after);
+    before.addNeighbour(after);
+    v.setField(before);
+    v.move(after);
     Assertions.assertEquals(after, v.getField());
   }
   @And("virologist is infected with {word} agent")
@@ -41,7 +41,7 @@ public class InjectStepDefinitions {
       case "stun" -> agent = new Stun(1);
       case "chorea" -> agent = new Chorea(1);
     }
-    virologistProvider.getVirologist().TargetedWith(agent);
+    virologistProvider.getVirologist().targetedWith(agent);
   }
 
   @And("the injectable virologist is created")
@@ -53,15 +53,15 @@ public class InjectStepDefinitions {
   public void virologistHasEnoughMaterialForForgetGeneticCode(int virNum, String codeType) {
     GeneticCode code = getActualCode(codeType);
     Virologist v = getActualVirologist(virNum);
-    v.AddAminoAcid(code.getAminoAcidPrice());
-    v.AddNucleotide(code.getNucleotidePrice());
+    v.addAminoAcid(code.getAminoAcidPrice());
+    v.addNucleotide(code.getNucleotidePrice());
   }
 
   @And("virologist {int} already learned some codes")
   public void virologistAlreadyLearnedSomeCodes(int virNum) {
     Virologist v = getActualVirologist(virNum);
-    v.AddGeneticCode(new StunCode());
-    v.AddGeneticCode(new BlockCode());
+    v.addGeneticCode(new StunCode());
+    v.addGeneticCode(new BlockCode());
     Assertions.assertFalse(v.getGeneticCodes().isEmpty());
 
   }
@@ -70,7 +70,7 @@ public class InjectStepDefinitions {
   public void virologistInjectsVirologist(int vir1, int vir2, String codeType) {
     Virologist v1 = getActualVirologist(vir1);
     Virologist v2 = getActualVirologist(vir2);
-    v1.Inject(v2, getActualCode(codeType));
+    v1.inject(v2, getActualCode(codeType));
   }
 
   @Then("virologist {int} knows no more code")
@@ -95,15 +95,15 @@ public class InjectStepDefinitions {
   public void virologistAlreadyLearnedForgetCode(int virNum, String codeType) {
     Virologist v = getActualVirologist(virNum);
     GeneticCode code = getActualCode(codeType);
-    v.AddGeneticCode(code);
+    v.addGeneticCode(code);
   }
 
   @And("virologist {int} does not have enough material for {word} code")
   public void virologistDoesNotHaveEnoughMaterialForForgetCode(int viroNum, String codeType) {
     Virologist v = getActualVirologist(viroNum);
     try {
-      v.RemoveAminoAcid(v.GetAminoAcid());
-      v.RemoveNucleotide(v.GetNucleotide());
+      v.removeAminoAcid(v.getAminoAcid());
+      v.removeNucleotide(v.getNucleotide());
     }catch(Exception e){}
   }
 

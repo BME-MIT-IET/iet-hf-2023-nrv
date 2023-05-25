@@ -14,14 +14,14 @@ class ChoreaCodeTest {
     @Test
     void test_createFail() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(Exception.class,() -> choreaCode.Create(virologist));
+        Assertions.assertThrows(Exception.class,() -> choreaCode.create(virologist));
     }
 
     @Test
     void test_createSuccess() {
         Virologist virologist = new Virologist();
-        virologist.AddAminoAcid(choreaCode.getAminoAcidPrice());
-        virologist.AddNucleotide(choreaCode.getNucleotidePrice());
-        Assertions.assertDoesNotThrow(() -> choreaCode.Create(virologist));
+        virologist.addAminoAcid(choreaCode.getAminoAcidPrice());
+        virologist.addNucleotide(choreaCode.getNucleotidePrice());
+        Assertions.assertDoesNotThrow(() -> choreaCode.create(virologist));
     }
 }

@@ -22,17 +22,17 @@ class AxeTest {
 
     @Test
     void test_attack() {
-        axe.Attack(attack, target);
+        axe.attack(attack, target);
 
-        verify(attack, times(1)).DecreaseActions();
-        verify(target, times(1)).Kill();
-        verify(attack, times(1)).Reset();
+        verify(attack, times(1)).decreaseActions();
+        verify(target, times(1)).kill();
+        verify(attack, times(1)).reset();
     }
 
     @Test
     void test_applyStrategy() {
-        axe.ApplyStrategy(attack);
+        axe.applyStrategy(attack);
 
-        verify(attack, times(1)).SetAttackStr(axe);
+        verify(attack, times(1)).setAttackStr(axe);
     }
 }

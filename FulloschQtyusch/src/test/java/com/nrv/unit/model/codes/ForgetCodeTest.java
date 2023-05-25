@@ -14,14 +14,14 @@ class ForgetCodeTest {
     @Test
     void test_createFail() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(Exception.class,() -> forgetCode.Create(virologist));
+        Assertions.assertThrows(Exception.class,() -> forgetCode.create(virologist));
     }
 
     @Test
     void test_createSuccess() {
         Virologist virologist = new Virologist();
-        virologist.AddAminoAcid(forgetCode.getAminoAcidPrice());
-        virologist.AddNucleotide(forgetCode.getNucleotidePrice());
-        Assertions.assertDoesNotThrow(() -> forgetCode.Create(virologist));
+        virologist.addAminoAcid(forgetCode.getAminoAcidPrice());
+        virologist.addNucleotide(forgetCode.getNucleotidePrice());
+        Assertions.assertDoesNotThrow(() -> forgetCode.create(virologist));
     }
 }

@@ -14,14 +14,14 @@ class StunCodeTest {
     @Test
     void test_createFail() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(Exception.class,() -> stunCode.Create(virologist));
+        Assertions.assertThrows(Exception.class,() -> stunCode.create(virologist));
     }
 
     @Test
     void test_createSuccess() {
         Virologist virologist = new Virologist();
-        virologist.AddAminoAcid(stunCode.getAminoAcidPrice());
-        virologist.AddNucleotide(stunCode.getNucleotidePrice());
-        Assertions.assertDoesNotThrow(() -> stunCode.Create(virologist));
+        virologist.addAminoAcid(stunCode.getAminoAcidPrice());
+        virologist.addNucleotide(stunCode.getNucleotidePrice());
+        Assertions.assertDoesNotThrow(() -> stunCode.create(virologist));
     }
 }

@@ -14,14 +14,14 @@ class BlockCodeTest {
     @Test
     void test_createFail() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(Exception.class, () -> blockCode.Create(virologist));
+        Assertions.assertThrows(Exception.class, () -> blockCode.create(virologist));
     }
 
     @Test
     void test_createSuccess() {
         Virologist virologist = new Virologist();
-        virologist.AddAminoAcid(blockCode.getAminoAcidPrice());
-        virologist.AddNucleotide(blockCode.getNucleotidePrice());
-        Assertions.assertDoesNotThrow(() -> blockCode.Create(virologist));
+        virologist.addAminoAcid(blockCode.getAminoAcidPrice());
+        virologist.addNucleotide(blockCode.getNucleotidePrice());
+        Assertions.assertDoesNotThrow(() -> blockCode.create(virologist));
     }
 }

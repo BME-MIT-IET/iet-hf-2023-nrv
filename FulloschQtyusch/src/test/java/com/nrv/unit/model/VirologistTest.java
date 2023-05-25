@@ -30,13 +30,13 @@ class VirologistTest {
     @Test
     void test_kill() {
         Field field = new Field();
-        field.AddVirologist(virologist);
+        field.addVirologist(virologist);
 
-        when(game.GetCurrentPlayer()).thenReturn(virologist);
+        when(game.getCurrentPlayer()).thenReturn(virologist);
 
-        virologist.Kill();
+        virologist.kill();
 
-        Assertions.assertEquals(0, field.GetVirologists().size());
-        verify(game, times(1)).GetCurrentPlayer();
+        Assertions.assertEquals(0, field.getVirologists().size());
+        verify(game, times(1)).getCurrentPlayer();
     }
 }
