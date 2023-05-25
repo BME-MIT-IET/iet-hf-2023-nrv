@@ -21,16 +21,5 @@ public class VirologistStepDefinitions {
   public Virologist getVirologist(){
     return virologist;
   }
-  @And("virologist is infected with {word} agent")
-  public void virologistIsInfectedWithBlockAgent(String agentType) {
-    Agent agent = new Forget(1);
-    switch (agentType){
-      case "block" -> agent = new Block(1);
-      case "bear" -> agent = new Bear(1);
-      case "stun" -> agent = new Stun(1);
-      case "chorea" -> agent = new Chorea(1);
-    }
-    agent.applyStrategy(virologist);
-  }
 
 }
