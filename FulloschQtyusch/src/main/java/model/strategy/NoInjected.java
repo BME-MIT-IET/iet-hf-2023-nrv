@@ -16,7 +16,7 @@ public class NoInjected implements IInjectedStr
 	 * @param a A felkent ágens.
 	 */
 	@Override
-	public void Injected(Virologist v, Agent a)
+	public void injected(Virologist v, Agent a)
 	{
 	}
 
@@ -27,6 +27,6 @@ public class NoInjected implements IInjectedStr
 	 * @param a A felkent ágens.
 	 */
 	@Override
-	public void Injected(Virologist by, Virologist injected, Agent a) {
+	public void injected(Virologist by, Virologist injected, Agent a) {
 	}
 }

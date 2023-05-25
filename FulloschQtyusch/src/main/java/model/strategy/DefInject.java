@@ -16,10 +16,10 @@ public class DefInject implements IInjectStr
 	 * @param gc A genetikai kód, ami a felkenendő ágenst gyártja.
 	 */
 	@Override
-	public void Inject(Virologist v, Virologist target, GeneticCode gc) {
+	public void inject(Virologist v, Virologist target, GeneticCode gc) {
 		try {
-			v.DecreaseActions(); //mindenképpen csökken az action-ök száma!
-			target.TargetedWith(v, gc.Create(v));
+			v.decreaseActions(); //mindenképpen csökken az action-ök száma!
+			target.targetedWith(v, gc.create(v));
 		} catch (Exception e) {
 			throw new RuntimeException("I had not enough material to create agent. Required material: "+
 					"\nAmino-acid: "+gc.getAminoAcidPrice()+

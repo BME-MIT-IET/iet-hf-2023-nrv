@@ -26,18 +26,23 @@ public class ForgetCode extends GeneticCode
 	 * Létrehoz egy feleljtő (Forget) ágenst. és visszatér vele.
 	 * @param v a virológus, aki szeretné ágenst készíteni.
 	 * @return a létrehozott ágens.
-	 * @throws Exception ha nem hozható létre az Agent, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
+	 * @throws GeneticCodeException ha nem hozható létre az Agent, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
 	 */
-	public Agent Create(Virologist v) throws Exception
+	@Override
+	public Agent create(Virologist v) throws GeneticCodeException
 	{
+		try {
+			v.removeNucleotide(nucleotidePrice);
+		} catch (Exception e) {
+			throw new GeneticCodeException("Failed to remove nucleotide.");
+		}
 
-		v.RemoveNucleotide(nucleotidePrice);
 		try{
-			v.RemoveAminoAcid(aminoAcidPrice);
+			v.removeAminoAcid(aminoAcidPrice);
 		}
 		catch(Exception e){
-			v.AddNucleotide(nucleotidePrice);
-			throw e;
+			v.addNucleotide(nucleotidePrice);
+			throw new GeneticCodeException("Failed to remove amino acid.");
 		}
 		return new Forget(turnsLeft*playerCount);
 	}

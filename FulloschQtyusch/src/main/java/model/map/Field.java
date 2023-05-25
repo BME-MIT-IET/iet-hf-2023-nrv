@@ -5,6 +5,7 @@ package model.map;
 import model.Virologist;
 import model.equipments.Equipment;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -59,7 +60,7 @@ public class Field
 	 * Megadja a körülötte lévő mezőket
 	 * @return szomszéd mezők
 	 */
-	public ArrayList<Field> GetNeighbours() {
+	public List<Field> getNeighbours() {
 		return neighbours;
 	}
 
@@ -67,7 +68,7 @@ public class Field
 	 * Megadja a mezőn tartózkodó virológusokat
 	 * @return virológusok
 	 */
-	public ArrayList<Virologist> GetVirologists(){
+	public List<Virologist> getVirologists(){
 		return virologists;
 	}
 
@@ -75,7 +76,7 @@ public class Field
 	 * Egy új szomszéddal bővíti a mezőt
 	 * @param f új szomszéd
 	 */
-	public void AddNeighbour(Field f) {
+	public void addNeighbour(Field f) {
 		if(!neighbours.contains(f))
 			neighbours.add(f);
 	}
@@ -84,23 +85,23 @@ public class Field
 	 * A mezőn az anyagok tönkre tételét szimbolizálja,
 	 * de nem csinál semmit alapból, hiszen csak a Warehouse-on található anyag
 	 */
-	public void DestroyMaterial(){
+	public void destroyMaterial(){
 	}
 
 	/**
 	 * Virológus elhelyezése a mezőn
 	 * @param v elehelyezendő virológus
 	 */
-	public void AddVirologist(Virologist v) {
+	public void addVirologist(Virologist v) {
 		virologists.add(v);
-		v.SetField(this);
+		v.setField(this);
 	}
 
 	/**
 	 * Eltávolítja a virológust a mezőről
 	 * @param v eltávolítandó virológus
 	 */
-	public void RemoveVirologist(Virologist v) {
+	public void removeVirologist(Virologist v) {
 		virologists.remove(v);
 	}
 
@@ -108,7 +109,7 @@ public class Field
 	 * Eldobja az adott felszerelést a mezőre
 	 * @param e eldobandó felszerelés
 	 */
-	public void Drop(Equipment e) {
+	public void drop(Equipment e) {
 		equipments.add(e);
 	}
 
@@ -116,25 +117,25 @@ public class Field
 	 * Genetikai kód tanulásáért felelős
 	 * @param v tanuló virológus
 	 */
-	public void LearnGeneticCode(Virologist v) {
+	public void learnGeneticCode(Virologist v) {
 	}
 
 	/**
 	 * Anyag gyüjtésért felelős
 	 * @param v gyüjtő virológus
 	 */
-	public void CollectMaterial(Virologist v) {
+	public void collectMaterial(Virologist v, Material materialType) {
 	}
 
 	/**
 	 * Felszerelés felvétele adott virológussal
 	 * @param v felszedő virológus
 	 */
-	public void PickUpEquipment(Virologist v) {
-		if (equipments.size()>0) {
+	public void pickUpEquipment(Virologist v) {
+		if (!equipments.isEmpty()) {
 			Equipment equipment = equipments.remove(equipments.size()-1);
 			//equipment.Apply(v); berakva AddEquipment-be
-			v.AddEquipment(equipment);
+			v.addEquipment(equipment);
 			//equipment.ApplyStrategy(v); berakva AddEquipment-be
 		}
 	}

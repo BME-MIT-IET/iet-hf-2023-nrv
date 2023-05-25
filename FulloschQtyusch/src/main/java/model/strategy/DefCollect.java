@@ -2,6 +2,7 @@ package model.strategy;
 
 import model.Virologist;
 import model.map.Field;
+import model.map.Material;
 
 /**
  * Alapértelmezett aminosav vagy nukleotid gyűjtési stratégia, ami által a virológus aminosavat vagy nukleotidot
@@ -16,9 +17,9 @@ public class DefCollect implements ICollectStr {
 	 * @param f a mező, amelyen gyüjtődik az anyag
 	 */
 	@Override
-	public void Collect(Virologist v, Field f) {
-		f.CollectMaterial(v);
-		v.DecreaseActions();
+	public void collect(Virologist v, Field f, Material materialType) {
+		f.collectMaterial(v, materialType);
+		v.decreaseActions();
 	}
 
 }
