@@ -31,6 +31,7 @@ public class BlockCode extends GeneticCode
 	 * @return az elkészített ágens
 	 * @throws GeneticCodeException ha a virológusnak nem volt elég anyaga az ágenskészítéshez
 	 */
+	@Override
 	public Agent create(Virologist v) throws GeneticCodeException
 	{
 		try {

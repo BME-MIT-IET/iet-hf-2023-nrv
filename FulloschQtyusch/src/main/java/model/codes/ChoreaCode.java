@@ -29,6 +29,7 @@ public class ChoreaCode extends GeneticCode
 	 * @return a létrehozot vitustánc ágens
 	 * @throws GeneticCodeException ha nem hozható létre az Agent, mert nincs hozzá elég anyaga a paraméterül kapott virológusnak.
 	 */
+	@Override
 	public Agent create(Virologist v) throws GeneticCodeException
 	{
 		try {

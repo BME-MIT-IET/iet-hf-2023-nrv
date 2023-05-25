@@ -311,6 +311,8 @@ public class Window extends Observer {
 		endButton.setOpaque(false);
 		endButton.setBounds(480, 450, 70, 70);
 
+		String font = "sans-serif";
+
 		// ANYAGSÁVOK BEÁLLÍTÁSA
 		nucleoBar = new JProgressBar();
 		nucleoBar.setBounds(215, 460, 170, 25);
@@ -319,7 +321,7 @@ public class Window extends Observer {
 		nucleoLabel = new JLabel("min");
 		nucleoLabel.setBounds(215, 465, 170, 15);
 		nucleoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		nucleoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+		nucleoLabel.setFont(new Font(font, Font.BOLD, 13));
 
 		aminoBar = new JProgressBar();
 		aminoBar.setBounds(215, 495, 170, 25);
@@ -328,7 +330,7 @@ public class Window extends Observer {
 		aminoLabel = new JLabel("min");
 		aminoLabel.setBounds(215, 500, 170, 15);
 		aminoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		aminoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+		aminoLabel.setFont(new Font(font, Font.BOLD, 13));
 
 		// FELSZERELÉSEK BEÁLLÍTÁSA
 		Image equipmentSlotIcon = null;
@@ -356,12 +358,12 @@ public class Window extends Observer {
 
 		// KAKCIÓSZÁMLÁLÓ BEÁLLÍTÁSA
 		turnCounter = new JLabel("3 / 3");
-		turnCounter.setFont(new Font("sans-serif", Font.BOLD, 48));
+		turnCounter.setFont(new Font(font, Font.BOLD, 48));
 		turnCounter.setForeground(Color.white);
 		turnCounter.setBounds(480, 25, 160, 50);
 
 		currentField = new JLabel();
-		currentField.setFont(new Font("sans-serif", Font.BOLD, 20));
+		currentField.setFont(new Font(font, Font.BOLD, 20));
 		currentField.setForeground(Color.white);
 		currentField.setBounds(225, 425, 200, 25);
 
