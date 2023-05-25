@@ -1,0 +1,9 @@
+
+`	java:S112C"FDefine and throw a dedicated exception instead of using a generic one.(Î­®êûÿÿÿÿ
+U
+java:S2259"?A "NullPointerException" could be thrown; "o" is nullable here.(¸éƒ¦
+k
+java:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(Ý¢êÍýÿÿÿÿ
+5
+java:S1872"Use "isAssignableFrom" instead.(¸éƒ¦
+h	java:S100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î­®êûÿÿÿÿ
