@@ -28,6 +28,7 @@ public class StunCode extends GeneticCode
 	 * @return a létrehozott bénító ágens
 	 * @throws GeneticCodeException ha nem hozható létre az ágens, mert nincs hozzá elég anyag a paraméterül kapott virológusnak.
 	 */
+	@Override
 	public Agent create(Virologist v) throws GeneticCodeException
 	{
 		try {
