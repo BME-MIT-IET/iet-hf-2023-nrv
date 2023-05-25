@@ -164,9 +164,9 @@ public class Game extends Subject
 	 * @param virologist az eltávolítandó virológus.
 	 */
 
-	public void RemoveVirologist(Virologist virologist) {
+	public void removeVirologist(Virologist virologist) {
 		if(virologists.isEmpty()){
-			EndGame();
+			endGame();
 		}
 		int i = virologists.indexOf(virologist);
 		if (i < currentPlayer)

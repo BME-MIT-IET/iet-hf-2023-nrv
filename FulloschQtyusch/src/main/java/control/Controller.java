@@ -245,7 +245,7 @@ public class Controller extends Subject {
 
         actionMessage =  "Injecting " + v.getName() + " with " + code.getName() + "...";
         try{
-            currentPlayer.Inject(v, code);
+            currentPlayer.inject(v, code);
         }catch(Exception e){
             actionMessage = e.getMessage();
         }
