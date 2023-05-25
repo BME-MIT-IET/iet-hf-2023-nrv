@@ -2,6 +2,7 @@ package com.nrv.unit.model.codes;
 
 import model.Virologist;
 import model.codes.BlockCode;
+import model.codes.GeneticCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +15,7 @@ class BlockCodeTest {
     @Test
     void test_createFail() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(Exception.class, () -> blockCode.create(virologist));
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class, () -> blockCode.create(virologist));
     }
 
     @Test

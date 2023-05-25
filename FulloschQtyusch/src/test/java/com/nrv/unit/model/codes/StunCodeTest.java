@@ -1,6 +1,7 @@
 package com.nrv.unit.model.codes;
 
 import model.Virologist;
+import model.codes.GeneticCode;
 import model.codes.StunCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ class StunCodeTest {
     @Test
     void test_createFail() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(Exception.class,() -> stunCode.create(virologist));
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> stunCode.create(virologist));
     }
 
     @Test
