@@ -1,16 +1,8 @@
 package com.nrv.cucumber;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import model.Virologist;
-import model.agents.Agent;
-import model.agents.Bear;
-import model.agents.Block;
-import model.agents.Chorea;
-import model.agents.Forget;
-import model.agents.Stun;
 import model.codes.BlockCode;
 import model.map.Field;
 import model.map.Laboratory;
@@ -25,17 +17,17 @@ public class MoveStepDefinitions {
   @And("virologist stays on field")
   public void virologistStaysOnField(){
     field = new Field();
-    field.AddVirologist(virologistCreator.getVirologist());
+    field.addVirologist(virologistCreator.getVirologist());
   }
   @And("field has neighbour laboratory")
   public void fieldHasNeighbourLaboratory(){
     laboratory = new Laboratory(new BlockCode());
-    field.AddNeighbour(laboratory);
+    field.addNeighbour(laboratory);
   }
   @When("virologist moves to laboratory")
   public void virologistMovesToLaboratory(){
 
-    virologistCreator.getVirologist().Move(laboratory);
+    virologistCreator.getVirologist().move(laboratory);
   }
   @Then("virologist should stay on {word}")
   public void virologistShouldStayOnLaboratory(String fieldType){

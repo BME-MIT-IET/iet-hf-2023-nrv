@@ -14,7 +14,7 @@ public class DefAttack implements IAttackStr{
      * @param target A megtámadott virológus.
      */
     @Override
-    public void Attack(Virologist attacker, Virologist target) {
-        attacker.DecreaseActions();
+    public void attack(Virologist attacker, Virologist target) {
+        attacker.decreaseActions();
     }
 }

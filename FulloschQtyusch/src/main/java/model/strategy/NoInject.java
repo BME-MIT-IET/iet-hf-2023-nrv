@@ -16,7 +16,7 @@ public class NoInject implements IInjectStr
 	 * @param gc A genetikai kód, ami a felkenendő ágenst gyártja.
 	 */
 	@Override
-	public void Inject(Virologist v, Virologist target, GeneticCode gc) {
-		v.DecreaseActions();
+	public void inject(Virologist v, Virologist target, GeneticCode gc) {
+		v.decreaseActions();
 	}
 }

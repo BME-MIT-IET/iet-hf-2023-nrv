@@ -2,9 +2,6 @@ package com.nrv.cucumber;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import java.util.LinkedList;
-import java.util.List;
-import model.Game;
 import model.Virologist;
 import model.agents.Agent;
 import model.agents.Bear;
@@ -19,11 +16,10 @@ public class VirologistStepDefinitions {
   @Given("virologist is created")
   public void virologistIsCreated(){
     virologist = new Virologist();
-    virologist.SetField(new Field());
+    virologist.setField(new Field());
   }
   public Virologist getVirologist(){
     return virologist;
   }
-
 
 }

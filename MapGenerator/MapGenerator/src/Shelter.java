@@ -1,9 +1,9 @@
 /**
- * A pályaleírónyelvben óvóhelyet jelképezõ osztály
+ * A pï¿½lyaleï¿½rï¿½nyelvben ï¿½vï¿½helyet jelkï¿½pezï¿½ osztï¿½ly
  */
 public class Shelter extends  Field {
     /**
-     * Azonos típusú mezõ számlálója az automatikus elnevezéshez
+     * Azonos tï¿½pusï¿½ mezï¿½ szï¿½mlï¿½lï¿½ja az automatikus elnevezï¿½shez
      */
     private static int counter = 1;
     /**
@@ -15,8 +15,8 @@ public class Shelter extends  Field {
 
         type = "Shelter";
 
-        int choice = Main.rnd.nextInt(Main.equipments.length);
-        param = Main.equipments[choice];
+        int choice = Main.RND.nextInt(Main.EQUIPMENTS.length);
+        param = Main.EQUIPMENTS[choice];
 
         equipment = null;
     }
