@@ -14,10 +14,10 @@ public class DefLoot implements ILootStr
 	 * @param target A kizsákmányolandó virológus.
 	 */
 	@Override
-	public void LootAmino(Virologist v, Virologist target)
+	public void lootAmino(Virologist v, Virologist target)
 	{
-		v.DecreaseActions();
-		target.StealAminoAcid(v);
+		v.decreaseActions();
+		target.stealAminoAcid(v);
 	}
 
 	/**
@@ -26,10 +26,10 @@ public class DefLoot implements ILootStr
 	 * @param target A kizsákmányolandó virológus.
 	 */
 	@Override
-	public void LootNucleotide(Virologist v, Virologist target)
+	public void lootNucleotide(Virologist v, Virologist target)
 	{
-		v.DecreaseActions();
-		target.StealNukleotid(v);
+		v.decreaseActions();
+		target.stealNukleotid(v);
 	}
 
 	/**
@@ -38,9 +38,9 @@ public class DefLoot implements ILootStr
 	 * @param target A kizsákmányolandó virológus.
 	 */
 	@Override
-	public void LootEquipment(Virologist v, Virologist target)
+	public void lootEquipment(Virologist v, Virologist target)
 	{
-		v.DecreaseActions();
-		target.StealEquipment(v);
+		v.decreaseActions();
+		target.stealEquipment(v);
 	}
 }

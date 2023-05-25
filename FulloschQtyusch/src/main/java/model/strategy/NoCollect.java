@@ -15,8 +15,7 @@ public class NoCollect implements ICollectStr {
 	 * @param f A mező, amelyen gyüjtődik az anyag
 	 */
 	@Override
-	public void Collect(Virologist v, Field f, Material material) {
-
+	public void collect(Virologist v, Field f, Material material) {
 	}
 
 }

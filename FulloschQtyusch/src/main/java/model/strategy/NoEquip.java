@@ -16,8 +16,8 @@ public class NoEquip implements IEquipStr
 	 * @param f Erről a mezőről próbálkozik védőfelszerelés felvételével v.
 	 */
 	@Override
-	public void Equip(Virologist v, Field f)
+	public void equip(Virologist v, Field f)
 	{
-		v.DecreaseActions();
+		v.decreaseActions();
 	}
 }
