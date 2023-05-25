@@ -17,8 +17,8 @@ public class Controller extends Subject {
     /**
      * Az aktuálisan játszott játék.
      */
-    private final Game game;
-    private final Window window;
+    private Game game;
+    private Window window;
     private String actionMessage;
 
     public Controller(Game game) {
@@ -28,6 +28,9 @@ public class Controller extends Subject {
         attach(window);
         Virologist first = game.getCurrentPlayer();
         first.attach(window);
+    }
+    public Controller(){
+        actionMessage = "";
     }
 
     /**
@@ -240,8 +243,12 @@ public class Controller extends Subject {
         Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        actionMessage =  "Trying to inject " + v.getName() + " with " + code.getName() + "...";
-        currentPlayer.inject(v, code);
+        actionMessage =  "Injecting " + v.getName() + " with " + code.getName() + "...";
+        try{
+            currentPlayer.Inject(v, code);
+        }catch(Exception e){
+            actionMessage = e.getMessage();
+        }
         notifyAllObservers();
     }
 

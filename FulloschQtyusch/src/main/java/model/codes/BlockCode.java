@@ -39,7 +39,6 @@ public class BlockCode extends GeneticCode
 		} catch (Exception e) {
 			throw new GeneticCodeException("Failed to remove nucleotide.");
 		}
-
 		try{
 			v.removeAminoAcid(aminoAcidPrice);
 		}
