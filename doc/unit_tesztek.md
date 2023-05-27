@@ -66,6 +66,11 @@
   -hiba: a szomszédos mezők beállításánál csak egyirányú kapcsolat jön létre,
   ez probléma, mivel a hívónak kell tudnia, hogy a másik mezőn is be kell állítania az asszociációt.
   -javítás: a setField metódus állítsa be a paraméterben kapott field-en is a szomszéd kapcsolatot.
+  -Laboratory osztály tesztelése
+  -InfectedLaboratory osztály tesztelése
+  -Warehouse osztály tesztelése
+
+-megjegyzés: néhány metódust nem lehetett unit teszttel ellenőrizni, mivel azok privát váltózó állapotát változtatják
 
 ### Controller package
 
