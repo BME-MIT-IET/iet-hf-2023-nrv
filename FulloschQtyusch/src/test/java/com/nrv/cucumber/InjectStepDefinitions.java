@@ -104,7 +104,7 @@ public class InjectStepDefinitions {
     try {
       v.removeAminoAcid(v.getAminoAcid());
       v.removeNucleotide(v.getNucleotide());
-    }catch(Exception e){}
+    }catch(Exception ignored){}
   }
 
   @Then("virologist {int} will still know forget code")
