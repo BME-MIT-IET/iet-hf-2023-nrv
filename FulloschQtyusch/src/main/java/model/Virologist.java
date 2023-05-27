@@ -26,11 +26,6 @@ public class Virologist extends Subject
 	}
 
 	private static final Random random = new Random();
-	/**
-	 * A virológus aktuális kontextusát adja vissza, azaz, hogy éppen milyen játékban vesz részt.
-	 * @return
-	 */
-	public Game getContext(){return game;} //randomitás kikapcsolása stb..
 
 	/**
 	 * Prototípusban a nevük alapján jelennek meg a virológusok, ezt szimbolizálja a tagváltozó.
@@ -464,38 +459,38 @@ public class Virologist extends Subject
 
 	/**
 	 * Kezdemenyezi aminosav levonasat a virologustol ami a strategianak megfeleloen tortenik
-	 * @param self a virologus akitol levonjuk az aminosav mennyiseget
+	 * @param target a virologus akitol levonjuk az aminosav mennyiseget
 	 */
-	public void stealAminoAcid(Virologist self)
+	public void stealAminoAcid(Virologist target)
 	{
-		lootedStr.lootedForAminoAcid(self, this);
+		lootedStr.lootedForAminoAcid(target, this);
 		notifyAllObservers();
 	}
 
 	/**
 	 * Kezdemenyezi nukleotid levonasat a virologustol ami a strategianak megfeleloen tortenik
-	 * @param self a virologus akitol levonjuk a nukleotid mennyiseget
+	 * @param target a virologus akitol levonjuk a nukleotid mennyiseget
 	 */
-	public void stealNukleotid(Virologist self)
+	public void stealNucleotid(Virologist target)
 	{
-		lootedStr.lootedForNukleotide(self, this);
+		lootedStr.lootedForNucleotide(target, this);
 		notifyAllObservers();
 	}
 
 	/**
 	 * Veletlenszeruen kivalaszt egy felszerelest a meglevok kozul
-	 * @param self a virologus aki elszeretne tulajdonitani a felszerelest
+	 * @param thief a virologus aki elszeretne tulajdonitani a felszerelest
 	 */
-	public void stealEquipment(Virologist self)
+	public void stealEquipment(Virologist thief)
 	{
 		if (!equipments.isEmpty()) {
 			if(game.randOn) {
 				int r = random.nextInt(equipments.size());
 				Equipment e = equipments.get(r);
-				lootedStr.lootedForEquipment(self, this, e);
+				lootedStr.lootedForEquipment(thief, this, e);
 			}
 			else{
-				lootedStr.lootedForEquipment(self,this, equipments.get(0));
+				lootedStr.lootedForEquipment(thief,this, equipments.get(0));
 			}
 		}
 		notifyAllObservers();
