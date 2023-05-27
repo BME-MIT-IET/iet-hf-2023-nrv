@@ -7,6 +7,7 @@ import model.equipments.*;
 import model.map.*;
 import model.strategy.*;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -18,11 +19,18 @@ import java.util.Random;
  */
 public class Virologist extends Subject
 {
+	public static class VirologistException extends RuntimeException {
+		public VirologistException(String message) {
+			super(message);
+		}
+	}
+
+	private static final Random random = new Random();
 	/**
 	 * A virológus aktuális kontextusát adja vissza, azaz, hogy éppen milyen játékban vesz részt.
 	 * @return
 	 */
-	public Game GetContext(){return game;} //randomitás kikapcsolása stb..
+	public Game getContext(){return game;} //randomitás kikapcsolása stb..
 
 	/**
 	 * Prototípusban a nevük alapján jelennek meg a virológusok, ezt szimbolizálja a tagváltozó.
@@ -55,7 +63,7 @@ public class Virologist extends Subject
 	 * A támadási stratégia beállításáért felelős fv.
 	 * @param a A beállítandó stratégia
 	 */
-	public void SetAttackStr(IAttackStr a){
+	public void setAttackStr(IAttackStr a){
 		attackStr = a;
 	}
 
@@ -64,14 +72,14 @@ public class Virologist extends Subject
 	 */
 	private final int maxNumberOfItems;
 
-	public void SetActionCount(int count){actionCount = count;}
+	public void setActionCount(int count){actionCount = count;}
 
 	/**
 	 *  Azt a mennyiseget tarolja, hogy mennyi lepest tud vegre hajtani a korben a virologus.
 	 * */
 	private int actionCount;
 
-	private final int MaxActionCount = 3;
+	private static final int MAX_ACTION_COUNT = 3;
 
 	/**
 	 *  A virologus altal birtokolt aminosav mennyiseget tarolja.
@@ -118,12 +126,11 @@ public class Virologist extends Subject
 	private final ArrayList<GeneticCode> codes;
 
 
-	//TODO ezt hasznaljuk vhol?
 	/**
 	 * Az aktuálisan birtokolt genetikai kódokat adja vissza.
 	 * @return A birtokolt kódok.
 	 */
-	public ArrayList<GeneticCode> getGeneticCodes(){
+	public List<GeneticCode> getGeneticCodes(){
 		return codes;
 	}
 
@@ -190,29 +197,29 @@ public class Virologist extends Subject
 		limit = 20;
 		aminoAcid = 0;
 		nucleotide = 0;
-		actionCount = MaxActionCount;
+		actionCount = MAX_ACTION_COUNT;
 
-		Reset(); //sets the default strategies
+		reset(); //sets the default strategies
 	}
 
 	/**
 	 * Beallitja a jatek osztaly peldanyanak referenciajat
 	 * @param g a beallitando objektum
 	 */
-	public void SetGame(Game g){
+	public void setGame(Game g){
 		game = g;
 	}
 
 	/**
 	 * Eltávolítja a virológust a játékból.
 	 */
-	public void Kill(){
-		if(game.GetCurrentPlayer().equals(this)) {
-			this.EndTurn();
+	public void kill(){
+		if(game.getCurrentPlayer().equals(this)) {
+			this.endTurn();
 		}
 
-		field.RemoveVirologist(this);
-		game.RemoveVirologist(this);
+		field.removeVirologist(this);
+		game.removeVirologist(this);
 		notifyAllObservers();
 	}
 
@@ -220,9 +227,9 @@ public class Virologist extends Subject
 	 * Megtámad egy másik virológust, ha van elég akciópontja.
 	 * @param v A virológus, akit megtámad.
 	 */
-	public void Attack(Virologist v){
+	public void attack(Virologist v){
 		if (actionCount > 0){
-			attackStr.Attack(this, v);
+			attackStr.attack(this, v);
 		}
 		notifyAllObservers();
 	}
@@ -232,8 +239,8 @@ public class Virologist extends Subject
 	 * @param who A felkenő
 	 * @param a A felkenni próbált ágens.
 	 */
-	public void TargetedWith(Virologist who, Agent a){
-		injectedStr.Injected(who, this, a);
+	public void targetedWith(Virologist who, Agent a){
+		injectedStr.injected(who, this, a);
 		notifyAllObservers();
 	}
 
@@ -241,7 +248,7 @@ public class Virologist extends Subject
 	 * Egy kívánt felszerelést dob ki a virológus.
 	 * @param e A választott felszerelés
 	 */
-	public void RemoveEquipment(Equipment e){
+	public void removeEquipment(Equipment e){
 		equipments.remove(e);
 		notifyAllObservers();
 	}
@@ -249,14 +256,13 @@ public class Virologist extends Subject
 	/**
 	 * A virologus random mozgasaert felel, ezt egy bizonyos agens valthatja ki.
 	 */
-	public void Move()
+	public void move()
 	{
 		if (actionCount > 0) {
-			ArrayList<Field> fields = field.GetNeighbours();
+			List<Field> fields = field.getNeighbours();
 
-			if (fields.size() != 0) {
-				Random random = new Random();
-				Move(fields.get(random.nextInt(fields.size())));
+			if (!fields.isEmpty()) {
+				move(fields.get(random.nextInt(fields.size())));
 			}
 		}
 		notifyAllObservers();
@@ -268,10 +274,10 @@ public class Virologist extends Subject
 	 *
 	 * @param field  Megadjuk azt a mezot amire elszeretnenk mozditani a virologust
 	 */
-	public void Move(Field field)
+	public void move(Field field)
 	{
 		if (actionCount > 0) {
-			moveStr.Move(this, this.field, field);
+			moveStr.move(this, this.field, field);
 		}
 	}
 
@@ -280,7 +286,7 @@ public class Virologist extends Subject
 	 *
 	 * @param f Az a mezo amire eppen atleptunk
 	 */
-	public void SetField(Field f)
+	public void setField(Field f)
 	{
 		field = f;
 	}
@@ -288,10 +294,10 @@ public class Virologist extends Subject
 	/**
 	 * A fuggveny az utolsónak felvett equipment eldobásáért felel
 	 */
-	public void Drop()
+	public void drop()
 	{
-		if (actionCount > 0 && equipments.size() > 0) {
-			dropStr.Drop(this, field, equipments.remove(equipments.size()-1));
+		if (actionCount > 0 && !equipments.isEmpty()) {
+			dropStr.drop(this, field, equipments.remove(equipments.size()-1));
 		}
 	}
 
@@ -301,10 +307,10 @@ public class Virologist extends Subject
 	 *
 	 * @param v A kivalaszott virologus akitol szeretnenk lootolni
 	 */
-	public void LootAminoAcidFrom(Virologist v)
+	public void lootAminoAcidFrom(Virologist v)
 	{
 		if (actionCount > 0) {
-			lootStr.LootAmino(this, v);
+			lootStr.lootAmino(this, v);
 		}
 	}
 
@@ -314,10 +320,10 @@ public class Virologist extends Subject
 	 *
 	 * @param v @param v A kivalaszott virologus akitol szeretnenk lootolni
 	 */
-	public void LootNucleotideFrom(Virologist v)
+	public void lootNucleotideFrom(Virologist v)
 	{
 		if (actionCount > 0) {
-			lootStr.LootNucleotide(this, v);
+			lootStr.lootNucleotide(this, v);
 		}
 	}
 
@@ -327,20 +333,20 @@ public class Virologist extends Subject
 	 *
 	 * @param v A kivalaszott virologus akitol szeretnenk lootolni
 	 */
-	public void LootEquipmentFrom(Virologist v)
+	public void lootEquipmentFrom(Virologist v)
 	{
 		if (actionCount > 0 && equipments.size() < maxNumberOfItems) {
-			lootStr.LootEquipment(this, v);
+			lootStr.lootEquipment(this, v);
 		}
 	}
 
 	/**
 	 * Anyag felvetelt kezdemenyez az adott mezon, a strategia kezeli a megfelelo fuggveny hivasokat
 	 */
-	public void Collect()
+	public void collect(Material material)
 	{
 		if (actionCount > 0) {
-			collectStr.Collect(this, field);
+			collectStr.collect(this, field, material);
 		}
 	}
 
@@ -348,20 +354,20 @@ public class Virologist extends Subject
 	 * Az adott mezon levo genetikai kod megtanulasat kezdemenyezi, ehhez meghivja a learnStr-t,
 	 * ami elvegzi az allapotnak megfelelo fuggveny hivasokat.
 	 */
-	public void Learn()
+	public void learn()
 	{
 		if (actionCount > 0) {
-			learnStr.Learn(this, field);
+			learnStr.learn(this, field);
 		}
 	}
 
 	/**
 	 * Ez a fuggveny kezdemenyezi egy mezon levo felszereles felvetelet.
 	 */
-	public void Equip()
+	public void equip()
 	{
 		if (actionCount > 0) {
-			equipStr.Equip(this, field);
+			equipStr.equip(this, field);
 		}
 	}
 
@@ -369,7 +375,7 @@ public class Virologist extends Subject
 	 * uj agenst helyezunk a taroloba
 	 * @param a agens amit eltarolunk
 	 */
-	public void AddAgent(Agent a)
+	public void addAgent(Agent a)
 	{
 		if (agents.contains(a)){
 			int i = agents.indexOf(a);
@@ -386,7 +392,7 @@ public class Virologist extends Subject
 	 * Kivesz egy agenst a tarolobol
 	 * @param a agens amit kiakarunk venni
 	 */
-	public void RemoveAgent(Agent a)
+	public void removeAgent(Agent a)
 	{
 		agents.remove(a);
 	}
@@ -395,12 +401,12 @@ public class Virologist extends Subject
 	 * A parameterben szereplo felszerelessel boviti, az eppen birtokolt felszereleseket sikeres lefutas eseten.
 	 * @param e A felszerelest amit felvettunk
 	 */
-	public void AddEquipment(Equipment e)
+	public void addEquipment(Equipment e)
 	{
 		if (equipments.size() < maxNumberOfItems)
 			equipments.add(e);
-		e.Apply(this);
-		e.ApplyStrategy(this);
+		e.apply(this);
+		e.applyStrategy(this);
 		notifyAllObservers();
 	}
 
@@ -408,15 +414,15 @@ public class Virologist extends Subject
 	 * Az equipment getter fuggvenye.
 	 * @return Vissza ter a birtokolt felszerelesekkel, ha nincs akkor kivetelt dob
 	 */
-	public Equipment GetEquipment() throws IndexOutOfBoundsException
+	public Equipment getEquipment() throws IndexOutOfBoundsException
 	{
-		if (equipments.size() == 0)
+		if (equipments.isEmpty())
 			throw new IndexOutOfBoundsException("ures a felszereles tarolo");
 
 		return equipments.remove(equipments.size()-1);
 	}
 
-	public ArrayList<Equipment> GetEquipments() {
+	public List<Equipment> getEquipments() {
 		return equipments;
 	}
 
@@ -424,7 +430,7 @@ public class Virologist extends Subject
 	 * A megtanult genetikai kodok listajat boviti
 	 * @param code Az uj kod
 	 */
-	public void AddGeneticCode(GeneticCode code)
+	public void addGeneticCode(GeneticCode code)
 	{
 		if (!codes.contains(code))
 			codes.add(code);
@@ -436,12 +442,11 @@ public class Virologist extends Subject
 	 * @param v a masik virologus
 	 * @param code az agens letrehozasahoz szukseges genetikai kod
 	 */
-	public void Inject(Virologist v, GeneticCode code)
+	public void inject(Virologist v, GeneticCode code)
 	{
-
 		if (actionCount > 0)
 		{
-			injectStr.Inject(this, v, code);
+			injectStr.inject(this, v, code);
 		}
 	}
 
@@ -449,9 +454,9 @@ public class Virologist extends Subject
 	 * Adott virologust lehet ezzel fuggvennyel  megcelozni egy agensfelkenessel.
 	 * @param a Az az agens amit szeretnenk kenni
 	 */
-	public void TargetedWith(Agent a)
+	public void targetedWith(Agent a)
 	{
-		injectedStr.Injected(this, a);
+		injectedStr.injected(this, a);
 		notifyAllObservers();
 	}
 
@@ -459,9 +464,9 @@ public class Virologist extends Subject
 	 * Kezdemenyezi aminosav levonasat a virologustol ami a strategianak megfeleloen tortenik
 	 * @param self a virologus akitol levonjuk az aminosav mennyiseget
 	 */
-	public void StealAminoAcid(Virologist self)
+	public void stealAminoAcid(Virologist self)
 	{
-		lootedStr.LootedForAminoAcid(self, this);
+		lootedStr.lootedForAminoAcid(self, this);
 		notifyAllObservers();
 	}
 
@@ -469,9 +474,9 @@ public class Virologist extends Subject
 	 * Kezdemenyezi nukleotid levonasat a virologustol ami a strategianak megfeleloen tortenik
 	 * @param self a virologus akitol levonjuk a nukleotid mennyiseget
 	 */
-	public void StealNukleotid(Virologist self)
+	public void stealNukleotid(Virologist self)
 	{
-		lootedStr.LootedForNukleotide(self, this);
+		lootedStr.lootedForNukleotide(self, this);
 		notifyAllObservers();
 	}
 
@@ -479,17 +484,16 @@ public class Virologist extends Subject
 	 * Veletlenszeruen kivalaszt egy felszerelest a meglevok kozul
 	 * @param self a virologus aki elszeretne tulajdonitani a felszerelest
 	 */
-	public void StealEquipment(Virologist self)
+	public void stealEquipment(Virologist self)
 	{
-		if (equipments.size() > 0) {
+		if (!equipments.isEmpty()) {
 			if(game.randOn) {
-				Random random = new Random();
 				int r = random.nextInt(equipments.size());
 				Equipment e = equipments.get(r);
-				lootedStr.LootedForEquipment(self, this, e);
+				lootedStr.lootedForEquipment(self, this, e);
 			}
 			else{
-				lootedStr.LootedForEquipment(self,this, equipments.get(0));
+				lootedStr.lootedForEquipment(self,this, equipments.get(0));
 			}
 		}
 		notifyAllObservers();
@@ -498,7 +502,7 @@ public class Virologist extends Subject
 	/**
 	 * A torli az eddig megtanult genetikai kodokat.
 	 */
-	public void RemoveGeneticCodes()
+	public void removeGeneticCodes()
 	{
 		codes.clear();
 		notifyAllObservers();
@@ -508,7 +512,7 @@ public class Virologist extends Subject
 	/**
 	 * Kiveszi a tarolobol az osszes agenst.
 	 */
-	public void RemoveAgents()
+	public void removeAgents()
 	{
 		agents.clear();
 		notifyAllObservers();
@@ -517,7 +521,7 @@ public class Virologist extends Subject
 	/**
 	 * Drekementalja a koben vegrehajthato interakciok szamat
 	 */
-	public void DecreaseActions()
+	public void decreaseActions()
 	{
 		if (actionCount > 0)
 			actionCount--;
@@ -526,10 +530,10 @@ public class Virologist extends Subject
 	/**
 	 * Tovabb adja a kort(atadja a lepesi jogot) a soron kovetkezo virologusnak
 	 */
-	public void EndTurn()
+	public void endTurn()
 	{
-		actionCount = MaxActionCount;
-		game.NextPlayer(codes.size());
+		actionCount = MAX_ACTION_COUNT;
+		game.nextPlayer(codes.size());
 		notifyAllObservers();
 	}
 
@@ -543,7 +547,7 @@ public class Virologist extends Subject
 	 * A parameter mertekevel noveli a birtokolt aminosav mennyiseget
 	 * @param delta a mennyiseg amivel novelunk
 	 */
-	public void AddAminoAcid(int delta)
+	public void addAminoAcid(int delta)
 	{
 		aminoAcid+= delta;
 		if (aminoAcid > limit) aminoAcid = limit;
@@ -553,7 +557,7 @@ public class Virologist extends Subject
 	 * A parameter mertekevel noveli a birtokolt nukleotid mennyiseget
 	 * @param delta a mennyiseg amivel novelunk
 	 */
-	public void AddNucleotide(int delta)
+	public void addNucleotide(int delta)
 	{
 		nucleotide+= delta;
 		if (nucleotide > limit) nucleotide = limit;
@@ -562,12 +566,12 @@ public class Virologist extends Subject
 	/**
 	 * A parameter mertekevel csokkenti a birtokolt nukleotid mennyiseget
 	 * @param delta a mennyiseg amivel csokkentunk
-	 * @throws Exception ha nincs megfelelo mennyiseg akkor kivetelt dobunk
+	 * @throws VirologistException ha nincs megfelelo mennyiseg akkor kivetelt dobunk
 	 */
-	public void RemoveNucleotide(int delta) throws Exception
+	public void removeNucleotide(int delta) throws VirologistException
 	{
 		if(delta > nucleotide){
-			throw new Exception("I don't have such many nucleotide!");
+			throw new VirologistException("I don't have such many nucleotide!");
 		}
 		nucleotide -= delta;
 	}
@@ -575,12 +579,12 @@ public class Virologist extends Subject
 	/**
 	 * A parameter mertekevel csokkenti a birtokolt aminosav mennyiseget
 	 * @param delta a mennyiseg amivel csokkentunk
-	 * @throws Exception ha nincs megfelelo mennyiseg akkor kivetelt dobunk
+	 * @throws VirologistException ha nincs megfelelo mennyiseg akkor kivetelt dobunk
 	 */
-	public void RemoveAminoAcid(int delta) throws Exception
+	public void removeAminoAcid(int delta) throws VirologistException
 	{
 		if(delta > aminoAcid){
-			throw new Exception("I don't have such many amino acid!");
+			throw new VirologistException("I don't have such many amino acid!");
 		}
 		aminoAcid -= delta;
 	}
@@ -589,7 +593,7 @@ public class Virologist extends Subject
 	 * noveli a birtokolhato anyag(aminosav es nukleotid) mennyiseget
 	 * @param delta noveles merteke
 	 */
-	public void IncreaseLimit(int delta)
+	public void increaseLimit(int delta)
 	{
 		limit += delta;
 	}
@@ -598,7 +602,7 @@ public class Virologist extends Subject
 	 * Csokkenti a birtokolhato anyag(aminosav es nukleotid) mennyiseget
 	 * @param delta csokkentes merteke
 	 */
-	public void DecreaseLimit(int delta)
+	public void decreaseLimit(int delta)
 	{
 		limit -= delta;
 		if (limit < 0) limit = 0;
@@ -608,7 +612,7 @@ public class Virologist extends Subject
 	 * Az aminosav mezo gettere
 	 * @return A birtokolt aminosav mennyiseg
 	 */
-	public int GetAminoAcid()
+	public int getAminoAcid()
 	{
 		return aminoAcid;
 	}
@@ -617,27 +621,27 @@ public class Virologist extends Subject
 	 * A nulceotide mezo gettere
 	 * @return A birtokolt nukleotid mennyisege
 	 */
-	public int GetNucleotide()
+	public int getNucleotide()
 	{
 		return nucleotide;
 	}
 
-	public int GetMaterialLimit() { return limit; }
+	public int getMaterialLimit() { return limit; }
 
 	/**
 	 * Frissiti a virologus strategiait
 	 */
-	public void Update()
+	public void update()
 	{
 		for (Agent agent : agents) {
-			agent.Update(this);
+			agent.update(this);
 		}
 	}
 
 	/**
 	 * Vissza strategiakat a default állapotba.
 	 */
-	public void Reset()
+	public void reset()
 	{
 		lootedStr = new DefLooted();
 		injectedStr = new DefInjected();
@@ -652,11 +656,11 @@ public class Virologist extends Subject
 
 		for (Agent a:agents
 		) {
-			a.ApplyStrategy(this);
+			a.applyStrategy(this);
 		}
 		for (Equipment e :
 				equipments) {
-			e.ApplyStrategy(this);
+			e.applyStrategy(this);
 		}
 	}
 
@@ -664,7 +668,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus IDropStr-jet
 	 * @param d beallitando strategia
 	 */
-	public void SetDropStr(IDropStr d)
+	public void setDropStr(IDropStr d)
 	{
 		dropStr = d;
 	}
@@ -673,7 +677,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus IMoveStr-jet
 	 * @param m beallitando strategia
 	 */
-	public void SetMoveStr(IMoveStr m)
+	public void setMoveStr(IMoveStr m)
 	{
 		moveStr = m;
 	}
@@ -682,7 +686,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus ILearnnStr-jet
 	 * @param l beallitando strategia
 	 */
-	public void SetLearnStr(ILearnStr l)
+	public void setLearnStr(ILearnStr l)
 	{
 		learnStr = l;
 	}
@@ -691,7 +695,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus ILootStr-jet
 	 * @param l beallitando strategia
 	 */
-	public void SetLootStr(ILootStr l)
+	public void setLootStr(ILootStr l)
 	{
 		lootStr = l;
 	}
@@ -700,7 +704,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus IInject-jet
 	 * @param i beallitando strategia
 	 */
-	public void SetInjectStr(IInjectStr i)
+	public void setInjectStr(IInjectStr i)
 	{
 		injectStr = i;
 	}
@@ -709,7 +713,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus IInjected-jet
 	 * @param i beallitando strategia
 	 */
-	public void SetInjectedStr(IInjectedStr i)
+	public void setInjectedStr(IInjectedStr i)
 	{
 		injectedStr = i;
 	}
@@ -718,7 +722,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus IEquipStr-jet
 	 * @param e beallitando strategia
 	 */
-	public void SetEquipStr(IEquipStr e)
+	public void setEquipStr(IEquipStr e)
 	{
 		equipStr = e;
 	}
@@ -727,7 +731,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus ICollectStr-jet
 	 * @param c beallitando strategia
 	 */
-	public void SetCollectStr(ICollectStr c)
+	public void setCollectStr(ICollectStr c)
 	{
 		collectStr= c;
 	}
@@ -736,7 +740,7 @@ public class Virologist extends Subject
 	 * Beallitja a virologus ILootedStr-jet
 	 * @param l beallitando strategia
 	 */
-	public void SetLootedStr(ILootedStr l)
+	public void setLootedStr(ILootedStr l)
 	{
 		lootedStr =l;
 	}

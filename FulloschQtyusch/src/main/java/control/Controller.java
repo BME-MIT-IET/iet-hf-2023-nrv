@@ -7,7 +7,7 @@ import model.codes.GeneticCode;
 import model.map.*;
 import model.Subject;
 import view.Window;
-//TODO comment
+
 /**
  * Prototípus külvilággal való kommunikációjáért felelős osztály.
  * Megvalósítja a dokumentációban leírt bemeneti nyelv funkcióit, valamint közvetít a modell és a felhasználó(k) között.
@@ -17,8 +17,8 @@ public class Controller extends Subject {
     /**
      * Az aktuálisan játszott játék.
      */
-    private final Game game;
-    private final Window window;
+    private Game game;
+    private Window window;
     private String actionMessage;
 
     public Controller(Game game) {
@@ -26,8 +26,11 @@ public class Controller extends Subject {
         this.game = game;
         window = new Window(this, game);
         attach(window);
-        Virologist first = game.GetCurrentPlayer();
+        Virologist first = game.getCurrentPlayer();
         first.attach(window);
+    }
+    public Controller(){
+        actionMessage = "";
     }
 
     /**
@@ -50,10 +53,10 @@ public class Controller extends Subject {
      * @param v Megtámadott virológus
      */
     public void attack(Virologist v){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
         int before = game.getVirologists().size();
-        currentPlayer.Attack(v);
+        currentPlayer.attack(v);
         int after = game.getVirologists().size();
         if(after < before){
             actionMessage = "I killed " + v.getName() + "!";
@@ -61,9 +64,9 @@ public class Controller extends Subject {
         else{
             actionMessage = "I couldn't kill " + v.getName() + "!";
         }
-        if(!currentPlayer.equals(game.GetCurrentPlayer())){
+        if(!currentPlayer.equals(game.getCurrentPlayer())){
             currentPlayer.detach(window);
-            currentPlayer = game.GetCurrentPlayer();
+            currentPlayer = game.getCurrentPlayer();
             currentPlayer.attach(window);
             actionMessage = "My turn...";
         }
@@ -75,10 +78,10 @@ public class Controller extends Subject {
      * @param f Cél mező
      */
     public void move(Field f){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
         Field before  = currentPlayer.getField();
-        currentPlayer.Move(f);
+        currentPlayer.move(f);
         if(!before.equals(f)){
             actionMessage =  "Successfully moved to " + f.getName();
         }
@@ -92,12 +95,12 @@ public class Controller extends Subject {
      * Virológus felszerelésének eldobása
      */
     public void drop(){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        int before = currentPlayer.GetEquipments().size();
-        currentPlayer.Drop();
-        int after = currentPlayer.GetEquipments().size();
+        int before = currentPlayer.getEquipments().size();
+        currentPlayer.drop();
+        int after = currentPlayer.getEquipments().size();
         if(before > after){
             actionMessage = "I dropped an equipment!";
         }
@@ -112,11 +115,11 @@ public class Controller extends Subject {
      * @param v Célpont virológus
      */
     public void lootAminoFrom(Virologist v){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
-        int before = currentPlayer.GetAminoAcid();
-        currentPlayer.LootAminoAcidFrom(v);
-        int after = currentPlayer.GetAminoAcid();
+        int before = currentPlayer.getAminoAcid();
+        currentPlayer.lootAminoAcidFrom(v);
+        int after = currentPlayer.getAminoAcid();
         if(before < after){
             actionMessage = "I looted some amino acid from "+ v.getName()+"!";
         }
@@ -131,12 +134,12 @@ public class Controller extends Subject {
      * @param v Célpont virológus
      */
     public void lootNucleoFrom(Virologist v){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        int before = currentPlayer.GetNucleotide();
-        currentPlayer.LootNucleotideFrom(v);
-        int after = currentPlayer.GetNucleotide();
+        int before = currentPlayer.getNucleotide();
+        currentPlayer.lootNucleotideFrom(v);
+        int after = currentPlayer.getNucleotide();
         if(before < after){
             actionMessage = "I looted some nucleotide" + v.getName() + "!";
         }
@@ -151,12 +154,12 @@ public class Controller extends Subject {
      * @param v Célpont virológus
      */
     public void lootEquipmentFrom(Virologist v){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        int before = currentPlayer.GetEquipments().size();
-        currentPlayer.LootEquipmentFrom(v);
-        int after = currentPlayer.GetEquipments().size();
+        int before = currentPlayer.getEquipments().size();
+        currentPlayer.lootEquipmentFrom(v);
+        int after = currentPlayer.getEquipments().size();
         if(before < after){
             actionMessage = "I looted some equipment from " + v.getName() + "!";
         }
@@ -169,15 +172,15 @@ public class Controller extends Subject {
     /**
      * Virológus anyag gyűjtése
      */
-    public void collect(){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+    public void collect(Material materialtype){
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        int beforeAmino = currentPlayer.GetAminoAcid();
-        int beforeNucleo = currentPlayer.GetNucleotide();
-        currentPlayer.Collect();
-        int afterAmino = currentPlayer.GetAminoAcid();
-        int afterNucleo = currentPlayer.GetNucleotide();
+        int beforeAmino = currentPlayer.getAminoAcid();
+        int beforeNucleo = currentPlayer.getNucleotide();
+        currentPlayer.collect(materialtype);
+        int afterAmino = currentPlayer.getAminoAcid();
+        int afterNucleo = currentPlayer.getNucleotide();
         if(beforeAmino != afterAmino && beforeNucleo != afterNucleo){
             actionMessage = "I collected some amino and nucleotide!";
         }
@@ -197,11 +200,11 @@ public class Controller extends Subject {
      * Virológus genetikai kód tanulása
      */
     public void learn(){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
         int before = currentPlayer.getGeneticCodes().size();
-        currentPlayer.Learn();
+        currentPlayer.learn();
         int after = currentPlayer.getGeneticCodes().size();
         if(before < after){
             actionMessage = "I learned "+ currentPlayer.getGeneticCodes().get(after-1).getName() + " genetic code!";
@@ -216,12 +219,12 @@ public class Controller extends Subject {
      * Virológus felszerelés felvétele
      */
     public void equip(){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        int before = currentPlayer.GetEquipments().size();
-        currentPlayer.Equip();
-        int after = currentPlayer.GetEquipments().size();
+        int before = currentPlayer.getEquipments().size();
+        currentPlayer.equip();
+        int after = currentPlayer.getEquipments().size();
         if(before < after){
             actionMessage = "I equipped a new item!";
         }
@@ -237,11 +240,15 @@ public class Controller extends Subject {
      * @param code Injektáláshoz szükséges genetikai kód
      */
     public void inject(Virologist v, GeneticCode code){
-        Virologist currentPlayer = game.GetCurrentPlayer();
+        Virologist currentPlayer = game.getCurrentPlayer();
         if (hasNoActions(currentPlayer)) return;
 
-        actionMessage =  "Trying to inject " + v.getName() + " with " + code.getName() + "...";
-        currentPlayer.Inject(v, code);
+        actionMessage =  "Injecting " + v.getName() + " with " + code.getName() + "...";
+        try{
+            currentPlayer.inject(v, code);
+        }catch(Exception e){
+            actionMessage = e.getMessage();
+        }
         notifyAllObservers();
     }
 
@@ -249,10 +256,10 @@ public class Controller extends Subject {
      * Virológus körének vége
      */
     public void endTurn(){
-        Virologist currentPlayer = game.GetCurrentPlayer();
-        currentPlayer.EndTurn();
+        Virologist currentPlayer = game.getCurrentPlayer();
+        currentPlayer.endTurn();
         currentPlayer.detach(window);
-        currentPlayer = game.GetCurrentPlayer();
+        currentPlayer = game.getCurrentPlayer();
         currentPlayer.attach(window);
         actionMessage = "My turn...";
         notifyAllObservers();

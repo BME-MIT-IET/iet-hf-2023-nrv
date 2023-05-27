@@ -16,21 +16,20 @@ public class DefInjected implements IInjectedStr
 	 * @param a A felkent ágens.
 	 */
 	@Override
-	public void Injected(Virologist v, Agent a)
+	public void injected(Virologist v, Agent a)
 	{
-		a.Apply(v);
-		v.AddAgent(a);
-		a.ApplyStrategy(v);
+		a.apply(v);
+		v.addAgent(a);
+		a.applyStrategy(v);
 	}
 
 	/**
-	 * //TODO
 	 * @param by
 	 * @param injected
 	 * @param a
 	 */
 	@Override
-	public void Injected(Virologist by, Virologist injected, Agent a) {
-		Injected(injected, a);
+	public void injected(Virologist by, Virologist injected, Agent a) {
+		injected(injected, a);
 	}
 }

@@ -17,11 +17,11 @@ public class DefDrop implements IDropStr {
 	 * @param f a virológus aktuális mezeje
 	 */
 	@Override
-	public void Drop(Virologist v, Field f, Equipment e) {
-		e.Disable(v);
-		f.Drop(e);
-		v.Reset();
-		v.DecreaseActions();
+	public void drop(Virologist v, Field f, Equipment e) {
+		e.disable(v);
+		f.drop(e);
+		v.reset();
+		v.decreaseActions();
 	}
 
 }

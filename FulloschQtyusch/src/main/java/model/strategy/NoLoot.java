@@ -14,9 +14,9 @@ public class NoLoot implements ILootStr
 	 * @param target A kizsákmányolandó virológus.
 	 */
 	@Override
-	public void LootAmino(Virologist v, Virologist target)
+	public void lootAmino(Virologist v, Virologist target)
 	{
-		v.DecreaseActions();
+		v.decreaseActions();
 	}
 
 	/**
@@ -25,9 +25,9 @@ public class NoLoot implements ILootStr
 	 * @param target A kizsákmányolandó virológus.
 	 */
 	@Override
-	public void LootNucleotide(Virologist v, Virologist target)
+	public void lootNucleotide(Virologist v, Virologist target)
 	{
-		v.DecreaseActions();
+		v.decreaseActions();
 	}
 
 	/**
@@ -36,8 +36,8 @@ public class NoLoot implements ILootStr
 	 * @param target A kizsákmányolandó virológus.
 	 */
 	@Override
-	public void LootEquipment(Virologist v, Virologist target)
+	public void lootEquipment(Virologist v, Virologist target)
 	{
-		v.DecreaseActions();
+		v.decreaseActions();
 	}
 }

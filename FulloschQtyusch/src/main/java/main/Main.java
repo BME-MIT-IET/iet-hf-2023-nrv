@@ -1,10 +1,10 @@
+package main;
+
 import control.Controller;
 import control.Loader;
 
 import java.util.Random;
 
-//TODO comment
-//TODO 2 Main osztaly is van, sztem lehetne a controlban, de itt is jo akar
 public class Main {
 
     /**
