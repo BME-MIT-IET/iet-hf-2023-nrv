@@ -27,18 +27,23 @@ public class ChoreaCode extends GeneticCode
 	 * Létrehoz egy vitustánc (Chorea) ágenst.
 	 * @param v a virológus, aki szeretne ágenst készíteni
 	 * @return a létrehozot vitustánc ágens
-	 * @throws Exception ha nem hozható létre az Agent, mert nincs hozzá elég anyaga a paraméterül kapott virológusnak.
+	 * @throws GeneticCodeException ha nem hozható létre az Agent, mert nincs hozzá elég anyaga a paraméterül kapott virológusnak.
 	 */
-	public Agent Create(Virologist v) throws Exception
+	@Override
+	public Agent create(Virologist v) throws GeneticCodeException
 	{
+		try {
+			v.removeNucleotide(nucleotidePrice);
+		} catch (Exception e) {
+			throw new GeneticCodeException("Failed to remove nucleotide.");
+		}
 
-		v.RemoveNucleotide(nucleotidePrice);
 		try{
-			v.RemoveAminoAcid(aminoAcidPrice);
+			v.removeAminoAcid(aminoAcidPrice);
 		}
 		catch(Exception e){
-			v.AddNucleotide(nucleotidePrice);
-			throw e;
+			v.addNucleotide(nucleotidePrice);
+			throw new GeneticCodeException("Failed to remove amino acid.");
 		}
 		return new Chorea(turnsLeft*playerCount);
 	}

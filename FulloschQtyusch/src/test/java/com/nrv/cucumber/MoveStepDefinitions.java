@@ -1,10 +1,8 @@
 package com.nrv.cucumber;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import model.Virologist;
 import model.codes.BlockCode;
 import model.map.Field;
 import model.map.Laboratory;
@@ -12,30 +10,32 @@ import org.junit.jupiter.api.Assertions;
 
 
 public class MoveStepDefinitions {
-  private Virologist virologist;
   private Field field;
   private Laboratory laboratory;
 
-  @Given("virologist is created")
-  public void virologist_is_created(){
-    virologist = new Virologist();
-  }
+  private VirologistStepDefinitions virologistCreator = new VirologistStepDefinitions();
   @And("virologist stays on field")
-  public void virologist_stys_on_field(){
+  public void virologistStaysOnField(){
     field = new Field();
-    field.AddVirologist(virologist);
+    field.addVirologist(virologistCreator.getVirologist());
   }
   @And("field has neighbour laboratory")
-  public void field_has_neighbour_laboratory(){
+  public void fieldHasNeighbourLaboratory(){
     laboratory = new Laboratory(new BlockCode());
-    field.AddNeighbour(laboratory);
+    field.addNeighbour(laboratory);
   }
   @When("virologist moves to laboratory")
-  public void virologist_moves_to_laboratory(){
-    virologist.Move(laboratory);
+  public void virologistMovesToLaboratory(){
+
+    virologistCreator.getVirologist().move(laboratory);
   }
-  @Then("virologist should stay on laboratory")
-  public void virologist_should_stay_on_laboratory(){
-    Assertions.assertEquals(laboratory, virologist.getField());
+  @Then("virologist should stay on {word}")
+  public void virologistShouldStayOnLaboratory(String fieldType){
+    Field expectedField = new Field();
+    switch (fieldType) {
+      case "field" -> expectedField = field;
+      case "laboratory" -> expectedField = laboratory;
+    }
+    Assertions.assertEquals(expectedField, virologistCreator.getVirologist().getField());
   }
 }

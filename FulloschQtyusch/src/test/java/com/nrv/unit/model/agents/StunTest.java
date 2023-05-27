@@ -20,33 +20,33 @@ class StunTest {
 
     @Test
     void test_applyStrategy() {
-        stun.ApplyStrategy(virologist);
+        stun.applyStrategy(virologist);
 
-        verify(virologist, times(1)).SetInjectedStr(any(NoInjected.class));
-        verify(virologist, times(0)).SetInjectedStr(any(DefInjected.class));
+        verify(virologist, times(1)).setInjectedStr(any(NoInjected.class));
+        verify(virologist, times(0)).setInjectedStr(any(DefInjected.class));
 
-        verify(virologist, times(1)).SetCollectStr(any(NoCollect.class));
-        verify(virologist, times(0)).SetCollectStr(any(DefCollect.class));
+        verify(virologist, times(1)).setCollectStr(any(NoCollect.class));
+        verify(virologist, times(0)).setCollectStr(any(DefCollect.class));
 
-        verify(virologist, times(1)).SetDropStr(any(NoDrop.class));
-        verify(virologist, times(0)).SetDropStr(any(DefDrop.class));
+        verify(virologist, times(1)).setDropStr(any(NoDrop.class));
+        verify(virologist, times(0)).setDropStr(any(DefDrop.class));
 
-        verify(virologist, times(1)).SetEquipStr(any(NoEquip.class));
-        verify(virologist, times(0)).SetEquipStr(any(DefEquip.class));
+        verify(virologist, times(1)).setEquipStr(any(NoEquip.class));
+        verify(virologist, times(0)).setEquipStr(any(DefEquip.class));
 
-        verify(virologist, times(1)).SetInjectStr(any(NoInject.class));
-        verify(virologist, times(0)).SetInjectStr(any(DefInject.class));
+        verify(virologist, times(1)).setInjectStr(any(NoInject.class));
+        verify(virologist, times(0)).setInjectStr(any(DefInject.class));
 
-        verify(virologist, times(1)).SetLearnStr(any(NoLearn.class));
-        verify(virologist, times(0)).SetLearnStr(any(DefLearn.class));
+        verify(virologist, times(1)).setLearnStr(any(NoLearn.class));
+        verify(virologist, times(0)).setLearnStr(any(DefLearn.class));
 
-        verify(virologist, times(1)).SetLootedStr(any(Looted.class));
-        verify(virologist, times(0)).SetLootedStr(any(DefLooted.class));
+        verify(virologist, times(1)).setLootedStr(any(Looted.class));
+        verify(virologist, times(0)).setLootedStr(any(DefLooted.class));
 
-        verify(virologist, times(1)).SetLootStr(any(NoLoot.class));
-        verify(virologist, times(0)).SetLootStr(any(DefLoot.class));
+        verify(virologist, times(1)).setLootStr(any(NoLoot.class));
+        verify(virologist, times(0)).setLootStr(any(DefLoot.class));
 
-        verify(virologist, times(1)).SetMoveStr(any(NoMove.class));
-        verify(virologist, times(0)).SetMoveStr(any(DefMove.class));
+        verify(virologist, times(1)).setMoveStr(any(NoMove.class));
+        verify(virologist, times(0)).setMoveStr(any(DefMove.class));
     }
 }

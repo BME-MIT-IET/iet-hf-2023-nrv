@@ -2,6 +2,7 @@ package model.strategy;
 
 import model.Virologist;
 import model.map.Field;
+import model.map.Material;
 
 /**
  * Anyag sikertelen begyüjtéséért felelős stratégia.
@@ -14,9 +15,7 @@ public class NoCollect implements ICollectStr {
 	 * @param f A mező, amelyen gyüjtődik az anyag
 	 */
 	@Override
-	public void Collect(Virologist v, Field f) {
-		// /vencel: sztem itt is csokkentsuk az actions-t, megprobalta csinalni, csak nem hagytak, ez van
-		v.DecreaseActions();
+	public void collect(Virologist v, Field f, Material material) {
 	}
 
 }

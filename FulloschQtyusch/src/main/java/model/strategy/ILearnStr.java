@@ -13,6 +13,6 @@ public interface ILearnStr {
 	 * @param v Tanuló virológus
 	 * @param f Virológus mezője
 	 */
-	void Learn(Virologist v, Field f);
+	void learn(Virologist v, Field f);
 
 }

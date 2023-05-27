@@ -15,6 +15,6 @@ public interface IDropStr {
 	 * @param f Virológus mezője
 	 * @param e Eldobandó felszerelés
 	 */
-	void Drop(Virologist v, Field f, Equipment e);
+	void drop(Virologist v, Field f, Equipment e);
 
 }
