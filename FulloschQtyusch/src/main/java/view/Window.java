@@ -72,75 +72,23 @@ public class Window extends Observer {
 		mainMenu.add(actions);
 		frame.setJMenuBar(mainMenu);
 
-		JMenu attack = new JMenu("attack");
+		JMenu attack = createAttackMenu();
 		actions.add(attack);
-		attack.addMenuListener(new ViewMenuListener(() -> {
-			attack.removeAll();
-			Virologist v = game.getCurrentPlayer();
-			for (Virologist vir : v.getField().getVirologists()) {
-				JMenuItem item = new JMenuItem(vir.getName());
-				item.addActionListener(e -> controller.attack(vir));
-				attack.add(item);
-			}
-		}));
 
-		JMenu move = new JMenu("move");
+		JMenu move = createMoveMenu();
 		actions.add(move);
-		move.addMenuListener(new ViewMenuListener(() -> {
-			move.removeAll();
-			Virologist v = game.getCurrentPlayer();
-			for (Field field : v.getField().getNeighbours()) {
-				JMenuItem item = new JMenuItem(field.getName());
-				item.addActionListener(e -> controller.move(field));
-				move.add(item);
-			}
-		}));
 
-		JMenuItem drop = new JMenuItem("drop");
+		JMenuItem drop = createDropMenu();
 		actions.add(drop);
-		drop.addActionListener(e -> controller.drop());
 
-		JMenu lootAminoFrom = new JMenu("lootAminoFrom");
+		JMenu lootAminoFrom = createLootAminoMenu();
 		actions.add(lootAminoFrom);
-		lootAminoFrom.addMenuListener(new ViewMenuListener(() -> {
-			lootAminoFrom.removeAll();
-			Virologist v = game.getCurrentPlayer();
-			for (Virologist vir : v.getField().getVirologists()) {
-				if (!vir.equals(v)) {
-					JMenuItem item = new JMenuItem(vir.getName());
-					item.addActionListener(e -> controller.lootAminoFrom(vir));
-					lootAminoFrom.add(item);
-				}
-			}
-		}));
 
-		JMenu lootNucleoFrom = new JMenu("lootNucleoFrom");
+		JMenu lootNucleoFrom = createLootNucleoFrom();
 		actions.add(lootNucleoFrom);
-		lootNucleoFrom.addMenuListener(new ViewMenuListener(() -> {
-			lootNucleoFrom.removeAll();
-			Virologist v = game.getCurrentPlayer();
-			for (Virologist vir : v.getField().getVirologists()) {
-				if (!vir.equals(v)) {
-					JMenuItem item = new JMenuItem(vir.getName());
-					item.addActionListener(e -> controller.lootNucleoFrom(vir));
-					lootNucleoFrom.add(item);
-				}
-			}
-		}));
 
-		JMenu lootEquipmentFrom = new JMenu("lootEquipmentFrom");
+		JMenu lootEquipmentFrom = createLootEquipmentMenu();
 		actions.add(lootEquipmentFrom);
-		lootEquipmentFrom.addMenuListener(new ViewMenuListener(() -> {
-			lootEquipmentFrom.removeAll();
-			Virologist v = game.getCurrentPlayer();
-			for (Virologist vir : v.getField().getVirologists()) {
-				if (!vir.equals(v)) {
-					JMenuItem item = new JMenuItem(vir.getName());
-					item.addActionListener(e -> controller.lootEquipmentFrom(vir));
-					lootEquipmentFrom.add(item);
-				}
-			}
-		}));
 
 		JMenuItem learn = new JMenuItem("learn");
 		actions.add(learn);
@@ -150,8 +98,47 @@ public class Window extends Observer {
 		actions.add(equip);
 		equip.addActionListener(e -> controller.equip());
 
-		JMenu inject = new JMenu("inject");
+		JMenu inject = createInjectMenu();
 		actions.add(inject);
+
+		JMenuItem endTurn = new JMenuItem("endTurn");
+		actions.add(endTurn);
+		endTurn.addActionListener(e -> controller.endTurn());
+
+		createRandomizationMenu(actions);
+
+		drawInterface();
+
+		frame.setSize(600, 600);
+		frame.setResizable(false);
+		frame.setLayout(null);
+		frame.setVisible(true);
+
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		update();
+	}
+
+	private JMenu createMoveMenu() {
+		JMenu move = new JMenu("move");
+		move.addMenuListener(new ViewMenuListener(() -> {
+			move.removeAll();
+			Virologist v = game.getCurrentPlayer();
+			for (Field field : v.getField().getNeighbours()) {
+				JMenuItem item = new JMenuItem(field.getName());
+				item.addActionListener(e -> controller.move(field));
+				move.add(item);
+			}
+		}));
+		return move;
+	}
+	private JMenuItem createDropMenu(){
+		JMenuItem drop = new JMenuItem("drop");
+		drop.addActionListener(e -> controller.drop());
+		return drop;
+	}
+	private JMenu createInjectMenu() {
+		JMenu inject = new JMenu("inject");
 		inject.addMenuListener(new ViewMenuListener(() -> {
 			inject.removeAll();
 			Virologist v = game.getCurrentPlayer();
@@ -168,11 +155,68 @@ public class Window extends Observer {
 				inject.add(virMenu);
 			}
 		}));
+		return inject;
+	}
+	private JMenu createLootEquipmentMenu(){
+		JMenu lootEquipmentFrom = new JMenu("lootEquipmentFrom");
+		lootEquipmentFrom.addMenuListener(new ViewMenuListener(() -> {
+			lootEquipmentFrom.removeAll();
+			Virologist v = game.getCurrentPlayer();
+			for (Virologist vir : v.getField().getVirologists()) {
+				if (!vir.equals(v)) {
+					JMenuItem item = new JMenuItem(vir.getName());
+					item.addActionListener(e -> controller.lootEquipmentFrom(vir));
+					lootEquipmentFrom.add(item);
+				}
+			}
+		}));
+		return lootEquipmentFrom;
+	}
+	private JMenu createLootAminoMenu(){
+		JMenu lootAminoFrom = new JMenu("lootAminoFrom");
+		lootAminoFrom.addMenuListener(new ViewMenuListener(() -> {
+			lootAminoFrom.removeAll();
+			Virologist v = game.getCurrentPlayer();
+			for (Virologist vir : v.getField().getVirologists()) {
+				if (!vir.equals(v)) {
+					JMenuItem item = new JMenuItem(vir.getName());
+					item.addActionListener(e -> controller.lootAminoFrom(vir));
+					lootAminoFrom.add(item);
+				}
+			}
+		}));
+		return lootAminoFrom;
+	}
 
-		JMenuItem endTurn = new JMenuItem("endTurn");
-		actions.add(endTurn);
-		endTurn.addActionListener(e -> controller.endTurn());
-
+	private JMenu createLootNucleoFrom(){
+		JMenu lootNucleoFrom = new JMenu("lootNucleoFrom");
+		lootNucleoFrom.addMenuListener(new ViewMenuListener(() -> {
+			lootNucleoFrom.removeAll();
+			Virologist v = game.getCurrentPlayer();
+			for (Virologist vir : v.getField().getVirologists()) {
+				if (!vir.equals(v)) {
+					JMenuItem item = new JMenuItem(vir.getName());
+					item.addActionListener(e -> controller.lootNucleoFrom(vir));
+					lootNucleoFrom.add(item);
+				}
+			}
+		}));
+		return lootNucleoFrom;
+	}
+	private JMenu createAttackMenu() {
+		JMenu attack = new JMenu("attack");
+		attack.addMenuListener(new ViewMenuListener(() -> {
+			attack.removeAll();
+			Virologist v = game.getCurrentPlayer();
+			for (Virologist vir : v.getField().getVirologists()) {
+				JMenuItem item = new JMenuItem(vir.getName());
+				item.addActionListener(e -> controller.attack(vir));
+				attack.add(item);
+			}
+		}));
+		return attack;
+	}
+	private void createRandomizationMenu(JMenu actions){
 		JMenuItem randSwitch = game.randOn ? new JMenuItem("randomization factor: on")
 				: new JMenuItem("randomization factor: off");
 		actions.add(randSwitch);
@@ -183,17 +227,6 @@ public class Window extends Observer {
 			actions.remove(6);
 			actions.add(initCollectMenuItem(controller, game), 6);
 		});
-
-		drawInterface();
-
-		frame.setSize(600, 600);
-		frame.setResizable(false);
-		frame.setLayout(null);
-		frame.setVisible(true);
-
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-		update();
 	}
 
 	private static JMenuItem initCollectMenuItem(Controller controller, Game game) {
@@ -213,27 +246,22 @@ public class Window extends Observer {
 		}
 		return collect;
 	}
-
-	@Override
-	public void update() {
-		Virologist player = game.getCurrentPlayer();
-
-		// AKCIÓSZÁMLÁLÓ FRISSÍTÉSE
+	private void updateActionCounter(Virologist player){
 		turnCounter.setText(player.getActionCount() + " / 3");
 
 		currentField.setText("Current field: " + player.getField().getName());
 
 		currentField.setText("Current field: " + player.getField().getName());
-
-		// ÁLLAPOTSÁVOK FRISSÍTÉSE
+	}
+	private void updateMaterials(Virologist player){
 		nucleoBar.setValue(player.getNucleotide());
 		nucleoBar.setMaximum(player.getMaterialLimit());
 		nucleoLabel.setText("Nucleotide: " + player.getNucleotide());
 		aminoBar.setValue(player.getAminoAcid());
 		aminoBar.setMaximum(player.getMaterialLimit());
 		aminoLabel.setText("Amino acid: " + player.getAminoAcid());
-
-		// FELSZERELÉSEK FRISSÍTÉSE
+	}
+	private void updateEquipments(Virologist player){
 		List<Equipment> equipment = player.getEquipments();
 		Image equipmentSlotIcon = null;
 		for (int i = 0; i < 3; i++) {
@@ -256,8 +284,8 @@ public class Window extends Observer {
 			assert equipmentSlotIcon != null;
 			equipmentButtons.get(i).setIcon(new ImageIcon(equipmentSlotIcon));
 		}
-
-		// SZÖVEGBUBORÉK FRISSÍTÉSE
+	}
+	private void updateMessage(Virologist player){
 		if (!controller.getActionMessage().equals("")) {
 			msgText = player.getName() + ": " + controller.getActionMessage();
 		}
@@ -271,8 +299,8 @@ public class Window extends Observer {
 			actionBubble.setVisible(true);
 			actionBubbleText.setVisible(true);
 		}
-
-		// HÁTTÉR FRISSÍTÉSE
+	}
+	private void updateBackground(Virologist player){
 		Drawable drawableField = (Drawable) player.getField();
 		Image backGroundIMG;
 		try {
@@ -283,15 +311,22 @@ public class Window extends Observer {
 			backGround.setBounds(0, 0, 600, 600);
 		} catch (IOException ignored) {
 		}
-
 	}
+	@Override
+	public void update() {
+		Virologist player = game.getCurrentPlayer();
 
-	public void drawInterface() {
+		updateActionCounter(player);
 
-		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 0, 600, 600);
+		updateMaterials(player);
 
-		// KÖRVÉGE GOMB BEÁLLÍTÁSA
+		updateEquipments(player);
+
+		updateMessage(player);
+
+		updateBackground(player);
+	}
+	public JButton setEndTurnButton(){
 		Image endButtonIcon = null;
 		try {
 			endButtonIcon = ImageIO.read(
@@ -311,28 +346,37 @@ public class Window extends Observer {
 		endButton.setOpaque(false);
 		endButton.setBounds(480, 450, 70, 70);
 
-		String font = "sans-serif";
-
-		// ANYAGSÁVOK BEÁLLÍTÁSA
-		nucleoBar = new JProgressBar();
+		return endButton;
+	}
+	private JProgressBar createNucleoProgressBar(){
+		JProgressBar nucleoBar = new JProgressBar();
 		nucleoBar.setBounds(215, 460, 170, 25);
 		nucleoBar.setMaximum(20);
 		nucleoBar.setMinimum(0);
-		nucleoLabel = new JLabel("min");
+		return nucleoBar;
+	}
+	private JLabel createNucleoLabel(){
+		JLabel nucleoLabel = new JLabel("min");
 		nucleoLabel.setBounds(215, 465, 170, 15);
 		nucleoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		nucleoLabel.setFont(new Font(font, Font.BOLD, 13));
-
-		aminoBar = new JProgressBar();
-		aminoBar.setBounds(215, 495, 170, 25);
+		nucleoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+		return nucleoLabel;
+	}
+	private JProgressBar createAminoProgressBar(){
+		JProgressBar aminoBar = new JProgressBar();
+		aminoBar.setBounds(215, 490, 170, 25);
 		aminoBar.setMaximum(20);
 		aminoBar.setMinimum(0);
-		aminoLabel = new JLabel("min");
-		aminoLabel.setBounds(215, 500, 170, 15);
+		return aminoBar;
+	}
+	private JLabel createAminoLabel(){
+		JLabel aminoLabel = new JLabel("min");
+		aminoLabel.setBounds(215, 495, 170, 15);
 		aminoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		aminoLabel.setFont(new Font(font, Font.BOLD, 13));
-
-		// FELSZERELÉSEK BEÁLLÍTÁSA
+		aminoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+		return aminoLabel;
+	}
+	private void setEquipmentButtons(){
 		Image equipmentSlotIcon = null;
 		try {
 			equipmentSlotIcon = ImageIO.read(
@@ -355,19 +399,22 @@ public class Window extends Observer {
 			equipmentButtons.add(eq);
 			y += 60;
 		}
-
-		// KAKCIÓSZÁMLÁLÓ BEÁLLÍTÁSA
-		turnCounter = new JLabel("3 / 3");
-		turnCounter.setFont(new Font(font, Font.BOLD, 48));
-		turnCounter.setForeground(Color.white);
-		turnCounter.setBounds(480, 25, 160, 50);
-
-		currentField = new JLabel();
-		currentField.setFont(new Font(font, Font.BOLD, 20));
+	}
+	private JLabel createActionCounter(){
+		JLabel actionCounter = new JLabel("3 / 3");
+		actionCounter.setFont(new Font("sans-serif", Font.BOLD, 48));
+		actionCounter.setForeground(Color.white);
+		actionCounter.setBounds(480, 25, 160, 50);
+		return actionCounter;
+	}
+	private JLabel createCurrentFieldLabel(){
+		JLabel currentField = new JLabel();
+		currentField.setFont(new Font("sans-serif", Font.BOLD, 20));
 		currentField.setForeground(Color.white);
 		currentField.setBounds(225, 425, 200, 25);
-
-		// SZÖVEGBUBORÉK BEÁKKÍTÁSA
+		return currentField;
+	}
+	private void setActionBubble(){
 		Image actionBubbleIMG;
 		ImageIcon actionBubbleIcon;
 		try {
@@ -467,8 +514,8 @@ public class Window extends Observer {
 		actionBubbleText.setFont(new Font("sans-serif", Font.BOLD, 12));
 		actionBubbleText.setColumns(28);
 		actionBubbleText.setLineWrap(true);
-
-		// HÁTTÉRKÉP BEÁLLÍTÁSA
+	}
+	private void setBackGround(){
 		Image backGroundIMG;
 		ImageIcon backGroundIcon;
 		backGround = new JLabel();
@@ -482,6 +529,29 @@ public class Window extends Observer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public void drawInterface() {
+
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 600, 600);
+
+		JButton endButton = setEndTurnButton();
+
+		nucleoBar = createNucleoProgressBar();
+		nucleoLabel = createNucleoLabel();
+
+		aminoBar = createAminoProgressBar();
+		aminoLabel = createAminoLabel();
+
+		setEquipmentButtons();
+
+		turnCounter = createActionCounter();
+
+		currentField = createCurrentFieldLabel();
+
+		setActionBubble();
+
+		setBackGround();
 
 		// ELRENDEZÉS BEÁLLÍTÁSA
 
