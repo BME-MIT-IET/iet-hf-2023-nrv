@@ -1,4 +1,4 @@
-package model.map;
+package com.nrv.unit.model.map;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
@@ -9,6 +9,10 @@ import model.Virologist;
 import model.codes.ForgetCode;
 import model.codes.StunCode;
 import model.equipments.Equipment;
+import model.map.Field;
+import model.map.InfectedLaboratory;
+import model.map.Laboratory;
+import model.map.Material;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
