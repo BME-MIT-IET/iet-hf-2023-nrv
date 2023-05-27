@@ -104,3 +104,30 @@
   - drop
   - inject: itt nem egyértelmű, hogy sikeres-e
   - javítás: az inject exceptiont magasabb szinten kezelni: controller kapja el
+
+### Strategy package
+- BearMove osztály tesztelése
+  - move
+- DefAttack osztály tesztelése
+  - attack
+- DefCollect osztály tesztelése
+  - collect
+- DefDrop osztály tesztelése
+  - drop
+- DefEquip osztály tesztelése
+  - equip
+- DefInjected osztály tesztelése
+  - injected(Virologist v, Agent a)
+  - injected(Virologist by, Virologist injected, Agent a)
+- DefInject osztály tesztelése
+  - inject
+- DefLearn osztály tesztelése
+  - learn
+- DefLoot osztály tesztelése
+  - lootAmino
+  - lootNucleotide
+  - lootEquipment
+- DefMove osztály tesztelése
+  - move
+- NoDrop osztály tesztelése
+  - drop
