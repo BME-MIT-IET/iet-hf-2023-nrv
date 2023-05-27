@@ -1,4 +1,4 @@
-package model.map;
+package com.nrv.unit.model.map;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 
 import model.Virologist;
 import model.codes.GeneticCode;
+import model.map.Laboratory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
