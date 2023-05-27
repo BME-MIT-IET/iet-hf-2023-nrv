@@ -13,8 +13,16 @@ class ChoreaCodeTest {
     private ChoreaCode choreaCode = new ChoreaCode();
 
     @Test
-    void test_createFail() {
+    void test_createFailNucleotide() {
         Virologist virologist = new Virologist();
+        virologist.addAminoAcid(choreaCode.getAminoAcidPrice());
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> choreaCode.create(virologist));
+    }
+
+    @Test
+    void test_createFailAmino() {
+        Virologist virologist = new Virologist();
+        virologist.addNucleotide(choreaCode.getNucleotidePrice());
         Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> choreaCode.create(virologist));
     }
 

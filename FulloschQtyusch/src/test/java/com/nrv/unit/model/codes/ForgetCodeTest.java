@@ -13,8 +13,16 @@ class ForgetCodeTest {
     private ForgetCode forgetCode = new ForgetCode();
 
     @Test
-    void test_createFail() {
+    void test_createFailNucleotide() {
         Virologist virologist = new Virologist();
+        virologist.addAminoAcid(forgetCode.getAminoAcidPrice());
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> forgetCode.create(virologist));
+    }
+
+    @Test
+    void test_createFailAmino() {
+        Virologist virologist = new Virologist();
+        virologist.addNucleotide(forgetCode.getNucleotidePrice());
         Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> forgetCode.create(virologist));
     }
 

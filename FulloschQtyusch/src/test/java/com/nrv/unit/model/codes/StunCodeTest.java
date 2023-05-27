@@ -13,8 +13,16 @@ class StunCodeTest {
     private StunCode stunCode = new StunCode();
 
     @Test
-    void test_createFail() {
+    void test_createFailNucleotide() {
         Virologist virologist = new Virologist();
+        virologist.addAminoAcid(stunCode.getAminoAcidPrice());
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> stunCode.create(virologist));
+    }
+
+    @Test
+    void test_createFailAmino() {
+        Virologist virologist = new Virologist();
+        virologist.addNucleotide(stunCode.getNucleotidePrice());
         Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> stunCode.create(virologist));
     }
 

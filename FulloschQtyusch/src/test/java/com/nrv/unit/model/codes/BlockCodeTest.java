@@ -13,9 +13,17 @@ class BlockCodeTest {
 
     private BlockCode blockCode = new BlockCode();
     @Test
-    void test_createFail() {
+    void test_createFailNucleotide() {
         Virologist virologist = new Virologist();
-        Assertions.assertThrows(GeneticCode.GeneticCodeException.class, () -> blockCode.create(virologist));
+        virologist.addAminoAcid(blockCode.getAminoAcidPrice());
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> blockCode.create(virologist));
+    }
+
+    @Test
+    void test_createFailAmino() {
+        Virologist virologist = new Virologist();
+        virologist.addNucleotide(blockCode.getNucleotidePrice());
+        Assertions.assertThrows(GeneticCode.GeneticCodeException.class,() -> blockCode.create(virologist));
     }
 
     @Test
