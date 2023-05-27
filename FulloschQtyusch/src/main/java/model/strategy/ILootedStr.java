@@ -25,9 +25,9 @@ public interface ILootedStr
 	void lootedForAminoAcid(Virologist v, Virologist from);
 
 	/**
-	 * Nukleotidra irányuló kifosztás
+	 * Nucleotidra irányuló kifosztás
 	 * @param v kifosztó virológus
 	 * @param from kifosztandó virológus
 	 */
-	void lootedForNukleotide(Virologist v, Virologist from);
+	void lootedForNucleotide(Virologist v, Virologist from);
 }

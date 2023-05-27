@@ -20,7 +20,7 @@ public class NoLoot implements ILootStr
 	}
 
 	/**
-	 * Nem Engedélyez Nukleotid zsákmányolást.
+	 * Nem Engedélyez Nucleotid zsákmányolást.
 	 * @param v A zsákmányoló virológus.
 	 * @param target A kizsákmányolandó virológus.
 	 */

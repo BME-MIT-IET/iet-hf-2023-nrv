@@ -21,7 +21,7 @@ public class DefLoot implements ILootStr
 	}
 
 	/**
-	 * Nukleotid zsákmányolást kezdeményez v a target virológus felé.
+	 * Nucleotid zsákmányolást kezdeményez v a target virológus felé.
 	 * @param v A zsákmányoló virológus.
 	 * @param target A kizsákmányolandó virológus.
 	 */
@@ -29,7 +29,7 @@ public class DefLoot implements ILootStr
 	public void lootNucleotide(Virologist v, Virologist target)
 	{
 		v.decreaseActions();
-		target.stealNukleotid(v);
+		target.stealNucleotid(v);
 	}
 
 	/**

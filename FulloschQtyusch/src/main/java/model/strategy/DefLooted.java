@@ -29,11 +29,11 @@ public class DefLooted implements ILootedStr
 	}
 
 	/**
-	 * Nukleotidra irányuló kifosztás
+	 * Nucleotidra irányuló kifosztás
 	 * @param v kifosztó virológus
 	 * @param from kifosztandó virológus
 	 */
 	@Override
-	public void lootedForNukleotide(Virologist v, Virologist from) {
+	public void lootedForNucleotide(Virologist v, Virologist from) {
 	}
 }

@@ -23,7 +23,7 @@
   - inject
   - targetedWith(Agent a)
   - stealAminoAcid
-  - stealNukleotid
+  - stealNucleotid
   - stealEquipment
   - endTurn
   - addAminoAcid
