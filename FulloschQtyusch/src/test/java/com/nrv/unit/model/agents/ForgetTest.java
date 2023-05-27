@@ -14,7 +14,7 @@ class ForgetTest {
     @Test
     void test_apply() {
         Virologist virologist = new Virologist();
-        forget.Apply(virologist);
+        forget.apply(virologist);
 
         Assertions.assertEquals(0, virologist.getGeneticCodes().size());
     }

@@ -14,6 +14,8 @@ import model.map.Shelter;
 import model.map.Warehouse;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.Random;
+
 public class CollectStepDefinitions{
   VirologistStepDefinitions virologistCreator = new VirologistStepDefinitions();
   Shelter shelter;
@@ -65,7 +67,7 @@ public class CollectStepDefinitions{
     switch (equipmentType) {
       case "axe" -> equipment = new Axe();
       case "bag" -> equipment = new Bag();
-      case "cloak" -> equipment = new Cloak();
+      case "cloak" -> equipment = new Cloak(new Random());
       case "glove" -> equipment = new Glove();
     }
   }

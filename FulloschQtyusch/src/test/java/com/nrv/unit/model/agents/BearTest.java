@@ -15,7 +15,7 @@ class BearTest {
     void test_applyStrategy() {
         Virologist virologist = new Virologist();
         virologist.setName("");
-        bear.ApplyStrategy(virologist);
+        bear.applyStrategy(virologist);
 
         Assertions.assertEquals(" (Bear)", virologist.getName());
     }
