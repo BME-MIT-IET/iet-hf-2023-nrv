@@ -61,6 +61,12 @@
   - injected
   - injectedBy: másik virológus által injected
 
+- #### _Map package_
+- Field osztály tesztelése
+  -hiba: a szomszédos mezők beállításánál csak egyirányú kapcsolat jön létre,
+  ez probléma, mivel a hívónak kell tudnia, hogy a másik mezőn is be kell állítania az asszociációt.
+  -javítás: a setField metódus állítsa be a paraméterben kapott field-en is a szomszéd kapcsolatot.
+
 ### Controller package
 
 - Controller osztály tesztelése
