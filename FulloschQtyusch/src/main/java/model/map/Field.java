@@ -136,9 +136,7 @@ public class Field
 	public void pickUpEquipment(Virologist v) {
 		if (!equipments.isEmpty()) {
 			Equipment equipment = equipments.remove(equipments.size()-1);
-			//equipment.Apply(v); berakva AddEquipment-be
 			v.addEquipment(equipment);
-			//equipment.ApplyStrategy(v); berakva AddEquipment-be
 		}
 	}
 }
