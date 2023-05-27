@@ -20,7 +20,7 @@ class ChoreaTest {
 
     @Test
     void test_apply() {
-        chorea.Apply(virologist);
-        verify(virologist, times(3)).Move();
+        chorea.apply(virologist);
+        verify(virologist, times(3)).move();
     }
 }

@@ -22,14 +22,14 @@ class BlockTest {
     private Block block = new Block(1);
     @Test
     void test_applyStrategy() {
-        block.ApplyStrategy(virologist);
-        verify(virologist, times(1)).SetInjectedStr(any(NoInjected.class));
-        verify(virologist, times(0)).SetInjectedStr(any(DefInjected.class));
+        block.applyStrategy(virologist);
+        verify(virologist, times(1)).setInjectedStr(any(NoInjected.class));
+        verify(virologist, times(0)).setInjectedStr(any(DefInjected.class));
     }
 
     @Test
     void test_apply() {
-        block.Apply(virologist);
-        verify(virologist, times(1)).RemoveAgents();
+        block.apply(virologist);
+        verify(virologist, times(1)).removeAgents();
     }
 }

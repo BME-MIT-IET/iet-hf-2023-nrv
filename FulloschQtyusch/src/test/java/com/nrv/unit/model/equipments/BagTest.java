@@ -15,9 +15,9 @@ class BagTest {
     void test_apply() {
         Virologist v = new Virologist();
 
-        int limitBefore = v.GetMaterialLimit();
-        bag.Apply(v);
-        int limitAfter = v.GetMaterialLimit();
+        int limitBefore = v.getMaterialLimit();
+        bag.apply(v);
+        int limitAfter = v.getMaterialLimit();
         Assertions.assertEquals(bag.getDelta(), limitAfter - limitBefore);
     }
 
@@ -25,9 +25,9 @@ class BagTest {
     void test_disable() {
         Virologist v = new Virologist();
 
-        int limitBefore = v.GetMaterialLimit();
-        bag.Disable(v);
-        int limitAfter = v.GetMaterialLimit();
+        int limitBefore = v.getMaterialLimit();
+        bag.disable(v);
+        int limitAfter = v.getMaterialLimit();
         Assertions.assertEquals(-bag.getDelta(), limitAfter - limitBefore);
     }
 }

@@ -6,15 +6,15 @@ import model.map.Field;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 class VirologistTest {
     @Mock
     private Game game;
@@ -30,13 +30,13 @@ class VirologistTest {
     @Test
     void test_kill() {
         Field field = new Field();
-        field.AddVirologist(virologist);
+        field.addVirologist(virologist);
 
-        when(game.GetCurrentPlayer()).thenReturn(virologist);
+        when(game.getCurrentPlayer()).thenReturn(virologist);
 
-        virologist.Kill();
+        virologist.kill();
 
-        Assertions.assertEquals(0, field.GetVirologists().size());
-        verify(game, times(1)).GetCurrentPlayer();
+        Assertions.assertEquals(0, field.getVirologists().size());
+        verify(game, times(1)).getCurrentPlayer();
     }
 }

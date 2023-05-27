@@ -28,57 +28,57 @@ class GloveTest {
 
     @Test
     void test_applyStrategy() {
-        glove.ApplyStrategy(virologist);
+        glove.applyStrategy(virologist);
 
-        verify(virologist, times(1)).SetInjectedStr(glove);
+        verify(virologist, times(1)).setInjectedStr(glove);
     }
 
     @Test
     void test_injected() {
         Chorea chorea = new Chorea(1);
-        glove.Injected(virologist, chorea);
+        glove.injected(virologist, chorea);
 
-        verify(virologist, times(0)).RemoveEquipment(glove);
-        verify(virologist, times(0)).Reset();
-        verify(virologist, times(0)).TargetedWith(chorea);
+        verify(virologist, times(0)).removeEquipment(glove);
+        verify(virologist, times(0)).reset();
+        verify(virologist, times(0)).targetedWith(chorea);
     }
 
     @Test
     void test_injectedDestroyed() {
         Chorea chorea = new Chorea(1);
-        glove.Injected(virologist, chorea);
-        glove.Injected(virologist, chorea);
-        glove.Injected(virologist, chorea);
-        glove.Injected(virologist, chorea);
+        glove.injected(virologist, chorea);
+        glove.injected(virologist, chorea);
+        glove.injected(virologist, chorea);
+        glove.injected(virologist, chorea);
 
-        verify(virologist, times(1)).RemoveEquipment(glove);
-        verify(virologist, times(1)).Reset();
-        verify(virologist, times(1)).TargetedWith(chorea);
+        verify(virologist, times(1)).removeEquipment(glove);
+        verify(virologist, times(1)).reset();
+        verify(virologist, times(1)).targetedWith(chorea);
     }
 
     @Test
     void test_injectedBySomeone() {
         Chorea chorea = new Chorea(1);
-        glove.Injected(byVirologist, virologist, chorea);
+        glove.injected(byVirologist, virologist, chorea);
 
-        verify(byVirologist, times(1)).TargetedWith(virologist, chorea);
-        verify(virologist, times(0)).TargetedWith(byVirologist, chorea);
-        verify(virologist, times(0)).RemoveEquipment(glove);
-        verify(virologist, times(0)).Reset();
+        verify(byVirologist, times(1)).targetedWith(virologist, chorea);
+        verify(virologist, times(0)).targetedWith(byVirologist, chorea);
+        verify(virologist, times(0)).removeEquipment(glove);
+        verify(virologist, times(0)).reset();
     }
 
     @Test
     void test_injectedBySomeoneDestroyed() {
         Chorea chorea = new Chorea(1);
-        glove.Injected(byVirologist, virologist, chorea);
-        glove.Injected(byVirologist, virologist, chorea);
-        glove.Injected(byVirologist, virologist, chorea);
-        glove.Injected(byVirologist, virologist, chorea);
+        glove.injected(byVirologist, virologist, chorea);
+        glove.injected(byVirologist, virologist, chorea);
+        glove.injected(byVirologist, virologist, chorea);
+        glove.injected(byVirologist, virologist, chorea);
 
-        verify(byVirologist, times(3)).TargetedWith(virologist, chorea);
+        verify(byVirologist, times(3)).targetedWith(virologist, chorea);
 
-        verify(virologist, times(1)).RemoveEquipment(glove);
-        verify(virologist, times(1)).Reset();
-        verify(virologist, times(1)).TargetedWith(byVirologist, chorea);
+        verify(virologist, times(1)).removeEquipment(glove);
+        verify(virologist, times(1)).reset();
+        verify(virologist, times(1)).targetedWith(byVirologist, chorea);
     }
 }
