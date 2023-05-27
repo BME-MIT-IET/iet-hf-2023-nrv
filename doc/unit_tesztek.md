@@ -4,7 +4,32 @@
 
 - Virologist osztály tesztelése
 
-  - Az összes tesztelhető függvénytt leteszteljük.
+  - kill
+  - attack
+  - targetedWith
+  - removeEquipment
+  - moveToField (Field f)
+  - moveToField ()
+  - drop
+  - lootAminoAcidFrom
+  - lootEquipmentFrom
+  - collect
+  - learn
+  - equip
+  - addAgent
+  - addEquipment <= ezt javítani kellett, mivel akkor is lefutottak a felszerelés változtatásai, ha a virológus nem tudta már felvenni azt
+  - getEquipment
+  - addGeneticCode
+  - inject
+  - targetedWith(Agent a)
+  - stealAminoAcid
+  - stealNukleotid
+  - stealEquipment
+  - endTurn
+  - addAminoAcid
+  - addNucleotide
+  - removeNucleotide
+  - removeAminoAcid
 
 - #### _Agents package_
 
@@ -79,3 +104,30 @@
   - drop
   - inject: itt nem egyértelmű, hogy sikeres-e
   - javítás: az inject exceptiont magasabb szinten kezelni: controller kapja el
+
+### Strategy package
+- BearMove osztály tesztelése
+  - move
+- DefAttack osztály tesztelése
+  - attack
+- DefCollect osztály tesztelése
+  - collect
+- DefDrop osztály tesztelése
+  - drop
+- DefEquip osztály tesztelése
+  - equip
+- DefInjected osztály tesztelése
+  - injected(Virologist v, Agent a)
+  - injected(Virologist by, Virologist injected, Agent a)
+- DefInject osztály tesztelése
+  - inject
+- DefLearn osztály tesztelése
+  - learn
+- DefLoot osztály tesztelése
+  - lootAmino
+  - lootNucleotide
+  - lootEquipment
+- DefMove osztály tesztelése
+  - move
+- NoDrop osztály tesztelése
+  - drop
