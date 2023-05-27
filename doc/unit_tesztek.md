@@ -131,3 +131,7 @@
   - move
 - NoDrop osztály tesztelése
   - drop
+
+## JaCoCo
+
+![](pics/Jacoco.png)
