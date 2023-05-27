@@ -1,4 +1,4 @@
-package model.map;
+package com.nrv.unit.model.map;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
@@ -9,6 +9,10 @@ import model.Virologist;
 import model.codes.ForgetCode;
 import model.codes.StunCode;
 import model.equipments.Equipment;
+import model.map.Field;
+import model.map.InfectedLaboratory;
+import model.map.Laboratory;
+import model.map.Material;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,8 +30,8 @@ class FieldTest {
     field.addVirologist(new Virologist());
     field.addVirologist(new Virologist());
     Virologist mockVirologist = mock(Virologist.class);
-    verify(mockVirologist, times(1)).setField(field);
     field.addVirologist(mockVirologist);
+    verify(mockVirologist, times(1)).setField(field);
     Assertions.assertFalse(field.getVirologists().isEmpty());
     Assertions.assertEquals(3, field.getVirologists().size());
     Assertions.assertTrue(field.getVirologists().contains(mockVirologist));
