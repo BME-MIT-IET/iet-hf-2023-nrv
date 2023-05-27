@@ -24,6 +24,7 @@ Feature: Virologist can inject another virologist with genetic code
     @Inject
     Example: Virologist cannot inject if they don't have enough material for the code
       Sad story
+      They don't forget anything when no material is present to create forget agent from forget code
       Given virologist is created
       And virologist 1 already learned some codes
       And virologist 1 already learned forget code
