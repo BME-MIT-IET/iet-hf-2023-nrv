@@ -403,11 +403,13 @@ public class Virologist extends Subject
 	 */
 	public void addEquipment(Equipment e)
 	{
-		if (equipments.size() < maxNumberOfItems)
+		if (equipments.size() < maxNumberOfItems){
 			equipments.add(e);
-		e.apply(this);
-		e.applyStrategy(this);
-		notifyAllObservers();
+			e.apply(this);
+			e.applyStrategy(this);
+			notifyAllObservers();
+		}
+
 	}
 
 	/**
@@ -743,5 +745,17 @@ public class Virologist extends Subject
 	public void setLootedStr(ILootedStr l)
 	{
 		lootedStr =l;
+	}
+
+	public LinkedList<Agent> getAgents() {
+		return agents;
+	}
+
+	public void setAminoAcid(int aminoAcid) {
+		this.aminoAcid = aminoAcid;
+	}
+
+	public void setNucleotide(int nucleotide) {
+		this.nucleotide = nucleotide;
 	}
 }

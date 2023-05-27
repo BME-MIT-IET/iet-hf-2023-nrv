@@ -77,8 +77,10 @@ public class Field
 	 * @param f új szomszéd
 	 */
 	public void addNeighbour(Field f) {
-		if(!neighbours.contains(f))
+		if(!neighbours.contains(f)) {
 			neighbours.add(f);
+			f.addNeighbour(this);
+		}
 	}
 
 	/**

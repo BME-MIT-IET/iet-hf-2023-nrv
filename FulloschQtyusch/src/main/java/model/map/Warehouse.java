@@ -26,7 +26,7 @@ public class Warehouse extends Field
 	@Override
 	public void collectMaterial(Virologist v, Material materialType) {
 		int r = random.nextInt(2) ;
-		if (r == 0 || materialType.equals(Material.AMINO_ACID)) {
+		if ((r == 0 && materialType.equals(Material.GENERIC)) || materialType.equals(Material.AMINO_ACID)) {
 			v.addAminoAcid(delta);
 		}
 		else {
