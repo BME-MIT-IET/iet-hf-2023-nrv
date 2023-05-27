@@ -4,7 +4,32 @@
 
 - Virologist osztály tesztelése
 
-  - Az összes tesztelhető függvénytt leteszteljük.
+  - kill
+  - attack
+  - targetedWith
+  - removeEquipment
+  - moveToField (Field f)
+  - moveToField ()
+  - drop
+  - lootAminoAcidFrom
+  - lootEquipmentFrom
+  - collect
+  - learn
+  - equip
+  - addAgent
+  - addEquipment <= ezt javítani kellett, mivel akkor is lefutottak a felszerelés változtatásai, ha a virológus nem tudta már felvenni azt
+  - getEquipment
+  - addGeneticCode
+  - inject
+  - targetedWith(Agent a)
+  - stealAminoAcid
+  - stealNukleotid
+  - stealEquipment
+  - endTurn
+  - addAminoAcid
+  - addNucleotide
+  - removeNucleotide
+  - removeAminoAcid
 
 - #### _Agents package_
 
