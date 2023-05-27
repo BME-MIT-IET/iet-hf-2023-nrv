@@ -1,5 +1,6 @@
 package com.nrv.unit.model.map;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -7,6 +8,7 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 import model.Virologist;
 import model.codes.ForgetCode;
+import model.codes.GeneticCode;
 import model.codes.StunCode;
 import model.equipments.Equipment;
 import model.map.Field;
@@ -71,7 +73,7 @@ class FieldTest {
   void learnGeneticCodeTest() {
     Virologist mockVirologist = mock(Virologist.class);
     field.learnGeneticCode(mockVirologist);
-    verify(mockVirologist, times(0)).learn();
+    verify(mockVirologist, times(0)).addGeneticCode(any(GeneticCode.class));
   }
 
   @Test
