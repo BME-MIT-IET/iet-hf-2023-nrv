@@ -33,7 +33,7 @@ class DefLootTest {
         defLoot.lootNucleotide(looter, target);
 
         verify(looter).decreaseActions();
-        verify(target).stealNukleotid(looter);
+        verify(target).stealNucleotid(looter);
     }
 
     @Test

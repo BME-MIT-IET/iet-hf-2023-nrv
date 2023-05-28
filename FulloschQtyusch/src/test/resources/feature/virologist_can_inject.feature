@@ -29,6 +29,6 @@ Feature: Virologist can inject another virologist with genetic code
       And virologist 1 already learned some codes
       And virologist 1 already learned forget code
       And virologist 1 does not have enough material for forget code
-      When virologist 1 injects virologist 1 with forget code
+      When virologist 1 injects virologist 1 with forget code but fails, due not having enough material
       Then virologist 1 will still know forget code
       Then virologist 1 will still know some codes

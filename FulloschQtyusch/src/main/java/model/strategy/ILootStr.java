@@ -3,7 +3,7 @@ package model.strategy;
 import model.Virologist;
 
 /**
- * A virológus Aminosav, Nukleotid, védőfelszerelés zsákmányolási stratégiját megtesítendő osztályok interface-e.
+ * A virológus Aminosav, Nucleotid, védőfelszerelés zsákmányolási stratégiját megtesítendő osztályok interface-e.
  */
 public interface ILootStr
 {
@@ -15,7 +15,7 @@ public interface ILootStr
 	void lootAmino(Virologist v, Virologist target);
 
 	/**
-	 * Nukleotid zsákmányolás metódusa.
+	 * Nucleotid zsákmányolás metódusa.
 	 * @param v A zsákmányoló virológus.
 	 * @param target A kizsákmányolandó virológus.
 	 */

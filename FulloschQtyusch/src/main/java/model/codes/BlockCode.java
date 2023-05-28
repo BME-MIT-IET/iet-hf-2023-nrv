@@ -34,18 +34,7 @@ public class BlockCode extends GeneticCode
 	@Override
 	public Agent create(Virologist v) throws GeneticCodeException
 	{
-		try {
-			v.removeNucleotide(nucleotidePrice);
-		} catch (Exception e) {
-			throw new GeneticCodeException("Failed to remove nucleotide.");
-		}
-		try{
-			v.removeAminoAcid(aminoAcidPrice);
-		}
-		catch(Exception e){
-			v.addNucleotide(nucleotidePrice);
-			throw new GeneticCodeException("Failed to remove amino acid.");
-		}
+		removePrice(v);
 		return new Block(turnsLeft*playerCount);
 	}
 

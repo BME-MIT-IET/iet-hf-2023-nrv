@@ -73,6 +73,12 @@ public class InjectStepDefinitions {
     v1.inject(v2, getActualCode(codeType));
   }
 
+  @When("virologist {int} injects virologist {int} with {word} code but fails, due not having enough material")
+  public void virologistInjectsVirologistButFails(int vir1, int vir2, String codeType) {
+    Virologist v1 = getActualVirologist(vir1);
+    Virologist v2 = getActualVirologist(vir2);
+    Assertions.assertThrows(RuntimeException.class, () -> v1.inject(v2, getActualCode(codeType)));
+  }
   @Then("virologist {int} knows no more code")
   public void virologistKnowsNoMoreCode(int virNum) {
     Virologist v = getActualVirologist(virNum);

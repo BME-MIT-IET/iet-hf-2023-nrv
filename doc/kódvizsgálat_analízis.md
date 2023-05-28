@@ -44,7 +44,7 @@ void Injected(Virologist v, Agent a); // Rossz!
 void injected(Virologist v, Agent a); // Jó!
 ```
 
-Emellett a hibakezel sokször hiányos vagy túl általános volt, ami azt jelenti,
+Emellett a hibakezelő sokszor hiányos vagy túl általános volt, ami azt jelenti,
 hogy a `catch` ágak minden hibát elkaptak, de nem csináltak velük semmit.
 
 ```java
@@ -77,6 +77,10 @@ public Window(Controller controller, Game game) {
     // ...
 }
 ```
+A Window.java osztály egyes függvényeit ezért csak szétdaraboltuk kisebbekre.
+
+Észrevehető volt, hogy a GeneticCode leszármazottakban ismétlődő kódok voltak.
+Ezeket kiszerveztük az ősbe.
 
 ## Eredmények
 

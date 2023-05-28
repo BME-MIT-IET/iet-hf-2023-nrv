@@ -362,9 +362,9 @@ class VirologistTest {
     public void testStealNucleotide(){
         Virologist target = mock(Virologist.class);
 
-        virologist.stealNukleotid(target);
+        virologist.stealNucleotid(target);
 
-        verify(mockLootedStr, times(1)).lootedForNukleotide(target, virologist);
+        verify(mockLootedStr, times(1)).lootedForNucleotide(target, virologist);
     }
 
     @Test
