@@ -1,0 +1,44 @@
+
+n
+java:S1192Å"KDefine a constant instead of duplicating this literal "sans-serif" 5 times.(éÛ“âúÿÿÿÿ8Ìïƒıƒ1
+T
+java:S1135"2Complete the task associated to this TODO comment.(¬Ì¥ÿÿÿÿÿ8¯ğƒıƒ1
+o
+java:S3776A"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(£œÏ¶8¯ğƒıƒ1
+Q
+java:S1611S"/Remove the parentheses around the "e" parameter(äÀèÖüÿÿÿÿ8²ğƒıƒ1
+Q
+java:S1611_"/Remove the parentheses around the "e" parameter(Å¾İøÿÿÿÿ8³ğƒıƒ1
+L
+java:S1611f"/Remove the parentheses around the "e" parameter(ï®É8³ğƒıƒ1
+Q
+java:S1611p"/Remove the parentheses around the "e" parameter(œÉË‚ûÿÿÿÿ8´ğƒıƒ1
+L
+java:S1611~"/Remove the parentheses around the "e" parameter(Ä¿ÿÏ8µğƒıƒ1
+R
+java:S1611Œ"/Remove the parentheses around the "e" parameter(¤³ÄÛüÿÿÿÿ8·ğƒıƒ1
+R
+java:S1611˜"/Remove the parentheses around the "e" parameter(µ¾’õùÿÿÿÿ8·ğƒıƒ1
+R
+java:S1611œ"/Remove the parentheses around the "e" parameter(Œ€Ïİıÿÿÿÿ8¸ğƒıƒ1
+M
+java:S1611©"/Remove the parentheses around the "e" parameter(Ù˜Š 8¹ğƒıƒ1
+R
+java:S1611³"/Remove the parentheses around the "e" parameter(’Ç½ìøÿÿÿÿ8¹ğƒıƒ1
+R
+java:S1611¸"/Remove the parentheses around the "e" parameter(Ü•Õóıÿÿÿÿ8¹ğƒıƒ1
+g
+java:S3252Ç"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8ºğƒıƒ1
+M
+java:S1611Ù"/Remove the parentheses around the "e" parameter(‡Ÿíà8¼ğƒıƒ1
+E	java:S108ù")Either remove or fill this block of code.(”ã‰G8¿ğƒıƒ1
+E	java:S108€")Either remove or fill this block of code.(”ã‰G8¿ğƒıƒ1
+E	java:S108Ÿ")Either remove or fill this block of code.(”ã‰G8Áğƒıƒ1
+R
+java:S1611µ"/Remove the parentheses around the "e" parameter(ôù… ıÿÿÿÿ8Äğƒıƒ1
+_
+java:S3252Ä"AUse static access with "javax.swing.SwingConstants" for "CENTER".(ä§—Å8Åğƒıƒ1
+d
+java:S3252Í"AUse static access with "javax.swing.SwingConstants" for "CENTER".(ğ¼ˆÌûÿÿÿÿ8Æğƒıƒ1
+P
+java:S6126"2Replace this String concatenation with Text block.(â‡ˆˆ8Éğƒıƒ1

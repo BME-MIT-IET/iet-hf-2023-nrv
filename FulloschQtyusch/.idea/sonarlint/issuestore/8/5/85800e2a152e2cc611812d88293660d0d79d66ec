@@ -1,0 +1,23 @@
+
+’
+java:S1319>"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ù´áÀşÿÿÿÿ8åşûƒ1
+
+java:S1319F"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ç¢Éá8æşûƒ1
+
+java:S1186W"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íî‘¤8íşûƒ1
+
+java:S1186w"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(–²»Û8íşûƒ1
+
+java:S1186~"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ş™ÄŞ8íşûƒ1
+o	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù´áÀşÿÿÿÿ8ğşûƒ1
+j	java:S100F"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¢Éá8ñşûƒ1
+j	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô‹»Î8ñşûƒ1
+j	java:S100W"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íî‘¤8ñşûƒ1
+i	java:S100^"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰Æ­8òşûƒ1
+o	java:S100g"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„î·Òúÿÿÿÿ8òşûƒ1
+o	java:S100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğµ®Ùûÿÿÿÿ8óşûƒ1
+j	java:S100w"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–²»Û8ôşûƒ1
+j	java:S100~"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş™ÄŞ8ôşûƒ1
+k	java:S100…"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Ö«8ôşûƒ1
+a
+java:S1155†">Use isEmpty() to check whether the collection is empty or not.(Ú¥¥™şÿÿÿÿ8ôşûƒ1
