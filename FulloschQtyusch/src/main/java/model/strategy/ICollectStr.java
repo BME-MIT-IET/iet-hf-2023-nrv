@@ -14,6 +14,6 @@ public interface ICollectStr {
 	 * @param v Gyüjtő virológus
 	 * @param f A mező, ahol van az anyag
 	 */
-	void Collect(Virologist v, Field f, Material materialType);
+	void collect(Virologist v, Field f, Material materialType);
 
 }

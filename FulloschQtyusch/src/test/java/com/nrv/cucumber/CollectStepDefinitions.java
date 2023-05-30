@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import model.Virologist;
 import model.equipments.Axe;
 import model.equipments.Bag;
 import model.equipments.Cloak;
@@ -23,27 +22,27 @@ public class CollectStepDefinitions{
   @Given("virologist stays on warehouse")
   public void virologistStaysOn(){
     Warehouse warehouse = new Warehouse();
-    warehouse.AddVirologist(virologistCreator.getVirologist());
+    warehouse.addVirologist(virologistCreator.getVirologist());
   }
   @When("virologist takes equipment")
   public void virologistEquips(){
-    virologistCreator.getVirologist().Equip();
+    virologistCreator.getVirologist().equip();
   }
   @When("virologist collects {word}")
   public void virologistCollects(String materialType){
-    virologistCreator.getVirologist().Collect(Material.AMINO_ACID);
+    virologistCreator.getVirologist().collect(Material.AMINO_ACID);
   }
   @Then("virologist should have more material than {int}")
   public void virologistShouldHaveMaterial(int num){
-    if(virologistCreator.getVirologist().GetNucleotide() == 0){
-      Assertions.assertTrue(virologistCreator.getVirologist().GetAminoAcid() > num);
+    if(virologistCreator.getVirologist().getNucleotide() == 0){
+      Assertions.assertTrue(virologistCreator.getVirologist().getAminoAcid() > num);
     }else{
-      Assertions.assertTrue(virologistCreator.getVirologist().GetNucleotide() > num);
+      Assertions.assertTrue(virologistCreator.getVirologist().getNucleotide() > num);
     }
   }
   @Given("virologist stays on shelter")
   public void virologistStaysOnShelter() {
-    shelter.AddVirologist(virologistCreator.getVirologist());
+    shelter.addVirologist(virologistCreator.getVirologist());
   }
 
   @And("shelter has equipment")
@@ -53,12 +52,12 @@ public class CollectStepDefinitions{
 
   @Then("virologist should have the equipment")
   public void virologistShouldHave() {
-    Assertions.assertEquals(equipment,virologistCreator.getVirologist().GetEquipments().get(0));
-    Assertions.assertEquals(1,virologistCreator.getVirologist().GetEquipments().size());
+    Assertions.assertEquals(equipment,virologistCreator.getVirologist().getEquipments().get(0));
+    Assertions.assertEquals(1,virologistCreator.getVirologist().getEquipments().size());
   }
   @Then("virologist should not have the equipment")
   public void virologistShouldNotHave() {
-    Assertions.assertFalse(virologistCreator.getVirologist().GetEquipments().contains(equipment));
+    Assertions.assertFalse(virologistCreator.getVirologist().getEquipments().contains(equipment));
   }
 
   @Given("there is an equipment {word}")
@@ -73,9 +72,9 @@ public class CollectStepDefinitions{
 
   @And("virologist has {int} equipments")
   public void virologistHasEquipments(int num) {
-    virologistCreator.getVirologist().GetEquipments().clear();
+    virologistCreator.getVirologist().getEquipments().clear();
     for(int i=0; i< num; ++i){
-      virologistCreator.getVirologist().AddEquipment(new Bag());
+      virologistCreator.getVirologist().addEquipment(new Bag());
     }
   }
 }

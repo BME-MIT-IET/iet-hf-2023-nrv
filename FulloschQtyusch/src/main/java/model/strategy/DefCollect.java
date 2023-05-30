@@ -17,9 +17,9 @@ public class DefCollect implements ICollectStr {
 	 * @param f a mező, amelyen gyüjtődik az anyag
 	 */
 	@Override
-	public void Collect(Virologist v, Field f, Material materialType) {
-		f.CollectMaterial(v, materialType);
-		v.DecreaseActions();
+	public void collect(Virologist v, Field f, Material materialType) {
+		f.collectMaterial(v, materialType);
+		v.decreaseActions();
 	}
 
 }

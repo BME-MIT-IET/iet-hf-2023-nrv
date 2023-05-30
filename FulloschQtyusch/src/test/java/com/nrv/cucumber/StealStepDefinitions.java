@@ -24,44 +24,44 @@ public class StealStepDefinitions {
   public void firstVirologistHasEquipmentAxe(int virologistNumber) {
     equipment = new Axe();
     if(virologistNumber == 1){
-      virologistProvider.getVirologist().AddEquipment(equipment);
+      virologistProvider.getVirologist().addEquipment(equipment);
     }else{
-      virologist.AddEquipment(equipment);
+      virologist.addEquipment(equipment);
     }
   }
 
   @When("virologist {int} loots equipment")
   public void virologistLootsEquipment(int viroNum) {
     if(viroNum == 1){
-      virologistProvider.getVirologist().LootEquipmentFrom(virologist);
+      virologistProvider.getVirologist().lootEquipmentFrom(virologist);
     }else{
-      virologist.LootEquipmentFrom(virologistProvider.getVirologist());
+      virologist.lootEquipmentFrom(virologistProvider.getVirologist());
     }
   }
 
   @Then("virologist {int} has the equipment")
   public void virologistHasTheEquipment(int viroNum) {
     if(viroNum == 1){
-      Assertions.assertTrue(virologistProvider.getVirologist().GetEquipments().contains(equipment));
+      Assertions.assertTrue(virologistProvider.getVirologist().getEquipments().contains(equipment));
     }else{
-      Assertions.assertTrue(virologist.GetEquipments().contains(equipment));
+      Assertions.assertTrue(virologist.getEquipments().contains(equipment));
     }
   }
 
   @Then("virologist {int} does not have the equipment")
   public void firstVirologistDoesNotHaveTheEquipment(int viroNum) {
     if(viroNum == 1){
-      Assertions.assertFalse(virologistProvider.getVirologist().GetEquipments().contains(equipment));
+      Assertions.assertFalse(virologistProvider.getVirologist().getEquipments().contains(equipment));
     }else{
-      Assertions.assertFalse(virologist.GetEquipments().contains(equipment));
+      Assertions.assertFalse(virologist.getEquipments().contains(equipment));
     }
   }
 
   @And("game has no random factor")
   public void gameHasNoRandomFactor() {
-    Game game = Game.Create();
+    Game game = Game.create();
     game.randOn = false;
-    virologist.SetGame(game);
-    virologistProvider.getVirologist().SetGame(game);
+    virologist.setGame(game);
+    virologistProvider.getVirologist().setGame(game);
   }
 }
